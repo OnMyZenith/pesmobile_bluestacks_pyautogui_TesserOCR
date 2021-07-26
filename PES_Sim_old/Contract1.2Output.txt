@@ -1,0 +1,8 @@
+Tue Sep 15 14:49:30 2020
+
+Starting ContRen in 10 seconds
+
+Starting Global While loop z = 0
+Checking Squad Number
+Couldn't recognise Squad number, Scrolling to top to check again
+Checking Squad Number
