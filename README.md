@@ -1,2 +1,8 @@
 # pesmobile_bluestacks_pyautogui
- Using PyAutoGUI to automate playing boring sim games in pesmobile 2021
+ Using PyAutoGUI to automate playiing differnet patrs of pesmobile 2021
+
+### Playing SIM games
+
+### Renewing Contrats
+
+### Releasing Scouts
