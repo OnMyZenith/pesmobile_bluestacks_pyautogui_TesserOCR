@@ -32,3 +32,40 @@ Tue Jul 27 03:15:00 2021
 
 
 Looking for SquadNotFine
+Tue Jul 27 03:32:10 2021
+
+
+Starting AutoSim in 10 seconds
+
+
+Starting Global While loop i = 1
+
+
+
+
+
+
+Tue Jul 27 03:32:20 2021
+
+
+Looking for SquadNotFine
+Looking for ToMatch
+Looking for Next, reporting and clicking if found
+Looking for Retry, reporting and clicking if found
+Looking for PContExpOK
+Looking for Next
+Looking for Proceed
+Looking for ExtAchOK
+Looking for Next
+Looking for ContExpOK
+Looking for Sign
+Looking for ContExtOK
+Looking for ReqUpOK
+Looking for Next
+Looking for OKCampStay
+Looking for OKCampPro
+Looking for OKCampBon
+Looking for TSUpOK, reporting and clicking if found
+Looking for RedOK, reporting and clicking if found
+Looking for 2YelOK, reporting and clicking if found
+Looking for Retry, reporting and clicking if found
