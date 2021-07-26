@@ -8,7 +8,7 @@ def print2Both(text):
 
 def sim():
 
-    print2Both(time.asctime(time.localtime(time.time())))
+    print2Both(time.ctime())
     print2Both('\n')
     print2Both("Starting AutoSim in 10 seconds")
     print2Both('\n')
@@ -25,7 +25,7 @@ def sim():
     while i == 1 :
         
         print2Both('\n')
-        print2Both(time.asctime(time.localtime(time.time())))
+        print2Both(time.ctime())
         print2Both('\n')
         #print2Both("Waiting 10 seconds before looking for SquadNotFine")
         #Waiting 10 seconds before looking for SquadNotFine
@@ -43,7 +43,7 @@ def sim():
             print2Both("Found SquadNotFine")
             print2Both('\n')
             print2Both('\n')
-            print2Both(time.asctime(time.localtime(time.time())))
+            print2Both(time.ctime())
             print2Both('\n')
             print2Both('\n')
             #winsound.Beep(500, 100)
@@ -64,7 +64,7 @@ def sim():
                 print2Both("Found 2YelOK")
                 print2Both('\n')
                 print2Both('\n')
-                print2Both(time.asctime(time.localtime(time.time())))
+                print2Both(time.ctime())
                 print2Both('\n')
                 print2Both('\n')
                 #winsound.Beep(500, 100)
@@ -89,7 +89,7 @@ def sim():
                         print2Both("Found SquadNotFine")
                         print2Both('\n')
                         print2Both('\n')
-                        print2Both(time.asctime(time.localtime(time.time())))
+                        print2Both(time.ctime())
                         print2Both('\n')
                         print2Both('\n')
                         #winsound.Beep(500, 100)
@@ -112,7 +112,7 @@ def sim():
                 print2Both("Found RedOK")
                 print2Both('\n')
                 print2Both('\n')
-                print2Both(time.asctime(time.localtime(time.time())))
+                print2Both(time.ctime())
                 print2Both('\n')
                 print2Both('\n')
                 #winsound.Beep(500, 100)
@@ -137,7 +137,7 @@ def sim():
                         print2Both("Found SquadNotFine")
                         print2Both('\n')
                         print2Both('\n')
-                        print2Both(time.asctime(time.localtime(time.time())))
+                        print2Both(time.ctime())
                         print2Both('\n')
                         print2Both('\n')
                         #winsound.Beep(500, 100)
@@ -369,7 +369,7 @@ def sim():
                         time.sleep(10) 
 
                     print2Both("SNFBack was clicked")
-                    print2Both(time.asctime(time.localtime(time.time())))
+                    print2Both(time.ctime())
                     b = 1                
                     
                 else:
@@ -390,7 +390,7 @@ def sim():
         if (pyautogui.locateCenterOnScreen('ToMatch.png') is not None):
             print2Both("Found ToMatch")
             print2Both('\n')
-            print2Both(time.asctime(time.localtime(time.time())))
+            print2Both(time.ctime())
             print2Both('\n')
             #winsound.Beep(500, 100)
             
@@ -410,7 +410,7 @@ def sim():
                 print2Both("Found 2YelOK")
                 print2Both('\n')
                 print2Both('\n')
-                print2Both(time.asctime(time.localtime(time.time())))
+                print2Both(time.ctime())
                 print2Both('\n')
                 print2Both('\n')
                 #winsound.Beep(500, 100)
@@ -435,7 +435,7 @@ def sim():
                         print2Both("Found ToMatch")
                         print2Both('\n')
                         print2Both('\n')
-                        print2Both(time.asctime(time.localtime(time.time())))
+                        print2Both(time.ctime())
                         print2Both('\n')
                         print2Both('\n')
                         #winsound.Beep(500, 100)
@@ -458,7 +458,7 @@ def sim():
                 print2Both("Found RedOK")
                 print2Both('\n')
                 print2Both('\n')
-                print2Both(time.asctime(time.localtime(time.time())))
+                print2Both(time.ctime())
                 print2Both('\n')
                 print2Both('\n')
                 #winsound.Beep(500, 100)
@@ -483,7 +483,7 @@ def sim():
                         print2Both("Found ToMatch")
                         print2Both('\n')
                         print2Both('\n')
-                        print2Both(time.asctime(time.localtime(time.time())))
+                        print2Both(time.ctime())
                         print2Both('\n')
                         print2Both('\n')
                         #winsound.Beep(500, 100)
@@ -738,7 +738,7 @@ def sim():
 
                         print2Both("Next was clicked")
                         print2Both('\n')
-                        print2Both(time.asctime(time.localtime(time.time())))
+                        print2Both(time.ctime())
                         print2Both('\n')
 
                         s = 1                

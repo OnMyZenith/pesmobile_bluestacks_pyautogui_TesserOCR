@@ -1,0 +1,34 @@
+Tue Jul 27 03:14:19 2021
+
+
+Starting AutoSim in 10 seconds
+
+
+Starting Global While loop i = 1
+
+
+
+
+
+
+Tue Jul 27 03:14:29 2021
+
+
+Looking for SquadNotFine
+Tue Jul 27 03:14:50 2021
+
+
+Starting AutoSim in 10 seconds
+
+
+Starting Global While loop i = 1
+
+
+
+
+
+
+Tue Jul 27 03:15:00 2021
+
+
+Looking for SquadNotFine
