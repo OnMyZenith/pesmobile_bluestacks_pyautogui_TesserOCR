@@ -38,7 +38,7 @@ regionSign = (900, 990, 960, 1040)
 regionSquadNotFine = (470, 65, 690, 225)
 regionSwitchSquad = (948, 184, 1055, 274)
 regionSwitchTo1 = (0, 800, 200, 890)
-regionSwitchTo2 = (587, 509, 883, 900)
+regionSwitchTo2 = (478, 505, 847, 920)
 regionToMatch = (1609, 990, 1680, 1040)
 
 
