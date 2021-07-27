@@ -63,6 +63,7 @@ def check(buttonName, img, REGION):
 
 def click(buttonName, img, REGION, haveToClick, waitAfterClick):
     print2Both('Looking for '+buttonName)
+    global lastClickTime
 
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
@@ -75,7 +76,6 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
         while(point):
             print2Both("Found "+buttonName+"and entered loop")
             pyg.mouseDown(point)
-            global lastClickTime
             lastClickTime = time.time()
             time.sleep(2)
             pyg.mouseUp()
@@ -86,7 +86,6 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
     elif(point):
         print2Both("Found "+buttonName)
         pyg.mouseDown(point)
-        global lastClickTime
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
