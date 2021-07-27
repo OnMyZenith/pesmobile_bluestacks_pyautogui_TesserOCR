@@ -2,7 +2,6 @@ import pyautogui as pyg
 import time
 from PIL import Image
 
-f = open('./logs/sim_log.txt', 'a')
 
 pyg.PAUSE = 0
 pyg.FAILSAFE = True
@@ -42,68 +41,50 @@ regionSwitchTo2 = (478, 505, 847, 920)
 regionToMatch = (1609, 990, 1680, 1040)
 
 
-def print2Both(text):
-    print(text)
-    f.write(text+'\n')
-
-
 def check(buttonName, img, REGION):
-
-    time.sleep(7)
-    print2Both('Checking for '+buttonName+'\n')
+    global foundButton
+    foundButton = False
+    print('Checking for '+buttonName)
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
     if(point is not None):
-        print2Both("Found "+buttonName)
-        global foundButton
+        print("Found "+buttonName)
         foundButton = True
     else:
-        print2Both("Couldn't find "+buttonName)
+        print("Couldn't find "+buttonName)
         foundButton = False
 
 
-def click(buttonName, img, REGION, haveToClick):
-    print2Both('Looking for '+buttonName+'\n')
+def click(buttonName, img, REGION, haveToClick, waitAfterClick):
+    print('Looking for '+buttonName)
+    global lastClickTime
 
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
     if(haveToClick):
         while(point is None):
-            print2Both("Waiting for "+buttonName)
+            print("Waiting for "+buttonName)
             time.sleep(2)
-            point = pyg.locateCenterOnScreen(
-                img, region=REGION, confidence=.98)
+            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
-    while(point):
-        print2Both("Found "+buttonName+"and entered loop\n")
+        while(point):
+            print("Found "+buttonName+" and entered loop")
+            pyg.mouseDown(point)
+            lastClickTime = time.time()
+            time.sleep(2)
+            pyg.mouseUp()
+            print("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds before rechecking and retrying if needed")
+            time.sleep(waitAfterClick)
+            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+
+    elif(point):
+        print("Found "+buttonName)
         pyg.mouseDown(point)
-        global lastClickTime
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("Clicked "+buttonName +" for 2secs and now waiting 5secs before rechecking and retrying if needed\n")
-        time.sleep(5)
-        point = None
-        point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+        print("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds and moving on")
+        time.sleep(waitAfterClick)
 
-
-click('Juve', imgJuve, regionJuve, True)
-click('SwitchSquad', imgSwitchSquad, regionSwitchSquad, True)
-
-while(True):
-    foundButton=False
-    check('SwitchTo1', imgSwitchTo1, regionSwitchTo1)
-    
-    if(foundButton):
-        click('SwitchTo1',imgSwitchTo1,regionSwitchTo1, True)
-        break
-    else:
-        click('SwitchTo2',imgSwitchTo2,regionSwitchTo2, True)
-        break
-
-    
-click('Confirm', imgConfirm, regionConfirm, True)
-click('OK', imgOK, regionOK, True)
-click('Back', imgBack, regionBack, True)
-
-f.close()
+while(1):
+    check("SquadNotFine", imgSquadNotFine, regionSquadNotFine)
