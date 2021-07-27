@@ -49,7 +49,6 @@ def print2Both(text):
 
 def check(buttonName, img, REGION):
 
-    time.sleep(7)
     print2Both('Checking for '+buttonName+'\n')
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
@@ -97,6 +96,7 @@ while(1):
     click('OK', imgOK, regionOK, False)
     click('2ndHalf', img2ndHalf, region2ndHalf, False)
     click('Next', imgNext, regionNext, False)
+    click('Confirm', imgConfirm, regionConfirm, False)
     click('Proceed', imgProceed, regionProceed, False)
     click('Retry', imgRetry, regionRetry, False)
     click('Sign', imgSign, regionSign, False)
