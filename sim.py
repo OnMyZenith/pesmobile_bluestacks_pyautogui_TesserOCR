@@ -74,38 +74,37 @@ def notRunning():
 
 
 def check(buttonName, img, REGION):
-    print2Both('Checking for '+buttonName)
+    print2Both('CheckLoop: Checking for '+buttonName)
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
     if(point):
-        print2Both("Found "+buttonName)
+        print2Both("CheckLoop: Found "+buttonName)
         return True
     else:
-        print2Both("Couldn't find "+buttonName)
+        print2Both("CheckLoop: Couldn't find "+buttonName)
         return False
 
 
 def click(buttonName, img, REGION, haveToClick, waitAfterClick):
-    print2Both('Looking for '+buttonName)
+    print2Both('ClickLoop: Looking for '+buttonName)
     global lastClickTime
 
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
     if(haveToClick):
         while(point is None):
-            print2Both("Waiting for "+buttonName)
+            print2Both("ClickLoop: Waiting for "+buttonName)
             time.sleep(2)
             point = pyg.locateCenterOnScreen(
                 img, region=REGION, confidence=.98)
 
         while(point):
-            print2Both("Found "+buttonName+" and entered loop")
+            print2Both("ClickLoop: Found "+buttonName+" and entered loop")
             pyg.mouseDown(point)
             lastClickTime = time.time()
             time.sleep(2)
             pyg.mouseUp()
-            print2Both("Clicked "+buttonName + " and now waiting " +
-                       str(waitAfterClick)+" seconds before rechecking and retrying if needed")
+            print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +str(waitAfterClick)+" seconds before rechecking and retrying if needed")
             time.sleep(waitAfterClick)
             point = pyg.locateCenterOnScreen(
                 img, region=REGION, confidence=.98)
@@ -115,8 +114,7 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("Clicked "+buttonName + " and now waiting " +
-                   str(waitAfterClick)+" seconds and moving on")
+        print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +str(waitAfterClick)+" seconds and moving on")
         time.sleep(waitAfterClick)
 
 
@@ -158,6 +156,7 @@ def select(squad):
 
 def renew(squad):
     while(True):
+        global contDone
         contDone = False
         select(squad)
         wait = 4
@@ -181,6 +180,7 @@ def renew(squad):
                 click('OK', imgOK, regionOK, True, wait)
                 break
         scrollUp()
+        print2Both('\n\n------------------------------------------------------------\n\n')
 
 
 def snfSwitch():
@@ -269,8 +269,7 @@ def ContRen():
             else:
                 scrollUp()
 
-        print2Both(
-            '\n\n------------------------------------------------------------\n\n')
+        if(contDone): break
     f.close()
 
 
