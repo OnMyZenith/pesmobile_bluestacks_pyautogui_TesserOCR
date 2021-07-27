@@ -56,8 +56,11 @@ f = (1200, 800)             #
 selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 
-squad1 = (selectButtonPosition, a, b, c, d, e, f, 1, a, b, c, d, 1, e, actionButtonPosition)
-squad2 = (selectButtonPosition, a, b, c, d, e, f, 1, a, b, c, d, e, actionButtonPosition)
+squad1 = (selectButtonPosition, a, b, c, d, e, f,
+          1, a, b, c, d, 1, e, actionButtonPosition)
+squad2 = (selectButtonPosition, a, b, c, d, e, f,
+          1, a, b, c, d, e, actionButtonPosition)
+scouts = (a, c, e)
 
 
 def print2Both(text):
@@ -104,7 +107,8 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
             lastClickTime = time.time()
             time.sleep(2)
             pyg.mouseUp()
-            print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +str(waitAfterClick)+" seconds before rechecking and retrying if needed")
+            print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +
+                       str(waitAfterClick)+" seconds before rechecking and retrying if needed")
             time.sleep(waitAfterClick)
             point = pyg.locateCenterOnScreen(
                 img, region=REGION, confidence=.98)
@@ -114,7 +118,8 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +str(waitAfterClick)+" seconds and moving on")
+        print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +
+                   str(waitAfterClick)+" seconds and moving on")
         time.sleep(waitAfterClick)
 
 
@@ -137,13 +142,15 @@ def scrollUp():
     time.sleep(4)
 
 
-def scrollDownSlow():
-    pyg.mouseDown(50, 917)
-    time.sleep(1)
-    pyg.moveTo(50, 228, duration=3)
-    time.sleep(2)
-    pyg.mouseUp()
-    time.sleep(1)
+def scrollDownSlow(pages=1):
+    while(pages):
+        pyg.mouseDown(50, 917)
+        time.sleep(1)
+        pyg.moveTo(50, 228, duration=3)
+        time.sleep(2)
+        pyg.mouseUp()
+        time.sleep(1)
+        pages = pages-1
 
 
 def select(squad):
@@ -180,7 +187,8 @@ def renew(squad):
                 click('OK', imgOK, regionOK, True, wait)
                 break
         scrollUp()
-        print2Both('\n\n------------------------------------------------------------\n\n')
+        print2Both(
+            '\n\n------------------------------------------------------------\n\n')
 
 
 def snfSwitch():
@@ -248,7 +256,8 @@ def autosim():
 def ContRen():
     global f
     f = open('./logs/contRen_log.txt', 'a')
-    print2Both('\n\n------------------------------------------------------------\n\n')
+    print2Both(
+        '\n\n------------------------------------------------------------\n\n')
     print2Both(time.ctime()+'\n\n\n')
     print2Both("Starting Contract Renewal in 5 seconds\n\n")
     time.sleep(5)
@@ -269,17 +278,27 @@ def ContRen():
             else:
                 scrollUp()
 
-        if(contDone): break
+        if(contDone):
+            break
     f.close()
 
 
+def selectScouts(pages):
+    scrollDownSlow(pages)
+    while(True):
+        select(scouts)
+        scrollDownSlow()
+
+
 def start():
-    task = int(input("AutoPlay : 1\nRenew Contracts : 2\n::"))
-    if(task == 2):
-        ContRen()
-    elif(task == 1):
+    task = int(input("AutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n$"))
+    if(task == 1):
         autosim()
-    else:
-        start()
+    elif(task == 2):
+        ContRen()
+    elif(task == 3):
+        pages = int(input("Enter no. of pages to skip : "))
+        selectScouts(pages)
+
 
 start()

@@ -2,8 +2,8 @@
 Bluestacks4 HyperV Beta- 960x540, 240 DPI
 ## Using PyAutoGUI to automate playing different parts of pesmobile 2021
 
-### Playing SIM games
+### Playing SIM games --- Done!!
 
-### Renewing Contrats
+### Renewing Contrats --- Done!!
 
-### Releasing Scouts
+### Select all Scouts --- Done!!
