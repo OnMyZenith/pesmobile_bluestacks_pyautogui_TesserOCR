@@ -56,10 +56,8 @@ f = (1200, 800)             #
 selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 
-squad1 = (selectButtonPosition, a, b, c, d, e, f,
-          1, a, b, c, d, 1, e, actionButtonPosition)
-squad2 = (selectButtonPosition, a, b, c, d, e, f,
-          1, a, b, c, d, e, actionButtonPosition)
+squad1 = (selectButtonPosition, a, b, c, d, e, f, 1, a, b, c, d, 1, e, actionButtonPosition)
+squad2 = (selectButtonPosition, a, b, c, d, e, f, 1, a, b, c, d, e, actionButtonPosition)
 scouts = (a, c, e)
 
 
@@ -98,8 +96,7 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
         while(point is None):
             print2Both("ClickLoop: Waiting for "+buttonName)
             time.sleep(2)
-            point = pyg.locateCenterOnScreen(
-                img, region=REGION, confidence=.98)
+            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
         while(point):
             print2Both("ClickLoop: Found "+buttonName+" and entered loop")
@@ -107,19 +104,16 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
             lastClickTime = time.time()
             time.sleep(2)
             pyg.mouseUp()
-            print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +
-                       str(waitAfterClick)+" seconds before rechecking and retrying if needed")
+            print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " + str(waitAfterClick)+" seconds before rechecking and retrying if needed")
             time.sleep(waitAfterClick)
-            point = pyg.locateCenterOnScreen(
-                img, region=REGION, confidence=.98)
+            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
     elif(point):
         print2Both("Found "+buttonName)
         pyg.mouseDown(point)
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " +
-                   str(waitAfterClick)+" seconds and moving on")
+        print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " + str(waitAfterClick)+" seconds and moving on")
         time.sleep(waitAfterClick)
 
 
@@ -187,8 +181,7 @@ def renew(squad):
                 click('OK', imgOK, regionOK, True, wait)
                 break
         scrollUp()
-        print2Both(
-            '\n\n------------------------------------------------------------\n\n')
+        print2Both('\n\n------------------------------------------------------------\n\n')
 
 
 def snfSwitch():
@@ -214,8 +207,7 @@ def snfSwitch():
 def autosim():
     global f
     f = open('./logs/sim_log.txt', 'a')
-    print2Both(
-        '\n\n------------------------------------------------------------\n\n')
+    print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(time.ctime()+'\n\n\n')
     print2Both("Starting Autoplay in 5 seconds\n\n")
     time.sleep(5)
@@ -245,8 +237,7 @@ def autosim():
                 click('OK', imgOK, regionOK, True, wait)
             snfSwitch()
 
-        print2Both(
-            '\n\n------------------------------------------------------------\n\n')
+        print2Both('\n\n------------------------------------------------------------\n\n')
         print2Both(time.ctime()+'\n\n\n')
         if(notRunning()):
             break
@@ -256,8 +247,7 @@ def autosim():
 def ContRen():
     global f
     f = open('./logs/contRen_log.txt', 'a')
-    print2Both(
-        '\n\n------------------------------------------------------------\n\n')
+    print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(time.ctime()+'\n\n\n')
     print2Both("Starting Contract Renewal in 5 seconds\n\n")
     time.sleep(5)
