@@ -79,7 +79,7 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
             lastClickTime = time.time()
             time.sleep(2)
             pyg.mouseUp()
-            print2Both("Clicked "+buttonName +" and now waiting "+waitAfterClick+" seconds before rechecking and retrying if needed")
+            print2Both("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds before rechecking and retrying if needed")
             time.sleep(waitAfterClick)
             point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
@@ -89,7 +89,7 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("Clicked "+buttonName +" and now waiting "+waitAfterClick+" seconds and moving on")
+        print2Both("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds and moving on")
         time.sleep(waitAfterClick)
 
 
@@ -107,7 +107,7 @@ while(1):
     click('Proceed', imgProceed, regionProceed, False, 2)
     click('Retry', imgRetry, regionRetry, False, 2)
     click('Sign', imgSign, regionSign, False, 2)
-    click('ToMatch', imgToMatch, regionToMatch, False, 2)  #have to make sure ther's an OK between ToMatch and SNF
+    click('ToMatch', imgToMatch, regionToMatch, False, 5)  #have to make sure ther's an OK between ToMatch and SNF
     click('OK', imgOK, regionOK, False, 5)                 #or could end in a loop ToMatch(clicked)-->SNF(not clicked coz OK is blocking it)---->OK(clicked)--->ToMatch(clicked)
     
 
