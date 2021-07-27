@@ -291,7 +291,7 @@ def selectScouts(pages):
 
 
 def start():
-    task = int(input("AutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n$"))
+    task = int(input("AutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n# "))
     if(task == 1):
         autosim()
     elif(task == 2):
