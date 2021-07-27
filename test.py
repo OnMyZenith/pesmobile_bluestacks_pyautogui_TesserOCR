@@ -1,5 +1,5 @@
 import pyautogui as pyg
-import time
+import time, winsound
 from PIL import Image
 
 
@@ -45,46 +45,48 @@ def check(buttonName, img, REGION):
     global foundButton
     foundButton = False
     print('Checking for '+buttonName)
-    point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+    point = pyg.locateCenterOnScreen(img, region=REGION)
 
     if(point is not None):
         print("Found "+buttonName)
+        pyg.moveTo(point)
+        winsound.Beep(500, 500)
         foundButton = True
     else:
         print("Couldn't find "+buttonName)
         foundButton = False
 
 
-def click(buttonName, img, REGION, haveToClick, waitAfterClick):
-    print('Looking for '+buttonName)
-    global lastClickTime
+# def click(buttonName, img, REGION, haveToClick, waitAfterClick):
+#     print('Looking for '+buttonName)
+#     global lastClickTime
 
-    point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+#     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
-    if(haveToClick):
-        while(point is None):
-            print("Waiting for "+buttonName)
-            time.sleep(2)
-            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+#     if(haveToClick):
+#         while(point is None):
+#             print("Waiting for "+buttonName)
+#             time.sleep(2)
+#             point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
-        while(point):
-            print("Found "+buttonName+" and entered loop")
-            pyg.mouseDown(point)
-            lastClickTime = time.time()
-            time.sleep(2)
-            pyg.mouseUp()
-            print("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds before rechecking and retrying if needed")
-            time.sleep(waitAfterClick)
-            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+#         while(point):
+#             print("Found "+buttonName+" and entered loop")
+#             pyg.mouseDown(point)
+#             lastClickTime = time.time()
+#             time.sleep(2)
+#             pyg.mouseUp()
+#             print("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds before rechecking and retrying if needed")
+#             time.sleep(waitAfterClick)
+#             point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
-    elif(point):
-        print("Found "+buttonName)
-        pyg.mouseDown(point)
-        lastClickTime = time.time()
-        time.sleep(2)
-        pyg.mouseUp()
-        print("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds and moving on")
-        time.sleep(waitAfterClick)
+#     elif(point):
+#         print("Found "+buttonName)
+#         pyg.mouseDown(point)
+#         lastClickTime = time.time()
+#         time.sleep(2)
+#         pyg.mouseUp()
+#         print("Clicked "+buttonName +" and now waiting "+str(waitAfterClick)+" seconds and moving on")
+#         time.sleep(waitAfterClick)
 
 while(1):
     check("SquadNotFine", imgSquadNotFine, regionSquadNotFine)
