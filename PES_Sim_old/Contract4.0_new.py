@@ -2,7 +2,6 @@ import pyautogui, time,  winsound, sys
 
 def ContRen():
 
-    sys.stdout=open("Contract4.0Output.txt", "a")
     print(time.asctime(time.localtime(time.time())))
     print()
     print("Starting ContRen in 3 seconds")
@@ -485,6 +484,5 @@ def ContRen():
             time.sleep(4)
     print()
     print()
-    sys.stdout.close()
 
 ContRen()
