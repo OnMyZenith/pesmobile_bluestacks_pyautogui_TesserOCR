@@ -48,21 +48,21 @@ def print2Both(text):
 
 
 def check(buttonName, img, REGION):
-
-    print2Both('Checking for '+buttonName+'\n')
+    global foundButton
+    foundButton = False
+    print2Both('Checking for '+buttonName)
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
     if(point is not None):
         print2Both("Found "+buttonName)
-        global foundButton
         foundButton = True
     else:
         print2Both("Couldn't find "+buttonName)
         foundButton = False
 
 
-def click(buttonName, img, REGION, haveToClick):
-    print2Both('Looking for '+buttonName+'\n')
+def click(buttonName, img, REGION, haveToClick, waitAfterClick):
+    print2Both('Looking for '+buttonName)
 
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
@@ -70,20 +70,28 @@ def click(buttonName, img, REGION, haveToClick):
         while(point is None):
             print2Both("Waiting for "+buttonName)
             time.sleep(2)
-            point = pyg.locateCenterOnScreen(
-                img, region=REGION, confidence=.98)
+            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
 
-    while(point):
-        print2Both("Found "+buttonName+"and entered loop\n")
+        while(point):
+            print2Both("Found "+buttonName+"and entered loop")
+            pyg.mouseDown(point)
+            global lastClickTime
+            lastClickTime = time.time()
+            time.sleep(2)
+            pyg.mouseUp()
+            print2Both("Clicked "+buttonName +" and now waiting "+waitAfterClick+" seconds before rechecking and retrying if needed")
+            time.sleep(waitAfterClick)
+            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+
+    elif(point):
+        print2Both("Found "+buttonName)
         pyg.mouseDown(point)
         global lastClickTime
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("Clicked "+buttonName +" for 2secs and now waiting 5secs before rechecking and retrying if needed\n")
-        time.sleep(5)
-        point = None
-        point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+        print2Both("Clicked "+buttonName +" and now waiting "+waitAfterClick+" seconds and moving on")
+        time.sleep(waitAfterClick)
 
 
 print2Both('\n\n\n\n')
@@ -93,49 +101,49 @@ time.sleep(10)
 lastClickTime = time.time()
 
 while(1):
-    click('OK', imgOK, regionOK, False)
-    click('2ndHalf', img2ndHalf, region2ndHalf, False)
-    click('Next', imgNext, regionNext, False)
-    click('Confirm', imgConfirm, regionConfirm, False)
-    click('Proceed', imgProceed, regionProceed, False)
-    click('Retry', imgRetry, regionRetry, False)
-    click('Sign', imgSign, regionSign, False)
-    click('ToMatch', imgToMatch, regionToMatch, False)  #have to make sure ther's an OK between ToMatch and SNF
-    click('OK', imgOK, regionOK, False)                 #or could end in a loop ToMatch(clicked)-->SNF(not clicked coz OK is blocking it)---->OK(clicked)--->ToMatch(clicked)
+    click('OK', imgOK, regionOK, False, 2)
+    click('2ndHalf', img2ndHalf, region2ndHalf, False, 2)
+    click('Next', imgNext, regionNext, False, 2)
+    click('Confirm', imgConfirm, regionConfirm, False, 2)
+    click('Proceed', imgProceed, regionProceed, False, 2)
+    click('Retry', imgRetry, regionRetry, False, 2)
+    click('Sign', imgSign, regionSign, False, 2)
+    click('ToMatch', imgToMatch, regionToMatch, False, 2)  #have to make sure ther's an OK between ToMatch and SNF
+    click('OK', imgOK, regionOK, False, 5)                 #or could end in a loop ToMatch(clicked)-->SNF(not clicked coz OK is blocking it)---->OK(clicked)--->ToMatch(clicked)
     
 
-    foundButton = False
     check("SquadNotFine", imgSquadNotFine, regionSquadNotFine)
     time.sleep(5)
     check("SquadNotFine", imgSquadNotFine, regionSquadNotFine)  #Doing this check twice just in case got a false pos 1st time('OK' could be blocking it now)
     
     if(foundButton):
 
-        click('SquadNotFine', imgSquadNotFine, regionSquadNotFine, True)
-        click('Juve', imgJuve, regionJuve, True)
-        click('SwitchSquad', imgSwitchSquad, regionSwitchSquad, True)
+        click('SquadNotFine', imgSquadNotFine, regionSquadNotFine, True, 5) 
+        click('Juve', imgJuve, regionJuve, True, 5) 
+        click('SwitchSquad', imgSwitchSquad, regionSwitchSquad, True, 5) 
 
         while(True):
-            foundButton=False
-            check('SwitchTo1', imgSwitchTo1, regionSwitchTo1)
+            check('SwitchTo1', imgSwitchTo1, regionSwitchTo1, 5) 
             
             if(foundButton):
-                click('SwitchTo1',imgSwitchTo1,regionSwitchTo1, True)
+                click('SwitchTo1',imgSwitchTo1,regionSwitchTo1, True, 5) 
                 break
             else:
-                click('SwitchTo2',imgSwitchTo2,regionSwitchTo2, True)
+                click('SwitchTo2',imgSwitchTo2,regionSwitchTo2, True, 5) 
                 break
 
             
-        click('Confirm', imgConfirm, regionConfirm, True)
-        click('OK', imgOK, regionOK, True)
-        click('Back', imgBack, regionBack, True)
+        click('Confirm', imgConfirm, regionConfirm, True, 5) 
+        click('OK', imgOK, regionOK, True, 5) 
+        click('Back', imgBack, regionBack, True, 5) 
 
     if(time.time()-lastClickTime > 600):
-        print2Both("Something's not right")
+        print2Both('\n\n'+time.ctime()+'\n')
+        print2Both("Something's not right\n\n")
 
     if(time.time()-lastClickTime > 1200):
-        print2Both("Something went Wrong....Aborting")
+        print2Both('\n\n'+time.ctime()+'\n')
+        print2Both("Something went Wrong....Aborting\n\n")
         break
 
 f.close()
