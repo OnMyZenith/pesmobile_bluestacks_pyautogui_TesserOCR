@@ -9,8 +9,6 @@ pyg.FAILSAFE = True
 
 img2ndHalf = Image.open('./assets/2ndHalf.png')
 imgBack = Image.open('./assets/Back.png')
-imgCF_Goios = Image.open('./assets/CF_Goios.png')
-imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
 imgConfirm = Image.open('./assets/Confirm.png')
 imgGP = Image.open('./assets/GP.png')
 imgJuve = Image.open('./assets/Juve.png')
@@ -27,7 +25,22 @@ imgSwitchTo1 = Image.open('./assets/SwitchTo1.png')
 imgSwitchTo2 = Image.open('./assets/SwitchTo2.png')
 imgToMatch = Image.open('./assets/ToMatch.png')
 
+region2ndHalf = (1560, 970, 1715, 1060)
+regionBack = (0, 980, 109, 1050)
+regionConfirm = (1630, 975, 1715, 1045)
+regionGP = (675, 558, 775, 663)
+regionJuve = (50, 320, 225, 500)
+regionNext = (1690, 980, 1740, 1046)
 regionOK = (900, 550, 1020, 950)
+regionProceed = (1090, 628, 1190, 690)
+regionRetry = (1100, 660, 1280, 740)
+regionSign = (900, 990, 960, 1040)
+regionSquadContRen = (770, 409, 856, 453)
+regionSquadNotFine = (470, 65, 690, 225)
+regionSwitchSquad = (948, 184, 1055, 274)
+regionSwitchTo1 = (0, 800, 200, 890)
+regionSwitchTo2 = (587, 509, 883, 900)
+regionToMatch = (1609, 990, 1680, 1040)
 
 
 def print2Both(text):
@@ -35,39 +48,58 @@ def print2Both(text):
     f.write(text+'\n')
 
 
-def clickIfFound(buttonName, img, REGION):
-    print2Both('Looking for '+buttonName+'\n')
+def check(buttonName, img, REGION):
+
+    print2Both('Checking for '+buttonName+'\n')
     point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+
+    if(point is not None):
+        print2Both("Found "+buttonName)
+        global found
+        found = True
+    else:
+        print2Both("Couldn't find "+buttonName)
+        found = False
+
+
+def click(buttonName, img, REGION, haveToClick):
+    print2Both('Looking for '+buttonName+'\n')
+
+    point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+
+    if(haveToClick):
+        while(point is None):
+            print2Both("Waiting for "+buttonName)
+            time.sleep(2)
+            point = pyg.locateCenterOnScreen(
+                img, region=REGION, confidence=.98)
+
     while(point):
         print2Both("Found "+buttonName+"and entered loop\n")
         pyg.mouseDown(point)
-        lastClickTime=time.time()
+        global lastClickTime
+        lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("Clicked "+buttonName+" for 2secs and now waiting 5secs before rechecking and retrying if needed\n")
+        print2Both("Clicked "+buttonName +
+                   " for 2secs and now waiting 5secs before rechecking and retrying if needed\n")
         time.sleep(5)
         point = None
         point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
-
-
-
-
 
 
 print2Both('\n\n\n\n')
 print2Both(time.ctime()+'\n\n\n')
 print2Both("Starting Autoplay in 10 seconds\n\n")
 time.sleep(10)
-lastClickTime=time.time()
+lastClickTime = time.time()
 
 while(1):
-    clickIfFound('OK', imgOK, regionOK)
+    click('OK', imgOK, regionOK, False)
 
-
-
-
-    if(time.time()-clickIfFound.lastClickTime()>0):
-        print2Both("Something went wrong")
+    if(time.time()-lastClickTime > 600):
+        print2Both("Something went wrong.....Abort")
+        break
 
 
 f.close()
