@@ -135,4 +135,8 @@ while(1):
     if(time.time()-lastClickTime > 600):
         print2Both("Something's not right")
 
+    if(time.time()-lastClickTime > 1200):
+        print2Both("Something went Wrong....Aborting")
+        break
+
 f.close()
