@@ -24,7 +24,6 @@ imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
 imgSquadContRen = Image.open('./assets/SquadContRen.png')
 imgGP = Image.open('./assets/GP.png')
 imgRenew = Image.open('./assets/Renew.png')
-imgOK = Image.open('./assets/OK.png')
 
 region2ndHalf = (1560, 970, 1715, 1060)
 regionBack = (0, 980, 109, 1050)
@@ -45,14 +44,39 @@ regionCF_Jarvis = (430, 275, 622, 341)
 regionSquadContRen = (770, 409, 856, 453)
 regionGP = (675, 558, 775, 663)
 regionRenew = (1105, 590, 1290, 660)
-regionOK = (900, 550, 1020, 950)
 
-a = (600, 350)              # a                          b
-b = (1200, 350)             #
-c = (600, 575)              # c                          d
-d = (1200, 575)             #
-e = (600, 800)              # e                          f
-f = (1200, 800)             #
+class button:
+    def __init__(self, name, img, region) -> None:
+        self.name = name
+        self.img = img
+        self.region = region
+
+secondHalf = button('2ndHalf', img2ndHalf, region2ndHalf)
+Back = button('Back', imgBack, regionBack)
+Confirm = button('Confirm', imgConfirm, regionConfirm)
+Juve = button('Juve', imgJuve, regionJuve)
+Next = button('Next', imgNext, regionNext)
+ok = button('OK', imgOK, regionOK)
+Proceed = button('Proceed', imgProceed, regionProceed)
+Retry = button('Retry', imgRetry, regionRetry)
+Sign = button('Sign', imgSign, regionSign)
+SquadNotFine = button('SquadNotFine', imgSquadNotFine, regionSquadNotFine)
+SwitchSquad = button('SwitchSquad', imgSwitchSquad, regionSwitchSquad)
+SwitchTo1 = button('SwitchTo1', imgSwitchTo1, regionSwitchTo1)
+SwitchTo2 = button('SwitchTo2', imgSwitchTo2, regionSwitchTo2)
+ToMatch = button('ToMatch', imgToMatch, regionToMatch)
+CF_SS_Hervey = button('CF_SS_Hervey', imgCF_SS_Hervey, regionCF_SS_Hervey)
+CF_Jarvis = button('CF_Jarvis', imgCF_Jarvis, regionCF_Jarvis)
+SquadContRen = button('SquadContRen', imgSquadContRen, regionSquadContRen)
+gp = button('GP', imgGP, regionGP)
+Renew = button('Renew', imgRenew, regionRenew)
+
+a = (600, 350)              #       a       #              b
+b = (1200, 350)             #               #
+c = (600, 575)              #       c       #              d
+d = (1200, 575)             #               #
+e = (600, 800)              #       e       #              f
+f = (1200, 800)
 selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 
@@ -74,46 +98,46 @@ def notRunning():
         return True
 
 
-def check(buttonName, img, REGION):
-    print2Both('CheckLoop: Checking for '+buttonName)
-    point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+def check(bt):
+    print2Both('CheckLoop: Checking for '+bt.name)
+    point = pyg.locateCenterOnScreen(bt.img, region=bt.region, confidence=.98)
 
     if(point):
-        print2Both("CheckLoop: Found "+buttonName)
+        print2Both("CheckLoop: Found "+bt.name)
         return True
     else:
-        print2Both("CheckLoop: Couldn't find "+buttonName)
+        print2Both("CheckLoop: Couldn't find "+bt.name)
         return False
 
 
-def click(buttonName, img, REGION, haveToClick, waitAfterClick):
-    print2Both('ClickLoop: Looking for '+buttonName)
+def click(bt, haveToClick, waitAfterClick):
+    print2Both('ClickLoop: Looking for '+bt.name)
     global lastClickTime
 
-    point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+    point = pyg.locateCenterOnScreen(bt.img, region=bt.region, confidence=.98)
 
     if(haveToClick):
         while(point is None):
-            print2Both("ClickLoop: Waiting for "+buttonName)
+            print2Both("ClickLoop: Waiting for "+bt.name)
             time.sleep(2)
-            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+            point = pyg.locateCenterOnScreen(bt.img, region=bt.region, confidence=.98)
 
         while(point):
-            print2Both("ClickLoop: Found "+buttonName+" and entered loop")
+            print2Both("ClickLoop: Found "+bt.name+" and entered loop")
             pyg.mouseDown(point)
             lastClickTime = time.time()
             time.sleep(2)
             pyg.mouseUp()
-            print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " + str(waitAfterClick)+" seconds before rechecking and retrying if needed")
+            print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds before rechecking and retrying if needed")
             time.sleep(waitAfterClick)
-            point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
+            point = pyg.locateCenterOnScreen(bt.img, region=bt.region, confidence=.98)
     elif(point):
-        print2Both("ClickLoop: Found "+buttonName)
+        print2Both("ClickLoop: Found "+bt.name)
         pyg.mouseDown(point)
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("ClickLoop: Clicked "+buttonName + " and now waiting " + str(waitAfterClick)+" seconds and moving on")
+        print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds and before moving on")
         time.sleep(waitAfterClick)
 
 
@@ -161,24 +185,24 @@ def renew(squad):
         contDone = False
         select(squad)
         wait = 4
-        click('SquadContRen', imgSquadContRen, regionSquadContRen, True, wait)
+        click(SquadContRen, True, wait)
         while(True):
-            if(check('OK', imgOK, regionOK)):
-                click('OK', imgOK, regionOK, True, wait)
+            if(check(ok)):
+                click(ok, True, wait)
                 contDone = True
                 break
-            elif(check('GP', imgGP, regionGP)):
-                click('GP', imgGP, regionGP, True, wait)
+            elif(check(gp)):
+                click(gp, True, wait)
                 break
         if(contDone):
             break
-        click('Renew', imgRenew, regionRenew, True, wait)
+        click(Renew, True, wait)
         while(True):
-            if(check('Retry', imgRetry, regionRetry)):
-                click('Retry', imgRetry, regionRetry, True, wait)
+            if(check(Retry)):
+                click(Retry, True, wait)
                 break
-            elif(check('OK', imgOK, regionOK)):
-                click('OK', imgOK, regionOK, True, wait)
+            elif(check(ok)):
+                click(ok, True, wait)
                 break
         scrollUp()
         print2Both('\n\n------------------------------------------------------------\n\n')
@@ -187,21 +211,21 @@ def renew(squad):
 def snfSwitch():
     global wait
     wait = 10
-    click('SquadNotFine', imgSquadNotFine, regionSquadNotFine, True, wait)
-    click('Juve', imgJuve, regionJuve, True, wait)
-    click('SwitchSquad', imgSwitchSquad, regionSwitchSquad, True, wait)
+    click(SquadNotFine, True, wait)
+    click(Juve, True, wait)
+    click(SwitchSquad, True, wait)
 
     while(True):
-        if(check('SwitchTo1', imgSwitchTo1, regionSwitchTo1)):
-            click('SwitchTo1', imgSwitchTo1, regionSwitchTo1, True, wait)
+        if(check(SwitchTo1)):
+            click(SwitchTo1, True, wait)
             break
-        elif(check('SwitchTo2', imgSwitchTo2, regionSwitchTo2)):
-            click('SwitchTo2', imgSwitchTo2, regionSwitchTo2, True, wait)
+        elif(check(SwitchTo2)):
+            click(SwitchTo2, True, wait)
             break
 
-    click('Confirm', imgConfirm, regionConfirm, True, wait)
-    click('OK', imgOK, regionOK, True, wait)
-    click('Back', imgBack, regionBack, True, wait)
+    click(Confirm, True, wait)
+    click(ok, True, wait)
+    click(Back, True, wait)
 
 
 def autosim():
@@ -216,29 +240,30 @@ def autosim():
 
     while(1):
         waitForOneHalf = 150
-        wait = 2
-        click('OK', imgOK, regionOK, False, wait)
-        click('2ndHalf', img2ndHalf, region2ndHalf, False, waitForOneHalf)
-        click('Next', imgNext, regionNext, False, wait)
-        click('Match Confirm', imgConfirm, regionConfirm, False, waitForOneHalf)
-        click('Proceed', imgProceed, regionProceed, False, wait)
-        click('Retry', imgRetry, regionRetry, False, wait)
-        click('Sign', imgSign, regionSign, False, wait)
+        wait = 4
+        click(ok, False, wait)
+        click(secondHalf, False, waitForOneHalf)
+        click(Next, False, wait)
+        click(Confirm, False, waitForOneHalf)
+        click(Proceed, False, wait)
+        click(Retry, False, wait)
+        click(Sign, False, wait)
 
-        if(check("SquadNotFine", imgSquadNotFine, regionSquadNotFine)):
-            if(check('OK', imgOK, regionOK)):
-                click('OK', imgOK, regionOK, True, wait)
+        if(check(SquadNotFine)):
+            if(check(ok)):
+                click(ok, True, wait)
             snfSwitch()
 
-        click('ToMatch', imgToMatch, regionToMatch, False, 10)
+        click(ToMatch, False, 10)
 
-        if(check("SquadNotFine", imgSquadNotFine, regionSquadNotFine)):
-            if(check('OK', imgOK, regionOK)):
-                click('OK', imgOK, regionOK, True, wait)
+        if(check(SquadNotFine)):
+            if(check(ok)):
+                click(ok, True, wait)
             snfSwitch()
 
         print2Both('\n\n------------------------------------------------------------\n\n')
         print2Both(time.ctime()+'\n\n\n')
+
         if(notRunning()):
             break
     f.close()
@@ -252,24 +277,21 @@ def ContRen():
     print2Both("Starting Contract Renewal in 5 seconds\n\n")
     time.sleep(5)
 
-    while(1):
+    while(True):
         print2Both('Checking Squad No....')
-        while(True):
-            if(check('CF_SS_Hervey', imgCF_SS_Hervey, regionCF_SS_Hervey)):
-                print2Both("Found Squad 1")
-                renew(squad1)
-                break
-
-            elif(check('CF_Jarvis', imgCF_Jarvis, regionCF_Jarvis)):
-                print2Both("Found Squad 2")
-                renew(squad2)
-                break
-
-            else:
-                scrollUp()
-
-        if(contDone):
+        if(check(CF_SS_Hervey)):
+            print2Both("Found Squad 1")
+            renew(squad1)
             break
+
+        elif(check(CF_Jarvis)):
+            print2Both("Found Squad 2")
+            renew(squad2)
+            break
+
+        else:
+            scrollUp()
+
     f.close()
 
 
