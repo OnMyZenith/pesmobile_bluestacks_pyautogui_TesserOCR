@@ -303,7 +303,7 @@ def selectScouts(pages):
 
 
 def start():
-    task = int(input("AutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n# "))
+    task = int(input("\n\nAutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n>> "))
     if(task == 1):
         autosim()
     elif(task == 2):
@@ -312,5 +312,14 @@ def start():
         pages = int(input("Enter no. of pages to skip : "))
         selectScouts(pages)
 
+def restart():
+    start()
 
-start()
+try:
+    start()
+except KeyboardInterrupt:
+    print("\n\nKeyboardInterrupt.......Aborting\n\n")
+    print(time.ctime())
+    print('\n\n------------------------------------------------------------\n\n')
+except:
+    restart()
