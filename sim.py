@@ -230,7 +230,7 @@ def snfSwitch():
 
 def autosim():
     global f
-    f = open('./logs/sim_log.txt', 'a')
+    f = open('./logs/autosim_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(time.ctime()+'\n\n\n')
     print2Both("Starting Autoplay in 5 seconds\n\n")
@@ -308,8 +308,15 @@ def selectScouts(pages):
 
 def start():
     global task
-    if(restarting!=1):
-        task = int(input("\n\nAutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n>> "))
+    global f
+    f = open('./logs/run_log.txt', 'a')
+
+    if(restarting):
+        print2Both("Restarting AutoSim\n\n")
+        task = 1
+    else:
+        task = int(input("\n\nAutoSim : 1\nRenew Contracts : 2\nSelect Scouts : 3\n>> "))
+
     if(task == 1):
         autosim()
     elif(task == 2):
@@ -317,12 +324,14 @@ def start():
     elif(task == 3):
         pages = int(input("Enter no. of pages to skip : "))
         selectScouts(pages)
+    
+    f.close()
 
 def restart():
     global restarting
     global f
     restarting = 1
-    f = open('./logs/exceptions_log.txt', 'a')
+    f = open('./logs/run_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both("Restarting in 5 seconds\n\n")
     print2Both(time.ctime()+'\n\n\n')
@@ -336,21 +345,21 @@ restarting = 0
 try:
     start()
 except pyg.FailSafeException as e:
-    f = open('./logs/exceptions_log.txt', 'a')
+    f = open('./logs/run_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(repr(e))
     print2Both("\nPyAutoGUI.FailSafeException.........Aborting\n")
     print2Both('\n'+time.ctime()+'\n')
     f.close()
 except KeyboardInterrupt as e:
-    f = open('./logs/exceptions_log.txt', 'a')
+    f = open('./logs/run_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(repr(e))
-    print2Both("\exceptions_log.......Aborting\n")
+    print2Both("\KeyboardInterrupt.......Aborting\n")
     print2Both('\n'+time.ctime()+'\n')
     f.close()
 except OSError as e:
-    f = open('./logs/exceptions_log.txt', 'a')
+    f = open('./logs/run_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(repr(e))
     print2Both("\nOSError.......\nCalling restart() in 5 seconds\n")
@@ -359,7 +368,7 @@ except OSError as e:
     time.sleep(5)
     restart()
 except BaseException as e:
-    f = open('./logs/exceptions_log.txt', 'a')
+    f = open('./logs/run_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(repr(e))
     print2Both('\n\n'+time.ctime()+'\n') 
