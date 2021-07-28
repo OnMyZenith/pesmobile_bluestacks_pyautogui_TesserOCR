@@ -86,10 +86,10 @@ scouts = (a, c, e)
 
 
 def print2Both(text):
-    global f
     print(text)
     f.write(text+'\n')
 
+f = open('./logs/log.txt', 'a')
 
 def notRunning():
     if(time.time()-lastClickTime > 1200):
@@ -229,11 +229,9 @@ def snfSwitch():
 
 
 def autosim():
-    global f
-    f = open('./logs/autosim_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(time.ctime()+'\n\n\n')
-    print2Both("Starting Autoplay in 5 seconds\n\n")
+    print2Both("Starting AutoSim in 5 seconds\n\n")
     time.sleep(5)
     global lastClickTime
     lastClickTime = time.time()  # giving it an initial value
@@ -266,12 +264,9 @@ def autosim():
 
         if(notRunning()):
             break
-    f.close()
 
 
 def ContRen():
-    global f
-    f = open('./logs/contRen_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(time.ctime()+'\n\n\n')
     print2Both("Starting Contract Renewal in 5 seconds\n\n")
@@ -296,8 +291,6 @@ def ContRen():
     print2Both(time.ctime()+'\n\n\n')
     print2Both('\n\n------------------------------------------------------------\n\n')
 
-    f.close()
-
 
 def selectScouts(pages):
     scrollDownSlow(pages)
@@ -308,14 +301,10 @@ def selectScouts(pages):
 
 def start():
     global task
-    global f
-    f = open('./logs/run_log.txt', 'a')
-
-    if(restarting):
-        print2Both("Restarting AutoSim\n\n")
-        task = 1
-    else:
-        task = int(input("\n\nAutoSim : 1\nRenew Contracts : 2\nSelect Scouts : 3\n>> "))
+    if(not restarting):
+        print2Both('\n\n------------------------------------------------------------\n\n')
+        print2Both("\n\nAutoSim : 1\nRenew Contracts : 2\nSelect Scouts : 3")
+        task = int(input('>> '))
 
     if(task == 1):
         autosim()
@@ -324,54 +313,34 @@ def start():
     elif(task == 3):
         pages = int(input("Enter no. of pages to skip : "))
         selectScouts(pages)
-    
-    f.close()
 
-def restart():
+
+def printException(exception,shouldRestart):
     global restarting
-    global f
-    restarting = 1
-    f = open('./logs/run_log.txt', 'a')
+    restarting = shouldRestart
     print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both("Restarting in 5 seconds\n\n")
-    print2Both(time.ctime()+'\n\n\n')
-    f.close()
-    time.sleep(5)
-    start()
+    print2Both(repr(exception))
+    if(shouldRestart):
+        print2Both("\nRestarting in 5 seconds\n")
+        print2Both(time.ctime()+'\n')
+        time.sleep(5)
+        run()
+    else:
+        print2Both("\nAborting\n")
+        print2Both(time.ctime()+'\n')
 
-while(True):
-    
-    restarting = 0
-
+def run():
     try:
         start()
     except pyg.FailSafeException as e:
-        f = open('./logs/run_log.txt', 'a')
-        print2Both('\n\n------------------------------------------------------------\n\n')
-        print2Both(repr(e))
-        print2Both("\nPyAutoGUI.FailSafeException.........Aborting\n")
-        print2Both('\n'+time.ctime()+'\n')
-        f.close()
+        printException(e,False)
     except KeyboardInterrupt as e:
-        f = open('./logs/run_log.txt', 'a')
-        print2Both('\n\n------------------------------------------------------------\n\n')
-        print2Both(repr(e))
-        print2Both("\KeyboardInterrupt.......Aborting\n")
-        print2Both('\n'+time.ctime()+'\n')
-        f.close()
+        printException(e,False)
     except OSError as e:
-        f = open('./logs/run_log.txt', 'a')
-        print2Both('\n\n------------------------------------------------------------\n\n')
-        print2Both(repr(e))
-        print2Both("\nOSError.......\nCalling restart() in 5 seconds\n")
-        print2Both('\n'+time.ctime()+'\n')
-        f.close()
-        time.sleep(5)
-        restart()
+        printException(e,True)
     except BaseException as e:
-        f = open('./logs/run_log.txt', 'a')
-        print2Both('\n\n------------------------------------------------------------\n\n')
-        print2Both(repr(e))
-        print2Both('\n\n'+time.ctime()+'\n') 
-        f.close()
-        restart()
+        printException(e,True)
+
+restarting = False
+run()
+f.close()
