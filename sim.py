@@ -307,7 +307,9 @@ def selectScouts(pages):
 
 
 def start():
-    task = int(input("\n\nAutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n>> "))
+    global task
+    if(restarting!=1):
+        task = int(input("\n\nAutoPlay : 1\nRenew Contracts : 2\nSelect Scouts : 3\n>> "))
     if(task == 1):
         autosim()
     elif(task == 2):
@@ -317,13 +319,38 @@ def start():
         selectScouts(pages)
 
 def restart():
+    global restarting
+    global f
+    restarting = 1
+    f = open('./logs/restart_log.txt', 'a')
+    print2Both('\n\n------------------------------------------------------------\n\n')
+    print2Both("Restarting in 5 seconds\n\n")
+    print2Both(time.ctime()+'\n\n\n')
+    f.close()
+    time.sleep(5)
     start()
+
+
+restarting = 0
 
 try:
     start()
+except pyg.FailSafeException:
+    f = open('./logs/FailSafeException_KeyboardInterrupt_exception_log.txt', 'a')
+    print2Both('\n\n------------------------------------------------------------\n\n')
+    print2Both("PyAutoGUI.FailSafeException.........Aborting")
+    print2Both('\n'+time.ctime()+'\n')
+    f.close()
 except KeyboardInterrupt:
-    print("\n\nKeyboardInterrupt.......Aborting\n\n")
-    print(time.ctime())
-    print('\n\n------------------------------------------------------------\n\n')
-except:
+    f = open('./logs/FailSafeException_KeyboardInterrupt_exception_log.txt', 'a')
+    print2Both('\n\n------------------------------------------------------------\n\n')
+    print2Both("KeyboardInterrupt.......Aborting")
+    print2Both('\n'+time.ctime()+'\n')
+    f.close()
+except BaseException as e:
+    f = open('./logs/ignored_exceptions_log.txt', 'a')
+    print2Both('\n\n------------------------------------------------------------\n\n')
+    print2Both(repr(e))
+    print2Both('\n\n'+time.ctime()+'\n') 
+    f.close()
     restart()
