@@ -108,7 +108,7 @@ def click(buttonName, img, REGION, haveToClick, waitAfterClick):
             time.sleep(waitAfterClick)
             point = pyg.locateCenterOnScreen(img, region=REGION, confidence=.98)
     elif(point):
-        print2Both("Found "+buttonName)
+        print2Both("ClickLoop: Found "+buttonName)
         pyg.mouseDown(point)
         lastClickTime = time.time()
         time.sleep(2)
