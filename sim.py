@@ -339,38 +339,39 @@ def restart():
     time.sleep(5)
     start()
 
+while(True):
+    
+    restarting = 0
 
-restarting = 0
-
-try:
-    start()
-except pyg.FailSafeException as e:
-    f = open('./logs/run_log.txt', 'a')
-    print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both(repr(e))
-    print2Both("\nPyAutoGUI.FailSafeException.........Aborting\n")
-    print2Both('\n'+time.ctime()+'\n')
-    f.close()
-except KeyboardInterrupt as e:
-    f = open('./logs/run_log.txt', 'a')
-    print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both(repr(e))
-    print2Both("\KeyboardInterrupt.......Aborting\n")
-    print2Both('\n'+time.ctime()+'\n')
-    f.close()
-except OSError as e:
-    f = open('./logs/run_log.txt', 'a')
-    print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both(repr(e))
-    print2Both("\nOSError.......\nCalling restart() in 5 seconds\n")
-    print2Both('\n'+time.ctime()+'\n')
-    f.close()
-    time.sleep(5)
-    restart()
-except BaseException as e:
-    f = open('./logs/run_log.txt', 'a')
-    print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both(repr(e))
-    print2Both('\n\n'+time.ctime()+'\n') 
-    f.close()
-    restart()
+    try:
+        start()
+    except pyg.FailSafeException as e:
+        f = open('./logs/run_log.txt', 'a')
+        print2Both('\n\n------------------------------------------------------------\n\n')
+        print2Both(repr(e))
+        print2Both("\nPyAutoGUI.FailSafeException.........Aborting\n")
+        print2Both('\n'+time.ctime()+'\n')
+        f.close()
+    except KeyboardInterrupt as e:
+        f = open('./logs/run_log.txt', 'a')
+        print2Both('\n\n------------------------------------------------------------\n\n')
+        print2Both(repr(e))
+        print2Both("\KeyboardInterrupt.......Aborting\n")
+        print2Both('\n'+time.ctime()+'\n')
+        f.close()
+    except OSError as e:
+        f = open('./logs/run_log.txt', 'a')
+        print2Both('\n\n------------------------------------------------------------\n\n')
+        print2Both(repr(e))
+        print2Both("\nOSError.......\nCalling restart() in 5 seconds\n")
+        print2Both('\n'+time.ctime()+'\n')
+        f.close()
+        time.sleep(5)
+        restart()
+    except BaseException as e:
+        f = open('./logs/run_log.txt', 'a')
+        print2Both('\n\n------------------------------------------------------------\n\n')
+        print2Both(repr(e))
+        print2Both('\n\n'+time.ctime()+'\n') 
+        f.close()
+        restart()
