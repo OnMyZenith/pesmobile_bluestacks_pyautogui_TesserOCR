@@ -292,6 +292,10 @@ def ContRen():
         else:
             scrollUp()
 
+    print2Both("\n\nContracts Maxxed out.....Aborting\n\n")
+    print2Both(time.ctime()+'\n\n\n')
+    print2Both('\n\n------------------------------------------------------------\n\n')
+
     f.close()
 
 
