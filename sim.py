@@ -322,7 +322,7 @@ def restart():
     global restarting
     global f
     restarting = 1
-    f = open('./logs/restart_log.txt', 'a')
+    f = open('./logs/exceptions_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both("Restarting in 5 seconds\n\n")
     print2Both(time.ctime()+'\n\n\n')
@@ -335,20 +335,31 @@ restarting = 0
 
 try:
     start()
-except pyg.FailSafeException:
-    f = open('./logs/FailSafeException_KeyboardInterrupt_exception_log.txt', 'a')
+except pyg.FailSafeException as e:
+    f = open('./logs/exceptions_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both("PyAutoGUI.FailSafeException.........Aborting")
+    print2Both(repr(e))
+    print2Both("\nPyAutoGUI.FailSafeException.........Aborting\n")
     print2Both('\n'+time.ctime()+'\n')
     f.close()
-except KeyboardInterrupt:
-    f = open('./logs/FailSafeException_KeyboardInterrupt_exception_log.txt', 'a')
+except KeyboardInterrupt as e:
+    f = open('./logs/exceptions_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both("KeyboardInterrupt.......Aborting")
+    print2Both(repr(e))
+    print2Both("\exceptions_log.......Aborting\n")
     print2Both('\n'+time.ctime()+'\n')
     f.close()
+except OSError as e:
+    f = open('./logs/exceptions_log.txt', 'a')
+    print2Both('\n\n------------------------------------------------------------\n\n')
+    print2Both(repr(e))
+    print2Both("\nOSError.......\nCalling restart() in 5 seconds\n")
+    print2Both('\n'+time.ctime()+'\n')
+    f.close()
+    time.sleep(5)
+    restart()
 except BaseException as e:
-    f = open('./logs/ignored_exceptions_log.txt', 'a')
+    f = open('./logs/exceptions_log.txt', 'a')
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(repr(e))
     print2Both('\n\n'+time.ctime()+'\n') 
