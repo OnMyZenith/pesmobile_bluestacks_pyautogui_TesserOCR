@@ -137,7 +137,7 @@ def click(bt, haveToClick, waitAfterClick):
         lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds and moving on")
+        print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds and before moving on")
         time.sleep(waitAfterClick)
 
 
@@ -240,7 +240,7 @@ def autosim():
 
     while(1):
         waitForOneHalf = 150
-        wait = 2
+        wait = 4
         click(ok, False, wait)
         click(secondHalf, False, waitForOneHalf)
         click(Next, False, wait)
