@@ -91,12 +91,9 @@ def print2Both(text):
 
 f = open('./logs/log.txt', 'a')
 
-def notRunning():
-    if(time.time()-lastClickTime > 1200):
-        print2Both('\n\n'+time.ctime()+'\n')
-        print2Both("Something went Wrong....Aborting\n\n")
-        return True
-
+def lt():
+    print2Both('\n\n------------------------------------------------------------\n\n')
+    print2Both(time.ctime()+'\n\n\n')
 
 def check(bt):
     print2Both('CheckLoop: Checking for '+bt.name)
@@ -112,7 +109,6 @@ def check(bt):
 
 def click(bt, haveToClick, waitAfterClick):
     print2Both('ClickLoop: Looking for '+bt.name)
-    global lastClickTime
 
     point = pyg.locateCenterOnScreen(bt.img, region=bt.region, confidence=.98)
 
@@ -125,7 +121,6 @@ def click(bt, haveToClick, waitAfterClick):
         while(point):
             print2Both("ClickLoop: Found "+bt.name+" and entered loop")
             pyg.mouseDown(point)
-            lastClickTime = time.time()
             time.sleep(2)
             pyg.mouseUp()
             print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds before rechecking and retrying if needed")
@@ -134,7 +129,6 @@ def click(bt, haveToClick, waitAfterClick):
     elif(point):
         print2Both("ClickLoop: Found "+bt.name)
         pyg.mouseDown(point)
-        lastClickTime = time.time()
         time.sleep(2)
         pyg.mouseUp()
         print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds and before moving on")
@@ -181,6 +175,7 @@ def select(squad):
 
 def renew(squad):
     while(True):
+        lt()
         global contDone
         contDone = False
         select(squad)
@@ -205,7 +200,6 @@ def renew(squad):
                 click(ok, True, wait)
                 break
         scrollUp()
-        print2Both('\n\n------------------------------------------------------------\n\n')
 
 
 def snfSwitch():
@@ -229,14 +223,12 @@ def snfSwitch():
 
 
 def autosim():
-    print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both(time.ctime()+'\n\n\n')
+    lt()
     print2Both("Starting AutoSim in 5 seconds\n\n")
     time.sleep(5)
-    global lastClickTime
-    lastClickTime = time.time()  # giving it an initial value
 
     while(1):
+        lt()
         waitForOneHalf = 150
         wait = 4
         click(ok, False, wait)
@@ -259,16 +251,9 @@ def autosim():
                 click(ok, True, wait)
             snfSwitch()
 
-        print2Both('\n\n------------------------------------------------------------\n\n')
-        print2Both(time.ctime()+'\n\n\n')
-
-        if(notRunning()):
-            break
-
 
 def ContRen():
-    print2Both('\n\n------------------------------------------------------------\n\n')
-    print2Both(time.ctime()+'\n\n\n')
+    lt()
     print2Both("Starting Contract Renewal in 5 seconds\n\n")
     time.sleep(5)
 
@@ -286,10 +271,8 @@ def ContRen():
 
         else:
             scrollUp()
-
+    lt()
     print2Both("\n\nContracts Maxxed out.....Aborting\n\n")
-    print2Both(time.ctime()+'\n\n\n')
-    print2Both('\n\n------------------------------------------------------------\n\n')
 
 
 def selectScouts(pages):
@@ -302,7 +285,7 @@ def selectScouts(pages):
 def start():
     global task
     if(not restarting):
-        print2Both('\n\n------------------------------------------------------------\n\n')
+        lt()
         print2Both("\n\nAutoSim : 1\nRenew Contracts : 2\nSelect Scouts : 3")
         task = int(input('>> '))
 
@@ -318,16 +301,14 @@ def start():
 def printException(exception,shouldRestart):
     global restarting
     restarting = shouldRestart
-    print2Both('\n\n------------------------------------------------------------\n\n')
+    lt()
     print2Both(repr(exception))
     if(shouldRestart):
         print2Both("\nRestarting in 5 seconds\n")
-        print2Both(time.ctime()+'\n')
         time.sleep(5)
         run()
     else:
         print2Both("\nAborting\n")
-        print2Both(time.ctime()+'\n')
 
 def run():
     try:
