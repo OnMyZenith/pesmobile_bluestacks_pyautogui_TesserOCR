@@ -25,6 +25,14 @@ imgSquadContRen = Image.open('./assets/SquadContRen.png')
 imgGP = Image.open('./assets/GP.png')
 imgRenew = Image.open('./assets/Renew.png')
 
+imgstar1 = Image.open('./assets/star1.png')
+imgstar2 = Image.open('./assets/star2.png')
+imgstar3 = Image.open('./assets/star3.png')
+imgstar4 = Image.open('./assets/star4.png')
+imgstar5 = Image.open('./assets/star5.png')
+
+imgLeagueItaly = Image.open('./assets/LeagueItaly')
+
 region2ndHalf = (1560, 970, 1715, 1060)
 regionBack = (0, 980, 109, 1050)
 regionConfirm = (1630, 975, 1715, 1045)
@@ -44,6 +52,9 @@ regionCF_Jarvis = (380, 275, 1800, 800)
 regionSquadContRen = (770, 409, 856, 453)
 regionGP = (675, 558, 775, 663)
 regionRenew = (1105, 590, 1290, 660)
+
+regionStars = (275, 215, 400, 897)
+regionScouts = (415, 288, 783, 918)
 
 class button:
     def __init__(self, name, img, region) -> None:
@@ -71,6 +82,19 @@ SquadContRen = button('SquadContRen', imgSquadContRen, regionSquadContRen)
 gp = button('GP', imgGP, regionGP)
 Renew = button('Renew', imgRenew, regionRenew)
 
+Star1 = button('1*', imgstar1, regionStars)
+Star2 = button('2*', imgstar2, regionStars)
+Star3 = button('3*', imgstar3, regionStars)
+Star4 = button('4*', imgstar4, regionStars)
+Star5 = button('5*', imgstar5, regionStars)
+allNegotiationSkills = {Star1, Star2, Star3, Star4, Star5}
+
+LeagueItaly = button('LeagueItaly',imgLeagueItaly, regionScouts)
+League = button('League', imgLeague, regionScouts)
+
+allScoutNames = {LeagueItaly, }
+
+
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
 c = (600, 575)              #       c       #              d
@@ -82,7 +106,7 @@ actionButtonPosition = (1200, 1010)
 
 squad1 = (selectButtonPosition, d, e, 1, a, b, c, d, e, f, 1, b, c, f, actionButtonPosition)
 squad2 = (selectButtonPosition, d, f, 1, a, b, c, d, e, f, 1, b, d, e, actionButtonPosition)
-scouts = (a, c, e)
+scoutPositions = (a, c, e)
 
 
 def print2Both(text):
@@ -101,10 +125,10 @@ def check(bt):
 
     if(point):
         print2Both("CheckLoop: Found "+bt.name)
-        return True
+        return bt.name, point[1]
     else:
         print2Both("CheckLoop: Couldn't find "+bt.name)
-        return False
+        return None
 
 
 def click(bt, haveToClick, waitAfterClick):
@@ -278,7 +302,7 @@ def ContRen():
 def selectScouts(pages):
     scrollDownSlow(pages)
     while(True):
-        select(scouts)
+        select(scoutPositions)
         scrollDownSlow()
 
 
@@ -286,7 +310,7 @@ def start():
     global task
     if(not restarting):
         lt()
-        print2Both("\n\nAutoSim : 1\nRenew Contracts : 2\nSelect Scouts : 3")
+        print2Both("\n\nAutoSim : 1\nRenew Contracts : 2\nSelect Scouts : 3\nAnalyse Scouts : 4")
         task = int(input('>> '))
 
     if(task == 1):
@@ -296,6 +320,9 @@ def start():
     elif(task == 3):
         pages = int(input("Enter no. of pages to skip : "))
         selectScouts(pages)
+    elif(task == 4):
+        totalNumber = int(input("Enter total number of Scouts  (Must be atleast 3) : "))
+        analyzeScouts(totalNumber)
 
 
 def printException(exception,shouldRestart):
@@ -321,6 +348,45 @@ def run():
         printException(e,True)
     except BaseException as e:
         printException(e,True)
+
+def sortScoutAccordingToY(theThree):
+    for i in range(3):
+        if(theThree[i][1]>theThree[i+1][1]):
+            temp = theThree[i]
+            theThree[i] = theThree[i+1]
+            theThree[i+1] = temp
+    return theThree
+
+def locateAndSortThreeScouts(allSkillOrNameScouts):
+    threeSkillOrNameScouts=[]
+    for i in allSkillOrNameScouts:
+        if(nameAndY:=check[i]):
+            threeSkillOrNameScouts.append(nameAndY)
+    return sortScoutAccordingToY(threeSkillOrNameScouts)
+    
+def scountsFromOnePage():
+    global scouts
+    scouts = []
+    threeNegotiationSkills = locateAndSortThreeScouts(allNegotiationSkills)
+    threeScoutNames = locateAndSortThreeScouts(allScoutNames)
+
+    for i in range(scoutsCountedTwice, 3):
+        scouts.append[threeNegotiationSkills[i][0], threeScoutNames[i][0]]
+
+def analyzeScouts(totalNumber):
+    global scoutsCountedTwice
+    scoutsCountedTwice = 0
+    isFinalPage = False
+
+    while(totalNumber>0):
+        if totalNumber<3:
+            scoutsCountedTwice = 3 - totalNumber
+            isFinalPage = True
+
+        scountsFromOnePage()
+        scrollDownSlow(not isFinalPage)
+        totalNumber-=3
+    print2Both(scouts)
 
 restarting = False
 run()
