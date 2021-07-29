@@ -31,13 +31,13 @@ imgstar3 = Image.open('./assets/scouts/star3.png')
 imgstar4 = Image.open('./assets/scouts/star4.png')
 imgstar5 = Image.open('./assets/scouts/star5.png')
 
-imgNation_OtherAsia = Image.open('./assets/scouts/Nation_OtherAsia.png')
-imgNation_OtherLatinAmerica = Image.open('./assets/scouts/Nation_OtherLatinAmerica.png')
-imgNation_OtherEurope = Image.open('./assets/scouts/Nation_OtherEurope.png')
-imgNation_Europe = Image.open('./assets/scouts/Nation_Europe.png')
-imgNation_NSAmerican = Image.open('./assets/scouts/Nation_NSAmerican.png')
-imgNation_AsiaOceania = Image.open('./assets/scouts/Nation_AsiaOceania.png')
-imgNation_Africa = Image.open('./assets/scouts/Nation_Africa.png')
+imgArea_OtherAsia = Image.open('./assets/scouts/Area_OtherAsia.png')
+imgArea_OtherLatinAmerica = Image.open('./assets/scouts/Area_OtherLatinAmerica.png')
+imgArea_OtherEurope = Image.open('./assets/scouts/Area_OtherEurope.png')
+imgArea_Europe = Image.open('./assets/scouts/Area_Europe.png')
+imgArea_Americas = Image.open('./assets/scouts/Area_Americas.png')
+imgArea_AsiaOceania = Image.open('./assets/scouts/Area_AsiaOceania.png')
+imgArea_Africa = Image.open('./assets/scouts/Area_Africa.png')
 imgAbility_LowPass = Image.open('./assets/scouts/Ability_LowPass.png')
 imgAbility_30plus = Image.open('./assets/scouts/Ability_30plus.png')
 imgAbility_U24 = Image.open('./assets/scouts/Ability_U24.png')
@@ -147,13 +147,13 @@ Star5 = button('5*', imgstar5, regionStars)
 
 allNegotiationSkills = {Star1, Star2, Star3, Star4, Star5}
 
-Nation_OtherAsia = button('Nation_OtherAsia',imgNation_OtherAsia, regionScouts)
-Nation_OtherLatinAmerica = button('Nation_OtherLatinAmerica',imgNation_OtherLatinAmerica, regionScouts)
-Nation_OtherEurope = button('Nation_OtherEurope',imgNation_OtherEurope, regionScouts)
-Nation_Europe = button('Nation_Europe',imgNation_Europe, regionScouts)
-Nation_NSAmerican = button('Nation_NSAmerican',imgNation_NSAmerican, regionScouts)
-Nation_AsiaOceania = button('Nation_AsiaOceania',imgNation_AsiaOceania, regionScouts)
-Nation_Africa = button('Nation_Africa',imgNation_Africa, regionScouts)
+Area_OtherAsia = button('Area_OtherAsia',imgArea_OtherAsia, regionScouts)
+Area_OtherLatinAmerica = button('Area_OtherLatinAmerica',imgArea_OtherLatinAmerica, regionScouts)
+Area_OtherEurope = button('Area_OtherEurope',imgArea_OtherEurope, regionScouts)
+Area_Europe = button('Area_Europe',imgArea_Europe, regionScouts)
+Area_Americas = button('Area_Americas',imgArea_Americas, regionScouts)
+Area_AsiaOceania = button('Area_AsiaOceania',imgArea_AsiaOceania, regionScouts)
+Area_Africa = button('Area_Africa',imgArea_Africa, regionScouts)
 Ability_LowPass = button('Ability_LowPass',imgAbility_LowPass, regionScouts)
 Ability_30plus = button('Ability_30plus',imgAbility_30plus, regionScouts)
 Ability_U24 = button('Ability_U24',imgAbility_U24, regionScouts)
@@ -206,7 +206,7 @@ League_Brazilian = button('League_Brazilian',imgLeague_Brazilian, regionScouts)
 League_Chiliean = button('League_Chiliean',imgLeague_Chiliean, regionScouts)
 League_FreeAgent = button('League_FreeAgent',imgLeague_FreeAgent, regionScouts)
 
-allScoutNames = ['Nation_OtherAsia', 'Nation_OtherLatinAmerica', 'Nation_OtherEurope', 'Nation_Europe', 'Nation_NSAmerican', 'Nation_AsiaOceania', 'Nation_Africa', 'Ability_LowPass', 'Ability_30plus', 'Ability_U24', 'Ability_GKClearing', 'Ability_GKReach', 'Ability_GKCatching', 'Ability_LoftedPass', 'Ability_25to29yearold', 'Ability_OffensiveAwareness', 'Ability_PlaceKicking', 'Ability_BallWinning', 'Ability_BallControl', 'Ability_GKReflexes', 'Ability_GKAwareness', 'Ability_Dribbling', 'Ability_Finishing', 'Ability_Heading', 'Ability_PhysicalContact', 'Ability_Curl', 'Ability_Jump', 'Ability_Leftfoot', 'Ability_DefensiveAwareness', 'Ability_UtilityPlayers', 'Ability_Acceleration', 'Ability_Speed', 'Ability_Stamina', 'Ability_KickingPower', 'Ability_185cmormore', 'Ability_Rightfoot', 'Pos_CF', 'Pos_SS', 'Pos_RWF', 'Pos_LWF', 'Pos_AMF', 'Pos_CMF', 'Pos_CB', 'Pos_DMF', 'Pos_RMF', 'Pos_LMF', 'Pos_RB', 'Pos_LB', 'League_French', 'League_Italian', 'League_English', 'League_Spanish', 'League_Dutch', 'League_Argentinian', 'League_Portuguese', 'League_Brazilian', 'League_Chiliean', 'League_FreeAgent']
+allScoutNames = ['Area_OtherAsia', 'Area_OtherLatinAmerica', 'Area_OtherEurope', 'Area_Europe', 'Area_Americas', 'Area_AsiaOceania', 'Area_Africa', 'Ability_LowPass', 'Ability_30plus', 'Ability_U24', 'Ability_GKClearing', 'Ability_GKReach', 'Ability_GKCatching', 'Ability_LoftedPass', 'Ability_25to29yearold', 'Ability_OffensiveAwareness', 'Ability_PlaceKicking', 'Ability_BallWinning', 'Ability_BallControl', 'Ability_GKReflexes', 'Ability_GKAwareness', 'Ability_Dribbling', 'Ability_Finishing', 'Ability_Heading', 'Ability_PhysicalContact', 'Ability_Curl', 'Ability_Jump', 'Ability_Leftfoot', 'Ability_DefensiveAwareness', 'Ability_UtilityPlayers', 'Ability_Acceleration', 'Ability_Speed', 'Ability_Stamina', 'Ability_KickingPower', 'Ability_185cmormore', 'Ability_Rightfoot', 'Pos_CF', 'Pos_SS', 'Pos_RWF', 'Pos_LWF', 'Pos_AMF', 'Pos_CMF', 'Pos_CB', 'Pos_DMF', 'Pos_RMF', 'Pos_LMF', 'Pos_RB', 'Pos_LB', 'League_French', 'League_Italian', 'League_English', 'League_Spanish', 'League_Dutch', 'League_Argentinian', 'League_Portuguese', 'League_Brazilian', 'League_Chiliean', 'League_FreeAgent']
 
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
