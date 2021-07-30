@@ -502,7 +502,7 @@ def scountsFromOnePage():
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
     
     n+=1
-    print2Both("Finished with Page no. :"+str()+" out of "+int(str(number/3+0.7)))
+    print2Both("Finished with Page no. :"+str(n)+" out of "+int(str(number/3+0.7)))
 
 def analyzeScouts(totalNumber):
     time1= time.time()
