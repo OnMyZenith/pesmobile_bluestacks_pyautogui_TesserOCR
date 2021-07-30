@@ -468,8 +468,8 @@ def run():
         printException(e,False)
     except OSError as e:
         printException(e,True)
-    # except BaseException as e:
-    #     printException(e,True)
+    except BaseException as e:
+        printException(e,True)
 
 def findScounts(allSkillOrNameScouts):
     threeSkillOrNameScouts=[]
