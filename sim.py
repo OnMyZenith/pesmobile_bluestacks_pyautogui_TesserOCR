@@ -469,17 +469,21 @@ def run():
 
 def findScounts(allSkillOrNameScouts):
     global i
+    i=0
     threeSkillOrNameScouts=[]
+    foundButton = False
     for i in range(3):
         for j in allSkillOrNameScouts:
             if(name:=check(j)):
                 threeSkillOrNameScouts.append(name)
+                foundButton = True
                 break
 
-        try:
-            threeSkillOrNameScouts[i]
-        except IndexError:
+        if not foundButton:
             threeSkillOrNameScouts.append('new')
+
+        lt()
+        print2Both("Finished with box "+str(i+1))
     return threeSkillOrNameScouts
 
 
@@ -488,15 +492,17 @@ def scountsFromOnePage():
     threeNegotiationSkills = findScounts(allNegotiationSkills)
     threeScoutNames = findScounts(allScoutNames)
 
-    while True:
-        try:
-            pos = threeScoutNames.index('FavouriteTactics')
-            threeScoutNames.pop(pos)
-            threeNegotiationSkills.pop(pos)
-            clickOnPoint(scoutPositions[pos])
-        except ValueError:
-            break
-
+    # while True:
+    #     try:
+    #         pos = threeScoutNames.index('FavouriteTactics')
+    #         threeScoutNames.pop(pos)
+    #         threeNegotiationSkills.pop(pos)
+    #         clickOnPoint(scoutPositions[pos])
+    #     except ValueError:
+    #         break
+    
+    global i
+    i = 0
     for i in range(scoutsCountedTwice, len(threeScoutNames)):
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
 
@@ -523,7 +529,7 @@ def analyzeScouts(totalNumber):
 
         totalNumber-=3
     lt()
-    print2Both('Time taken to analyze '+str(number)+' scouts : '+str((time.time()-time1)/60)+' minutes and '+str((time.time()-time1)%60)+' seconds')
+    print2Both('Time taken to analyze '+str(number)+' scouts : '+str((time.time()-time1)//60)+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
     lt()
     print(scouts)
 
