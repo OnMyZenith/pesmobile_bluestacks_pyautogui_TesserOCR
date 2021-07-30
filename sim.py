@@ -464,8 +464,8 @@ def run():
         printException(e,False)
     except OSError as e:
         printException(e,True)
-    except BaseException as e:
-        printException(e,True)
+    # except BaseException as e:
+    #     printException(e,True)
 
 def findScounts(allSkillOrNameScouts):
     global i
@@ -486,11 +486,15 @@ def scountsFromOnePage():
     threeNegotiationSkills = findScounts(allNegotiationSkills)
     threeScoutNames = findScounts(allScoutNames)
 
-    while pos := threeScoutNames.index('FavouriteTactics'):
-        threeNegotiationSkills.pop(pos)
-        threeScoutNames.pop(pos)
+    while True:
+        try:
+            pos = threeScoutNames.index('FavouriteTactics')
+            threeScoutNames.pop(pos)
+            threeNegotiationSkills.pop(pos)
+        except ValueError:
+            break
 
-    for i in range(scoutsCountedTwice, threeScoutNames):
+    for i in range(scoutsCountedTwice, len(threeScoutNames)):
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
 
 def analyzeScouts(totalNumber):
