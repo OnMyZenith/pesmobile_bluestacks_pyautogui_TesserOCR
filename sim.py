@@ -502,7 +502,7 @@ def scountsFromOnePage():
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
     
     n+=1
-    print2Both("Finished with Page no. :"+str()+" out of "+str(number/3))
+    print2Both("Finished with Page no. :"+str()+" out of "+int(str(number/3+0.7)))
 
 def analyzeScouts(totalNumber):
     time1= time.time()
@@ -541,7 +541,7 @@ def checkInRow(bt, row):
         print2Both("Couldn't find "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
         return None
 
-n=1
+n=0
 restarting = False
 run()
 f.close()
