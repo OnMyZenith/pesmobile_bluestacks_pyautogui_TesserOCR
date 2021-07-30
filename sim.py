@@ -211,7 +211,7 @@ Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames[i])
 Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames[i])
 FavouriteTactics = button('FavouriteTactics',imgFavouriteTactics, regionScoutNames[i])
 
-allScoutNames = [Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers, FavouriteTactics]
+allScoutNames = [FavouriteTactics, Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
 
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
@@ -475,14 +475,16 @@ def findScounts(allSkillOrNameScouts):
             if(name:=check(j)):
                 threeSkillOrNameScouts.append(name)
                 break
-            else:
-                threeSkillOrNameScouts.append('New')
+
+        try:
+            threeSkillOrNameScouts[i]
+        except IndexError:
+            threeSkillOrNameScouts.append('new')
     return threeSkillOrNameScouts
 
 
 def scountsFromOnePage():
     global scouts
-    scouts = []
     threeNegotiationSkills = findScounts(allNegotiationSkills)
     threeScoutNames = findScounts(allScoutNames)
 
@@ -491,6 +493,7 @@ def scountsFromOnePage():
             pos = threeScoutNames.index('FavouriteTactics')
             threeScoutNames.pop(pos)
             threeNegotiationSkills.pop(pos)
+            clickOnPoint(scoutPositions[pos])
         except ValueError:
             break
 
@@ -498,8 +501,12 @@ def scountsFromOnePage():
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
 
 def analyzeScouts(totalNumber):
+    time1= time.time()
+    number = totalNumber
     global i
     global scoutsCountedTwice
+    global scouts
+    scouts = []
     scoutsCountedTwice = 0
     isFinalPage = False
 
@@ -512,9 +519,12 @@ def analyzeScouts(totalNumber):
 
         if not isFinalPage:
             scrollDownSlow()
-            time.sleep(3)
+            time.sleep(2)
 
         totalNumber-=3
+    lt()
+    print2Both('Time taken to analyze '+str(number)+' scouts : '+str((time.time()-time1)/60)+' minutes and '+str((time.time()-time1)%60)+' seconds')
+    lt()
     print(scouts)
 
 
