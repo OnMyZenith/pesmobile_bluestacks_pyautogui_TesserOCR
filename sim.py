@@ -25,11 +25,11 @@ imgSquadContRen = Image.open('./assets/SquadContRen.png')
 imgGP = Image.open('./assets/GP.png')
 imgRenew = Image.open('./assets/Renew.png')
 
-imgstar1 = Image.open('./assets/scouts/star1.png')
-imgstar2 = Image.open('./assets/scouts/star2.png')
-imgstar3 = Image.open('./assets/scouts/star3.png')
-imgstar4 = Image.open('./assets/scouts/star4.png')
-imgstar5 = Image.open('./assets/scouts/star5.png')
+imgStar1 = Image.open('./assets/scouts/Star1.png')
+imgStar2 = Image.open('./assets/scouts/Star2.png')
+imgStar3 = Image.open('./assets/scouts/Star3.png')
+imgStar4 = Image.open('./assets/scouts/Star4.png')
+imgStar5 = Image.open('./assets/scouts/Star5.png')
 
 imgAbility_185cmormore = Image.open('./assets/scouts/Ability_185cmormore.png')
 imgAbility_25to29yearold = Image.open('./assets/scouts/Ability_25to29yearold.png')
@@ -89,6 +89,7 @@ imgPos_RMF = Image.open('./assets/scouts/Pos_RMF.png')
 imgPos_RWF = Image.open('./assets/scouts/Pos_RWF.png')
 imgPos_SS = Image.open('./assets/scouts/Pos_SS.png')
 imgPos_UtilityPlayers = Image.open('./assets/scouts/Pos_UtilityPlayers.png')
+imgFavouriteTactics = Image.open('./assets/scouts/FavouriteTactics.png')
 
 region2ndHalf = (1560, 970, 1715, 1060)
 regionBack = (0, 980, 109, 1050)
@@ -141,11 +142,11 @@ Renew = button('Renew', imgRenew, regionRenew)
 
 i = 0
 
-Star1 = button('1*', imgstar1, regionNegotiationSkills[i])
-Star2 = button('2*', imgstar2, regionNegotiationSkills[i])
-Star3 = button('3*', imgstar3, regionNegotiationSkills[i])
-Star4 = button('4*', imgstar4, regionNegotiationSkills[i])
-Star5 = button('5*', imgstar5, regionNegotiationSkills[i])
+Star1 = button('1*', imgStar1, regionNegotiationSkills[i])
+Star2 = button('2*', imgStar2, regionNegotiationSkills[i])
+Star3 = button('3*', imgStar3, regionNegotiationSkills[i])
+Star4 = button('4*', imgStar4, regionNegotiationSkills[i])
+Star5 = button('5*', imgStar5, regionNegotiationSkills[i])
 
 allNegotiationSkills = [Star1, Star2, Star3, Star4, Star5]
 
@@ -208,8 +209,9 @@ Pos_RMF = button('Pos_RMF',imgPos_RMF, regionScoutNames[i])
 Pos_RWF = button('Pos_RWF',imgPos_RWF, regionScoutNames[i])
 Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames[i])
 Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames[i])
+FavouriteTactics = button('FavouriteTactics',imgFavouriteTactics, regionScoutNames[i])
 
-allScoutNames = [Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
+allScoutNames = [Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers, FavouriteTactics]
 
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
@@ -484,7 +486,11 @@ def scountsFromOnePage():
     threeNegotiationSkills = findScounts(allNegotiationSkills)
     threeScoutNames = findScounts(allScoutNames)
 
-    for i in range(scoutsCountedTwice, 3):
+    while pos := threeScoutNames.index('FavouriteTactics'):
+        threeNegotiationSkills.pop(pos)
+        threeScoutNames.pop(pos)
+
+    for i in range(scoutsCountedTwice, threeScoutNames):
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
 
 def analyzeScouts(totalNumber):
