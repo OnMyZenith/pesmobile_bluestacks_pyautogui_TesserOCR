@@ -485,7 +485,8 @@ def findScounts(allSkillOrNameScouts):
             threeSkillOrNameScouts.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
-        print2Both("\nCurrently on Page no. :"+str(page+1)+" out of "+str(int(number/3+0.7)))
+        if i <2:
+            print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(number/3+0.7))+'\n')
     return threeSkillOrNameScouts
 
 
