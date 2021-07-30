@@ -528,7 +528,7 @@ def analyzeScouts(totalNumber):
     isFinalPage = False
 
     while(totalNumber>0):
-        if totalNumber<3:
+        if totalNumber<=3:
             scoutsCountedTwice = 3 - totalNumber
             isFinalPage = True
 
