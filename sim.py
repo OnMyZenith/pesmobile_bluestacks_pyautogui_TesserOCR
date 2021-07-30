@@ -59,7 +59,6 @@ imgAbility_Rightfoot = Image.open('./assets/scouts/Ability_Rightfoot.png')
 imgAbility_Speed = Image.open('./assets/scouts/Ability_Speed.png')
 imgAbility_Stamina = Image.open('./assets/scouts/Ability_Stamina.png')
 imgAbility_U24 = Image.open('./assets/scouts/Ability_U24.png')
-imgAbility_UtilityPlayers = Image.open('./assets/scouts/Ability_UtilityPlayers.png')
 imgArea_Africa = Image.open('./assets/scouts/Area_Africa.png')
 imgArea_Americas = Image.open('./assets/scouts/Area_Americas.png')
 imgArea_AsiaOceania = Image.open('./assets/scouts/Area_AsiaOceania.png')
@@ -89,6 +88,7 @@ imgPos_RB = Image.open('./assets/scouts/Pos_RB.png')
 imgPos_RMF = Image.open('./assets/scouts/Pos_RMF.png')
 imgPos_RWF = Image.open('./assets/scouts/Pos_RWF.png')
 imgPos_SS = Image.open('./assets/scouts/Pos_SS.png')
+imgPos_UtilityPlayers = Image.open('./assets/scouts/Pos_UtilityPlayers.png')
 
 region2ndHalf = (1560, 970, 1715, 1060)
 regionBack = (0, 980, 109, 1050)
@@ -178,7 +178,6 @@ Ability_Rightfoot = button('Ability_Rightfoot',imgAbility_Rightfoot, regionScout
 Ability_Speed = button('Ability_Speed',imgAbility_Speed, regionScoutNames[i])
 Ability_Stamina = button('Ability_Stamina',imgAbility_Stamina, regionScoutNames[i])
 Ability_U24 = button('Ability_U24',imgAbility_U24, regionScoutNames[i])
-Ability_UtilityPlayers = button('Ability_UtilityPlayers',imgAbility_UtilityPlayers, regionScoutNames[i])
 Area_Africa = button('Area_Africa',imgArea_Africa, regionScoutNames[i])
 Area_Americas = button('Area_Americas',imgArea_Americas, regionScoutNames[i])
 Area_AsiaOceania = button('Area_AsiaOceania',imgArea_AsiaOceania, regionScoutNames[i])
@@ -208,8 +207,9 @@ Pos_RB = button('Pos_RB',imgPos_RB, regionScoutNames[i])
 Pos_RMF = button('Pos_RMF',imgPos_RMF, regionScoutNames[i])
 Pos_RWF = button('Pos_RWF',imgPos_RWF, regionScoutNames[i])
 Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames[i])
+Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames[i])
 
-allScoutNames = [Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Ability_UtilityPlayers, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS]
+allScoutNames = [Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
 
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
@@ -505,7 +505,7 @@ def analyzeScouts(totalNumber):
             time.sleep(3)
 
         totalNumber-=3
-    print2Both(scouts)
+    print(scouts)
 
 
 
