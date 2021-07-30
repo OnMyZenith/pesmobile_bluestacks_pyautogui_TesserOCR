@@ -484,7 +484,7 @@ def findScounts(allSkillOrNameScouts):
         if not foundButton:
             threeSkillOrNameScouts.append('new')
         
-        print2Both("\nFinished with box "+str(i+1))
+        print2Both("\nFinished with box "+str(i+1)+"\n")
     return threeSkillOrNameScouts
 
 
@@ -509,7 +509,7 @@ def scountsFromOnePage():
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i], page])
         
     print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(number/3+0.7)))
-    print2Both("\n\nScouts identified on Page :"+str(scouts[page-2])+"\n"+str(scouts[page-1])+"\n"+str(scouts[page])+"\n\n")
+    print2Both("\n\nScouts identified on Page :\n\n"+str(scouts[page-2])+"\n"+str(scouts[page-1])+"\n"+str(scouts[page])+"\n\n")
     lt()
     time.sleep(1)
     pyg.screenshot(path+'/Page'+str(page)+'.png')
