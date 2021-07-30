@@ -467,9 +467,8 @@ def run():
 
 def findScounts(allSkillOrNameScouts):
     threeSkillOrNameScouts=[]
-    foundButton = False
-    global n
     for i in range(3):
+        foundButton = False
         for j in allSkillOrNameScouts:
             if(name:=checkInRow(j, i)):
                 threeSkillOrNameScouts.append(name)
@@ -479,8 +478,6 @@ def findScounts(allSkillOrNameScouts):
         if not foundButton:
             threeSkillOrNameScouts.append('new')
         
-        n+=1
-        print2Both("Scout no. :"+str(n)+" out of "+str(number))
         print2Both("Finished with box "+str(i+1))
         lt()
     return threeSkillOrNameScouts
@@ -488,6 +485,7 @@ def findScounts(allSkillOrNameScouts):
 
 def scountsFromOnePage():
     global scouts
+    global n
     threeNegotiationSkills = findScounts(allNegotiationSkills)
     threeScoutNames = findScounts(allScoutNames)
 
@@ -502,6 +500,9 @@ def scountsFromOnePage():
     
     for i in range(scoutsCountedTwice, len(threeScoutNames)):
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
+    
+    n+=1
+    print2Both("Finished with Page no. :"+str()+" out of "+str(number/3))
 
 def analyzeScouts(totalNumber):
     time1= time.time()
@@ -540,7 +541,7 @@ def checkInRow(bt, row):
         print2Both("Couldn't find "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
         return None
 
-n=0
+n=1
 restarting = False
 run()
 f.close()
