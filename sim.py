@@ -485,6 +485,7 @@ def findScounts(allSkillOrNameScouts):
             threeSkillOrNameScouts.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
+        print2Both("\nCurrently on Page no. :"+str(page+1)+" out of "+str(int(number/3+0.7)))
     return threeSkillOrNameScouts
 
 
@@ -509,7 +510,7 @@ def scountsFromOnePage():
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i], page])
         
     print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(number/3+0.7)))
-    print2Both("\n\nScouts identified on Page :\n\n"+str(scouts[page-2])+"\n"+str(scouts[page-1])+"\n"+str(scouts[page])+"\n\n")
+    print2Both("\n\nScouts identified on Page :\n\n\t"+str(scouts[3*page-3])+"\n\t"+str(scouts[3*page-2])+"\n\t"+str(scouts[3*page-1])+"\n\n")
     lt()
     time.sleep(1)
     pyg.screenshot(path+'/Page'+str(page)+'.png')
@@ -543,7 +544,7 @@ def analyzeScouts(totalNumber):
     print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
 
     f = open(path +'/scouts.txt', 'a')
-    for i in number:
+    for i in range(number):
         f.write(str(scouts[i][0])+', '+str(scouts[i][1])+"\n")
     f.close()
     
