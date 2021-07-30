@@ -468,7 +468,7 @@ def run():
 def findScounts(allSkillOrNameScouts):
     threeSkillOrNameScouts=[]
     foundButton = False
-    n = 1
+    global n
     for i in range(3):
         for j in allSkillOrNameScouts:
             if(name:=checkInRow(j, i)):
@@ -479,6 +479,7 @@ def findScounts(allSkillOrNameScouts):
         if not foundButton:
             threeSkillOrNameScouts.append('new')
         
+        n+=1
         print2Both("Scout no. :"+str(n)+" out of "+str(number))
         print2Both("Finished with box "+str(i+1))
         lt()
@@ -539,6 +540,7 @@ def checkInRow(bt, row):
         print2Both("Couldn't find "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
         return None
 
+n=0
 restarting = False
 run()
 f.close()
