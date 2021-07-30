@@ -1,9 +1,14 @@
 import pyautogui as pyg
 import time
 from PIL import Image
+import os
 
 pyg.PAUSE = 0
 pyg.FAILSAFE = True
+
+folder = time.strftime("%Y-%m-%d %H'%M''%S",time.localtime())
+path = './logs/'+folder
+os.mkdir(path)
 
 img2ndHalf = Image.open('./assets/2ndHalf.png')
 imgBack = Image.open('./assets/Back.png')
@@ -227,9 +232,10 @@ scoutPositions = (a, c, e)
 
 def print2Both(text):
     print(text)
-    f.write(text+'\n')
+    f.write(str(text)+'\n')
 
-f = open('./logs/log.txt', 'a')
+
+f = open(path +'/log.txt', 'a')
 
 def lt():
     print2Both('\n\n------------------------------------------------------------\n\n')
@@ -478,14 +484,13 @@ def findScounts(allSkillOrNameScouts):
         if not foundButton:
             threeSkillOrNameScouts.append('new')
         
-        print2Both("Finished with box "+str(i+1))
-        lt()
+        print2Both("\nFinished with box "+str(i+1))
     return threeSkillOrNameScouts
 
 
 def scountsFromOnePage():
     global scouts
-    global n
+    global page
     threeNegotiationSkills = findScounts(allNegotiationSkills)
     threeScoutNames = findScounts(allScoutNames)
 
@@ -498,17 +503,24 @@ def scountsFromOnePage():
     #     except ValueError:
     #         break
     
+    page+=1
+
     for i in range(scoutsCountedTwice, len(threeScoutNames)):
-        scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
-    
-    n+=1
-    print2Both("Finished with Page no. :"+str(n)+" out of "+int(str(number/3+0.7)))
+        scouts.append([threeNegotiationSkills[i], threeScoutNames[i], page])
+        
+    print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(number/3+0.7)))
+    print2Both("\n\nScouts identified on Page :"+str(scouts[page-2])+"\n"+str(scouts[page-1])+"\n"+str(scouts[page])+"\n\n")
+    lt()
+    time.sleep(1)
+    pyg.screenshot(path+'/Page'+str(page)+'.png')
 
 def analyzeScouts(totalNumber):
     time1= time.time()
     global number
     global scoutsCountedTwice
     global scouts
+    global page
+    page=0
     number = totalNumber
     scouts = []
     scoutsCountedTwice = 0
@@ -527,8 +539,14 @@ def analyzeScouts(totalNumber):
 
         totalNumber-=3
     lt()
-    print2Both('Time taken to analyze '+str(number)+' scouts : '+str((time.time()-time1)//60)+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
-    print(scouts)
+    print2Both('Time taken to analyze '+str(number)+' scouts : '+str(int((time.time()-time1)/60))+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
+    print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
+
+    f = open(path +'/scouts.txt', 'a')
+    for i in number:
+        f.write(str(scouts[i][0])+', '+str(scouts[i][1])+"\n")
+    f.close()
+    
 
 def checkInRow(bt, row):
     print2Both('Checking for '+bt.name+'in box '+str(row+1)+str(bt.region[row]))
@@ -541,7 +559,6 @@ def checkInRow(bt, row):
         print2Both("Couldn't find "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
         return None
 
-n=0
 restarting = False
 run()
 f.close()
