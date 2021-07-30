@@ -140,76 +140,74 @@ SquadContRen = button('SquadContRen', imgSquadContRen, regionSquadContRen)
 gp = button('GP', imgGP, regionGP)
 Renew = button('Renew', imgRenew, regionRenew)
 
-i = 0
-
-Star1 = button('1*', imgStar1, regionNegotiationSkills[i])
-Star2 = button('2*', imgStar2, regionNegotiationSkills[i])
-Star3 = button('3*', imgStar3, regionNegotiationSkills[i])
-Star4 = button('4*', imgStar4, regionNegotiationSkills[i])
-Star5 = button('5*', imgStar5, regionNegotiationSkills[i])
+Star1 = button('1*', imgStar1, regionNegotiationSkills)
+Star2 = button('2*', imgStar2, regionNegotiationSkills)
+Star3 = button('3*', imgStar3, regionNegotiationSkills)
+Star4 = button('4*', imgStar4, regionNegotiationSkills)
+Star5 = button('5*', imgStar5, regionNegotiationSkills)
 
 allNegotiationSkills = [Star1, Star2, Star3, Star4, Star5]
 
 
-Ability_185cmormore = button('Ability_185cmormore',imgAbility_185cmormore, regionScoutNames[i])
-Ability_25to29yearold = button('Ability_25to29yearold',imgAbility_25to29yearold, regionScoutNames[i])
-Ability_30plus = button('Ability_30plus',imgAbility_30plus, regionScoutNames[i])
-Ability_Acceleration = button('Ability_Acceleration',imgAbility_Acceleration, regionScoutNames[i])
-Ability_BallControl = button('Ability_BallControl',imgAbility_BallControl, regionScoutNames[i])
-Ability_BallWinning = button('Ability_BallWinning',imgAbility_BallWinning, regionScoutNames[i])
-Ability_Curl = button('Ability_Curl',imgAbility_Curl, regionScoutNames[i])
-Ability_DefensiveAwareness = button('Ability_DefensiveAwareness',imgAbility_DefensiveAwareness, regionScoutNames[i])
-Ability_Dribbling = button('Ability_Dribbling',imgAbility_Dribbling, regionScoutNames[i])
-Ability_Finishing = button('Ability_Finishing',imgAbility_Finishing, regionScoutNames[i])
-Ability_GKAwareness = button('Ability_GKAwareness',imgAbility_GKAwareness, regionScoutNames[i])
-Ability_GKCatching = button('Ability_GKCatching',imgAbility_GKCatching, regionScoutNames[i])
-Ability_GKClearing = button('Ability_GKClearing',imgAbility_GKClearing, regionScoutNames[i])
-Ability_GKReach = button('Ability_GKReach',imgAbility_GKReach, regionScoutNames[i])
-Ability_GKReflexes = button('Ability_GKReflexes',imgAbility_GKReflexes, regionScoutNames[i])
-Ability_Heading = button('Ability_Heading',imgAbility_Heading, regionScoutNames[i])
-Ability_Jump = button('Ability_Jump',imgAbility_Jump, regionScoutNames[i])
-Ability_KickingPower = button('Ability_KickingPower',imgAbility_KickingPower, regionScoutNames[i])
-Ability_Leftfoot = button('Ability_Leftfoot',imgAbility_Leftfoot, regionScoutNames[i])
-Ability_LoftedPass = button('Ability_LoftedPass',imgAbility_LoftedPass, regionScoutNames[i])
-Ability_LowPass = button('Ability_LowPass',imgAbility_LowPass, regionScoutNames[i])
-Ability_OffensiveAwareness = button('Ability_OffensiveAwareness',imgAbility_OffensiveAwareness, regionScoutNames[i])
-Ability_PhysicalContact = button('Ability_PhysicalContact',imgAbility_PhysicalContact, regionScoutNames[i])
-Ability_PlaceKicking = button('Ability_PlaceKicking',imgAbility_PlaceKicking, regionScoutNames[i])
-Ability_Rightfoot = button('Ability_Rightfoot',imgAbility_Rightfoot, regionScoutNames[i])
-Ability_Speed = button('Ability_Speed',imgAbility_Speed, regionScoutNames[i])
-Ability_Stamina = button('Ability_Stamina',imgAbility_Stamina, regionScoutNames[i])
-Ability_U24 = button('Ability_U24',imgAbility_U24, regionScoutNames[i])
-Area_Africa = button('Area_Africa',imgArea_Africa, regionScoutNames[i])
-Area_Americas = button('Area_Americas',imgArea_Americas, regionScoutNames[i])
-Area_AsiaOceania = button('Area_AsiaOceania',imgArea_AsiaOceania, regionScoutNames[i])
-Area_Europe = button('Area_Europe',imgArea_Europe, regionScoutNames[i])
-League_Argentinian = button('League_Argentinian',imgLeague_Argentinian, regionScoutNames[i])
-League_Brazilian = button('League_Brazilian',imgLeague_Brazilian, regionScoutNames[i])
-League_Chiliean = button('League_Chiliean',imgLeague_Chiliean, regionScoutNames[i])
-League_Dutch = button('League_Dutch',imgLeague_Dutch, regionScoutNames[i])
-League_English = button('League_English',imgLeague_English, regionScoutNames[i])
-League_FreeAgent = button('League_FreeAgent',imgLeague_FreeAgent, regionScoutNames[i])
-League_French = button('League_French',imgLeague_French, regionScoutNames[i])
-League_Italian = button('League_Italian',imgLeague_Italian, regionScoutNames[i])
-League_OtherAsia = button('League_OtherAsia',imgLeague_OtherAsia, regionScoutNames[i])
-League_OtherEurope = button('League_OtherEurope',imgLeague_OtherEurope, regionScoutNames[i])
-League_OtherLatinAmerica = button('League_OtherLatinAmerica',imgLeague_OtherLatinAmerica, regionScoutNames[i])
-League_Portuguese = button('League_Portuguese',imgLeague_Portuguese, regionScoutNames[i])
-League_Spanish = button('League_Spanish',imgLeague_Spanish, regionScoutNames[i])
-Pos_AMF = button('Pos_AMF',imgPos_AMF, regionScoutNames[i])
-Pos_CB = button('Pos_CB',imgPos_CB, regionScoutNames[i])
-Pos_CF = button('Pos_CF',imgPos_CF, regionScoutNames[i])
-Pos_CMF = button('Pos_CMF',imgPos_CMF, regionScoutNames[i])
-Pos_DMF = button('Pos_DMF',imgPos_DMF, regionScoutNames[i])
-Pos_LB = button('Pos_LB',imgPos_LB, regionScoutNames[i])
-Pos_LMF = button('Pos_LMF',imgPos_LMF, regionScoutNames[i])
-Pos_LWF = button('Pos_LWF',imgPos_LWF, regionScoutNames[i])
-Pos_RB = button('Pos_RB',imgPos_RB, regionScoutNames[i])
-Pos_RMF = button('Pos_RMF',imgPos_RMF, regionScoutNames[i])
-Pos_RWF = button('Pos_RWF',imgPos_RWF, regionScoutNames[i])
-Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames[i])
-Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames[i])
-FavouriteTactics = button('FavouriteTactics',imgFavouriteTactics, regionScoutNames[i])
+Ability_185cmormore = button('Ability_185cmormore',imgAbility_185cmormore, regionScoutNames)
+Ability_25to29yearold = button('Ability_25to29yearold',imgAbility_25to29yearold, regionScoutNames)
+Ability_30plus = button('Ability_30plus',imgAbility_30plus, regionScoutNames)
+Ability_Acceleration = button('Ability_Acceleration',imgAbility_Acceleration, regionScoutNames)
+Ability_BallControl = button('Ability_BallControl',imgAbility_BallControl, regionScoutNames)
+Ability_BallWinning = button('Ability_BallWinning',imgAbility_BallWinning, regionScoutNames)
+Ability_Curl = button('Ability_Curl',imgAbility_Curl, regionScoutNames)
+Ability_DefensiveAwareness = button('Ability_DefensiveAwareness',imgAbility_DefensiveAwareness, regionScoutNames)
+Ability_Dribbling = button('Ability_Dribbling',imgAbility_Dribbling, regionScoutNames)
+Ability_Finishing = button('Ability_Finishing',imgAbility_Finishing, regionScoutNames)
+Ability_GKAwareness = button('Ability_GKAwareness',imgAbility_GKAwareness, regionScoutNames)
+Ability_GKCatching = button('Ability_GKCatching',imgAbility_GKCatching, regionScoutNames)
+Ability_GKClearing = button('Ability_GKClearing',imgAbility_GKClearing, regionScoutNames)
+Ability_GKReach = button('Ability_GKReach',imgAbility_GKReach, regionScoutNames)
+Ability_GKReflexes = button('Ability_GKReflexes',imgAbility_GKReflexes, regionScoutNames)
+Ability_Heading = button('Ability_Heading',imgAbility_Heading, regionScoutNames)
+Ability_Jump = button('Ability_Jump',imgAbility_Jump, regionScoutNames)
+Ability_KickingPower = button('Ability_KickingPower',imgAbility_KickingPower, regionScoutNames)
+Ability_Leftfoot = button('Ability_Leftfoot',imgAbility_Leftfoot, regionScoutNames)
+Ability_LoftedPass = button('Ability_LoftedPass',imgAbility_LoftedPass, regionScoutNames)
+Ability_LowPass = button('Ability_LowPass',imgAbility_LowPass, regionScoutNames)
+Ability_OffensiveAwareness = button('Ability_OffensiveAwareness',imgAbility_OffensiveAwareness, regionScoutNames)
+Ability_PhysicalContact = button('Ability_PhysicalContact',imgAbility_PhysicalContact, regionScoutNames)
+Ability_PlaceKicking = button('Ability_PlaceKicking',imgAbility_PlaceKicking, regionScoutNames)
+Ability_Rightfoot = button('Ability_Rightfoot',imgAbility_Rightfoot, regionScoutNames)
+Ability_Speed = button('Ability_Speed',imgAbility_Speed, regionScoutNames)
+Ability_Stamina = button('Ability_Stamina',imgAbility_Stamina, regionScoutNames)
+Ability_U24 = button('Ability_U24',imgAbility_U24, regionScoutNames)
+Area_Africa = button('Area_Africa',imgArea_Africa, regionScoutNames)
+Area_Americas = button('Area_Americas',imgArea_Americas, regionScoutNames)
+Area_AsiaOceania = button('Area_AsiaOceania',imgArea_AsiaOceania, regionScoutNames)
+Area_Europe = button('Area_Europe',imgArea_Europe, regionScoutNames)
+League_Argentinian = button('League_Argentinian',imgLeague_Argentinian, regionScoutNames)
+League_Brazilian = button('League_Brazilian',imgLeague_Brazilian, regionScoutNames)
+League_Chiliean = button('League_Chiliean',imgLeague_Chiliean, regionScoutNames)
+League_Dutch = button('League_Dutch',imgLeague_Dutch, regionScoutNames)
+League_English = button('League_English',imgLeague_English, regionScoutNames)
+League_FreeAgent = button('League_FreeAgent',imgLeague_FreeAgent, regionScoutNames)
+League_French = button('League_French',imgLeague_French, regionScoutNames)
+League_Italian = button('League_Italian',imgLeague_Italian, regionScoutNames)
+League_OtherAsia = button('League_OtherAsia',imgLeague_OtherAsia, regionScoutNames)
+League_OtherEurope = button('League_OtherEurope',imgLeague_OtherEurope, regionScoutNames)
+League_OtherLatinAmerica = button('League_OtherLatinAmerica',imgLeague_OtherLatinAmerica, regionScoutNames)
+League_Portuguese = button('League_Portuguese',imgLeague_Portuguese, regionScoutNames)
+League_Spanish = button('League_Spanish',imgLeague_Spanish, regionScoutNames)
+Pos_AMF = button('Pos_AMF',imgPos_AMF, regionScoutNames)
+Pos_CB = button('Pos_CB',imgPos_CB, regionScoutNames)
+Pos_CF = button('Pos_CF',imgPos_CF, regionScoutNames)
+Pos_CMF = button('Pos_CMF',imgPos_CMF, regionScoutNames)
+Pos_DMF = button('Pos_DMF',imgPos_DMF, regionScoutNames)
+Pos_LB = button('Pos_LB',imgPos_LB, regionScoutNames)
+Pos_LMF = button('Pos_LMF',imgPos_LMF, regionScoutNames)
+Pos_LWF = button('Pos_LWF',imgPos_LWF, regionScoutNames)
+Pos_RB = button('Pos_RB',imgPos_RB, regionScoutNames)
+Pos_RMF = button('Pos_RMF',imgPos_RMF, regionScoutNames)
+Pos_RWF = button('Pos_RWF',imgPos_RWF, regionScoutNames)
+Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames)
+Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames)
+FavouriteTactics = button('FavouriteTactics',imgFavouriteTactics, regionScoutNames)
 
 allScoutNames = [FavouriteTactics, Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
 
@@ -468,22 +466,22 @@ def run():
     #     printException(e,True)
 
 def findScounts(allSkillOrNameScouts):
-    global i
-    i=0
     threeSkillOrNameScouts=[]
     foundButton = False
+    n = 1
     for i in range(3):
         for j in allSkillOrNameScouts:
-            if(name:=check(j)):
+            if(name:=checkInRow(j, i)):
                 threeSkillOrNameScouts.append(name)
                 foundButton = True
                 break
 
         if not foundButton:
             threeSkillOrNameScouts.append('new')
-
-        lt()
+        
+        print2Both("Scout no. :"+str(n)+" out of "+str(number))
         print2Both("Finished with box "+str(i+1))
+        lt()
     return threeSkillOrNameScouts
 
 
@@ -501,17 +499,15 @@ def scountsFromOnePage():
     #     except ValueError:
     #         break
     
-    global i
-    i = 0
     for i in range(scoutsCountedTwice, len(threeScoutNames)):
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i]])
 
 def analyzeScouts(totalNumber):
     time1= time.time()
-    number = totalNumber
-    global i
+    global number
     global scoutsCountedTwice
     global scouts
+    number = totalNumber
     scouts = []
     scoutsCountedTwice = 0
     isFinalPage = False
@@ -530,10 +526,18 @@ def analyzeScouts(totalNumber):
         totalNumber-=3
     lt()
     print2Both('Time taken to analyze '+str(number)+' scouts : '+str((time.time()-time1)//60)+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
-    lt()
     print(scouts)
 
+def checkInRow(bt, row):
+    print2Both('Checking for '+bt.name+'in box '+str(row+1)+str(bt.region[row]))
+    point = pyg.locateCenterOnScreen(bt.img, region=bt.region[row] , confidence=.98)
 
+    if(point):
+        print2Both("Found "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
+        return bt.name
+    else:
+        print2Both("Couldn't find "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
+        return None
 
 restarting = False
 run()
