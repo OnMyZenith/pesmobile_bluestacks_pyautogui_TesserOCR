@@ -30,12 +30,6 @@ imgSquadContRen = Image.open('./assets/SquadContRen.png')
 imgGP = Image.open('./assets/GP.png')
 imgRenew = Image.open('./assets/Renew.png')
 
-# imgStar1 = Image.open('./assets/scouts/Star1.png')
-# imgStar2 = Image.open('./assets/scouts/Star2.png')
-# imgStar3 = Image.open('./assets/scouts/Star3.png')
-# imgStar4 = Image.open('./assets/scouts/Star4.png')
-# imgStar5 = Image.open('./assets/scouts/Star5.png')
-
 imgAge_25to29yearold = Image.open('./assets/scouts/Age_25to29yearold.png')
 imgAge_30plus = Image.open('./assets/scouts/Age_30plus.png')
 imgAge_U24 = Image.open('./assets/scouts/Age_U24.png')
@@ -43,6 +37,7 @@ imgArea_Africa = Image.open('./assets/scouts/Area_Africa.png')
 imgArea_Americas = Image.open('./assets/scouts/Area_Americas.png')
 imgArea_AsiaOceania = Image.open('./assets/scouts/Area_AsiaOceania.png')
 imgArea_Europe = Image.open('./assets/scouts/Area_Europe.png')
+imgFavouriteTactics_ = Image.open('./assets/scouts/FavouriteTactics_.png')
 imgHeight_185cmormore = Image.open('./assets/scouts/Height_185cmormore.png')
 imgKeyAttributes_Acceleration = Image.open('./assets/scouts/KeyAttributes_Acceleration.png')
 imgKeyAttributes_BallControl = Image.open('./assets/scouts/KeyAttributes_BallControl.png')
@@ -127,6 +122,7 @@ regionRenew = (1105, 590, 1290, 660)
 regionNegotiationSkills = [(275, 225, 400, 370), (275, 455, 400, 600), (275, 685, 400, 830)]
 regionScoutNames = [(425, 240, 750, 450), (425, 470, 750, 680), (425, 700, 750, 910)]
 
+starsX = [301, 327, 355, 377]
 class button:
     def __init__(self, name, img, region) -> None:
         self.name = name
@@ -153,16 +149,6 @@ SquadContRen = button('SquadContRen', imgSquadContRen, regionSquadContRen)
 gp = button('GP', imgGP, regionGP)
 Renew = button('Renew', imgRenew, regionRenew)
 
-# Star1 = button('1*', imgStar1, regionNegotiationSkills)
-# Star2 = button('2*', imgStar2, regionNegotiationSkills)
-# Star3 = button('3*', imgStar3, regionNegotiationSkills)
-# Star4 = button('4*', imgStar4, regionNegotiationSkills)
-# Star5 = button('5*', imgStar5, regionNegotiationSkills)
-
-# allNegotiationSkills = [Star1, Star2, Star3, Star4, Star5]
-
-starsX = [301, 327, 355, 377]
-
 Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
 Age_30plus = button('Age_30plus',imgAge_30plus, regionScoutNames)
 Age_U24 = button('Age_U24',imgAge_U24, regionScoutNames)
@@ -170,6 +156,7 @@ Area_Africa = button('Area_Africa',imgArea_Africa, regionScoutNames)
 Area_Americas = button('Area_Americas',imgArea_Americas, regionScoutNames)
 Area_AsiaOceania = button('Area_AsiaOceania',imgArea_AsiaOceania, regionScoutNames)
 Area_Europe = button('Area_Europe',imgArea_Europe, regionScoutNames)
+FavouriteTactics_ = button('FavouriteTactics_',imgFavouriteTactics_, regionScoutNames)
 Height_185cmormore = button('Height_185cmormore',imgHeight_185cmormore, regionScoutNames)
 KeyAttributes_Acceleration = button('KeyAttributes_Acceleration',imgKeyAttributes_Acceleration, regionScoutNames)
 KeyAttributes_BallControl = button('KeyAttributes_BallControl',imgKeyAttributes_BallControl, regionScoutNames)
@@ -231,7 +218,7 @@ Age = button('Age',imgAge, regionScoutNames)
 Height = button('Height',imgHeight, regionScoutNames)
 StrongerFoot = button('StrongerFoot',imgStrongerFoot, regionScoutNames)
 
-FavouriteTactics = [FavouriteTactics]
+FavouriteTactics = [FavouriteTactics_]
 Area = [Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe]
 League = [League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish]
 Age = [Age_U24, Age_25to29yearold, Age_30plus]
@@ -543,8 +530,6 @@ def addScoutsOfPage():
         print2Both("\nFinished with box "+str(i+1)+"\n")
         if i <2:
             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
-
-
 
     page+=1
 
