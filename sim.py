@@ -494,7 +494,7 @@ def findScounts(allSkillOrNameScouts):
 
 
 def findScountNames(allScoutCategories):
-    threeNameScouts=[]
+    threeScoutNames=[]
     for i in range(3):
 
         for j in allScoutCategories:
@@ -503,19 +503,46 @@ def findScountNames(allScoutCategories):
 
         for j in category:
             if(foundNameOfScout:=checkInRow[j, i]):
-                threeNameScouts.append(foundNameOfScout)
+                threeScoutNames.append(foundNameOfScout)
                 break
 
         if not foundNameOfScout:
-            threeNameScouts.append('new')
+            threeScoutNames.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
         if i <2:
             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
-    return threeNameScouts
+    return threeScoutNames
 
+def identifyScoutsOnPage(allSkills_or_Categories, isCategories):
+    OneHalfOfThreeScouts=[]
+    for i in range(3):
 
-def scountsFromOnePage():
+        if isCategories:
+            for j in allSkills_or_Categories:
+                if(category:=checkInRow(j, i)):
+                    break
+
+            for j in category:
+                if(foundNameOfScout:=checkInRow[j, i]):
+                    OneHalfOfThreeScouts.append(foundNameOfScout)
+                    break
+
+        else:
+            for j in allSkills_or_Categories:
+                if(foundNameOfScout:=checkInRow[j, i]):
+                    OneHalfOfThreeScouts.append(foundNameOfScout)
+                    break
+
+        if not foundNameOfScout:
+            OneHalfOfThreeScouts.append('new')
+        
+        print2Both("\nFinished with box "+str(i+1)+"\n")
+        if i <2:
+            print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
+    return OneHalfOfThreeScouts
+
+def addScoutsOnPage():
     global scouts
     global page
     threeNegotiationSkills = findScounts(allNegotiationSkills)
@@ -562,7 +589,7 @@ def analyzeScouts(numberOfScoutsLeft):
             scoutsCountedTwice = 3 - numberOfScoutsLeft
             isFinalPage = True
 
-        scountsFromOnePage()
+        addScoutsOnPage()
 
         if not isFinalPage:
             scrollDownSlow()
