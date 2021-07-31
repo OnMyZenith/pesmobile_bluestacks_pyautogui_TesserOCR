@@ -212,12 +212,19 @@ Pos_RMF = button('Pos_RMF',imgPos_RMF, regionScoutNames)
 Pos_RWF = button('Pos_RWF',imgPos_RWF, regionScoutNames)
 Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames)
 Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames)
+
 FavouriteTactics = button('FavouriteTactics',imgFavouriteTactics, regionScoutNames)
 
+FavouriteTactics = [FavouriteTactics]
+Area
+League
 Age = [Age_U24, Age_25to29yearold, Age_30plus]
+Height
+Pos
+StrongerFoot
 
 allScoutNames = [FavouriteTactics, Ability_185cmormore, Age_25to29yearold, Age_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Age_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
-allScoutCategories = [FavouriteTactics, League, Area,  Pos, KeyAttributes, Age, Height, StrongerFoot]
+allScoutCategories = [FavouriteTactics, League, Area, Pos, KeyAttributes, Age, Height, StrongerFoot]
 
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
