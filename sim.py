@@ -502,11 +502,11 @@ def findScountNames(allScoutCategories):
                 break
 
         for j in category:
-            if(nameOfScout:=checkInRow[j, i]):
-                threeNameScouts.append(nameOfScout)
+            if(foundNameOfScout:=checkInRow[j, i]):
+                threeNameScouts.append(foundNameOfScout)
                 break
 
-        if not nameOfScout:
+        if not foundNameOfScout:
             threeNameScouts.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
