@@ -478,14 +478,13 @@ def run():
 def findScounts(allSkillOrNameScouts):
     threeSkillOrNameScouts=[]
     for i in range(3):
-        foundButton = False
+        
         for j in allSkillOrNameScouts:
             if(name:=checkInRow(j, i)):
                 threeSkillOrNameScouts.append(name)
-                foundButton = True
                 break
 
-        if not foundButton:
+        if not name:
             threeSkillOrNameScouts.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
@@ -495,22 +494,25 @@ def findScounts(allSkillOrNameScouts):
 
 
 def findScountNames(allScoutCategories):
-    threeSkillOrNameScouts=[]
+    threeNameScouts=[]
     for i in range(3):
-        foundButton = False
+
         for j in allScoutCategories:
-            if(name:=checkInRow(j, i)):
-                threeSkillOrNameScouts.append(name)
-                foundButton = True
+            if(category:=checkInRow(j, i)):
                 break
 
-        if not foundButton:
-            threeSkillOrNameScouts.append('new')
+        for j in category:
+            if(nameOfScout:=checkInRow[j, i]):
+                threeNameScouts.append(nameOfScout)
+                break
+
+        if not nameOfScout:
+            threeNameScouts.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
         if i <2:
             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
-    return threeSkillOrNameScouts
+    return threeNameScouts
 
 
 def scountsFromOnePage():
