@@ -37,8 +37,8 @@ imgStar4 = Image.open('./assets/scouts/Star4.png')
 imgStar5 = Image.open('./assets/scouts/Star5.png')
 
 imgAbility_185cmormore = Image.open('./assets/scouts/Ability_185cmormore.png')
-imgAbility_25to29yearold = Image.open('./assets/scouts/Ability_25to29yearold.png')
-imgAbility_30plus = Image.open('./assets/scouts/Ability_30plus.png')
+imgAge_25to29yearold = Image.open('./assets/scouts/Age_25to29yearold.png')
+imgAge_30plus = Image.open('./assets/scouts/Age_30plus.png')
 imgAbility_Acceleration = Image.open('./assets/scouts/Ability_Acceleration.png')
 imgAbility_BallControl = Image.open('./assets/scouts/Ability_BallControl.png')
 imgAbility_BallWinning = Image.open('./assets/scouts/Ability_BallWinning.png')
@@ -63,7 +63,7 @@ imgAbility_PlaceKicking = Image.open('./assets/scouts/Ability_PlaceKicking.png')
 imgAbility_Rightfoot = Image.open('./assets/scouts/Ability_Rightfoot.png')
 imgAbility_Speed = Image.open('./assets/scouts/Ability_Speed.png')
 imgAbility_Stamina = Image.open('./assets/scouts/Ability_Stamina.png')
-imgAbility_U24 = Image.open('./assets/scouts/Ability_U24.png')
+imgAge_U24 = Image.open('./assets/scouts/Age_U24.png')
 imgArea_Africa = Image.open('./assets/scouts/Area_Africa.png')
 imgArea_Americas = Image.open('./assets/scouts/Area_Americas.png')
 imgArea_AsiaOceania = Image.open('./assets/scouts/Area_AsiaOceania.png')
@@ -155,8 +155,8 @@ allNegotiationSkills = [Star1, Star2, Star3, Star4, Star5]
 
 
 Ability_185cmormore = button('Ability_185cmormore',imgAbility_185cmormore, regionScoutNames)
-Ability_25to29yearold = button('Ability_25to29yearold',imgAbility_25to29yearold, regionScoutNames)
-Ability_30plus = button('Ability_30plus',imgAbility_30plus, regionScoutNames)
+Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
+Age_30plus = button('Age_30plus',imgAge_30plus, regionScoutNames)
 Ability_Acceleration = button('Ability_Acceleration',imgAbility_Acceleration, regionScoutNames)
 Ability_BallControl = button('Ability_BallControl',imgAbility_BallControl, regionScoutNames)
 Ability_BallWinning = button('Ability_BallWinning',imgAbility_BallWinning, regionScoutNames)
@@ -181,7 +181,7 @@ Ability_PlaceKicking = button('Ability_PlaceKicking',imgAbility_PlaceKicking, re
 Ability_Rightfoot = button('Ability_Rightfoot',imgAbility_Rightfoot, regionScoutNames)
 Ability_Speed = button('Ability_Speed',imgAbility_Speed, regionScoutNames)
 Ability_Stamina = button('Ability_Stamina',imgAbility_Stamina, regionScoutNames)
-Ability_U24 = button('Ability_U24',imgAbility_U24, regionScoutNames)
+Age_U24 = button('Age_U24',imgAge_U24, regionScoutNames)
 Area_Africa = button('Area_Africa',imgArea_Africa, regionScoutNames)
 Area_Americas = button('Area_Americas',imgArea_Americas, regionScoutNames)
 Area_AsiaOceania = button('Area_AsiaOceania',imgArea_AsiaOceania, regionScoutNames)
@@ -214,7 +214,10 @@ Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames)
 Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames)
 FavouriteTactics = button('FavouriteTactics',imgFavouriteTactics, regionScoutNames)
 
-allScoutNames = [FavouriteTactics, Ability_185cmormore, Ability_25to29yearold, Ability_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Ability_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
+Age = [Age_U24, Age_25to29yearold, Age_30plus]
+
+allScoutNames = [FavouriteTactics, Ability_185cmormore, Age_25to29yearold, Age_30plus, Ability_Acceleration, Ability_BallControl, Ability_BallWinning, Ability_Curl, Ability_DefensiveAwareness, Ability_Dribbling, Ability_Finishing, Ability_GKAwareness, Ability_GKCatching, Ability_GKClearing, Ability_GKReach, Ability_GKReflexes, Ability_Heading, Ability_Jump, Ability_KickingPower, Ability_Leftfoot, Ability_LoftedPass, Ability_LowPass, Ability_OffensiveAwareness, Ability_PhysicalContact, Ability_PlaceKicking, Ability_Rightfoot, Ability_Speed, Ability_Stamina, Age_U24, Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe, League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish, Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
+allScoutCategories = [FavouriteTactics, League, Area,  Pos, KeyAttributes, Age, Height, StrongerFoot]
 
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
@@ -491,11 +494,30 @@ def findScounts(allSkillOrNameScouts):
     return threeSkillOrNameScouts
 
 
+def findScountNames(allScoutCategories):
+    threeSkillOrNameScouts=[]
+    for i in range(3):
+        foundButton = False
+        for j in allScoutCategories:
+            if(name:=checkInRow(j, i)):
+                threeSkillOrNameScouts.append(name)
+                foundButton = True
+                break
+
+        if not foundButton:
+            threeSkillOrNameScouts.append('new')
+        
+        print2Both("\nFinished with box "+str(i+1)+"\n")
+        if i <2:
+            print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
+    return threeSkillOrNameScouts
+
+
 def scountsFromOnePage():
     global scouts
     global page
     threeNegotiationSkills = findScounts(allNegotiationSkills)
-    threeScoutNames = findScounts(allScoutNames)
+    threeScoutNames = findScountNames(allScoutCategories)
 
     # while True:
     #     try:
