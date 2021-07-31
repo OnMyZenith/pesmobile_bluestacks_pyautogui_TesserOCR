@@ -502,11 +502,11 @@ def run():
 #                 break
 
 #         for j in category:
-#             if(foundOneHalfOfThreeScouts:=checkInRow[j, i]):
-#                 threeScoutNames.append(foundOneHalfOfThreeScouts)
+#             if(foundOneHalfOfOneScout:=checkInRow[j, i]):
+#                 threeScoutNames.append(foundOneHalfOfOneScout)
 #                 break
 
-#         if not foundOneHalfOfThreeScouts:
+#         if not foundOneHalfOfOneScout:
 #             threeScoutNames.append('new')
         
 #         print2Both("\nFinished with box "+str(i+1)+"\n")
@@ -517,7 +517,6 @@ def run():
 def identifyOneHalfOfScoutsOnPage(allSkills_or_Categories, isCategory):
     oneHalfOfThreeScouts=[]
     for i in range(3):
-
         if isCategory:
             for j in allSkills_or_Categories:
                 if(foundCategory:=checkInRow(j, i)):
@@ -525,17 +524,17 @@ def identifyOneHalfOfScoutsOnPage(allSkills_or_Categories, isCategory):
                 
             if foundCategory:
                 for j in foundCategory:
-                    if(foundOneHalfOfThreeScouts:=checkInRow[j, i]):
-                        oneHalfOfThreeScouts.append(foundOneHalfOfThreeScouts)
+                    if(foundOneHalfOfOneScout:=checkInRow[j, i]):
+                        oneHalfOfThreeScouts.append(foundOneHalfOfOneScout)
                         break
 
         else:
             for j in allSkills_or_Categories:
-                if(foundOneHalfOfThreeScouts:=checkInRow[j, i]):
-                    oneHalfOfThreeScouts.append(foundOneHalfOfThreeScouts)
+                if(foundOneHalfOfOneScout:=checkInRow[j, i]):
+                    oneHalfOfThreeScouts.append(foundOneHalfOfOneScout)
                     break
 
-        if not foundOneHalfOfThreeScouts:
+        if not foundOneHalfOfOneScout:
             oneHalfOfThreeScouts.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
