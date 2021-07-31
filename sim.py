@@ -475,48 +475,10 @@ def run():
     except BaseException as e:
         printException(e,True)
 
-# def findScounts(allSkillOrNameScouts):
-#     threeSkillOrNameScouts=[]
-#     for i in range(3):
-        
-#         for j in allSkillOrNameScouts:
-#             if(name:=checkInRow(j, i)):
-#                 threeSkillOrNameScouts.append(name)
-#                 break
-
-#         if not name:
-#             threeSkillOrNameScouts.append('new')
-        
-#         print2Both("\nFinished with box "+str(i+1)+"\n")
-#         if i <2:
-#             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
-#     return threeSkillOrNameScouts
-
-
-# def findScountNames(allScoutCategories):
-#     threeScoutNames=[]
-#     for i in range(3):
-
-#         for j in allScoutCategories:
-#             if(category:=checkInRow(j, i)):
-#                 break
-
-#         for j in category:
-#             if(foundOneHalfOfOneScout:=checkInRow[j, i]):
-#                 threeScoutNames.append(foundOneHalfOfOneScout)
-#                 break
-
-#         if not foundOneHalfOfOneScout:
-#             threeScoutNames.append('new')
-        
-#         print2Both("\nFinished with box "+str(i+1)+"\n")
-#         if i <2:
-#             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
-#     return threeScoutNames
-
 def identifyOneHalfOfScoutsOnPage(allSkills_or_Categories, isCategory):
     oneHalfOfThreeScouts=[]
     for i in range(3):
+        foundOneHalfOfOneScout = None
         if isCategory:
             for j in allSkills_or_Categories:
                 if(foundCategory:=checkInRow(j, i)):
