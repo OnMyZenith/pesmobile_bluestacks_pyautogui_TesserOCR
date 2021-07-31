@@ -443,8 +443,8 @@ def start():
         pages = int(input("Enter no. of pages to skip : "))
         selectScouts(pages)
     elif(task == 4):
-        totalNumber = int(input("Enter total number of Scouts  (Must be atleast 3) : "))
-        analyzeScouts(totalNumber)
+        numberOfScoutsLeft = int(input("Enter total number of Scouts  (Must be atleast 3) : "))
+        analyzeScouts(numberOfScoutsLeft)
 
 
 def printException(exception,shouldRestart):
@@ -487,7 +487,7 @@ def findScounts(allSkillOrNameScouts):
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
         if i <2:
-            print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(number/3+0.7))+'\n')
+            print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
     return threeSkillOrNameScouts
 
 
@@ -511,7 +511,7 @@ def scountsFromOnePage():
     for i in range(scoutsCountedTwice, len(threeScoutNames)):
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i], page])
         
-    print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(number/3+0.7)))
+    print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(totalNumber/3+0.7)))
 
     print2Both("\n\nScouts identified on Page :\n")
     for i in range(len(threeScoutNames)-scoutsCountedTwice):
@@ -521,36 +521,36 @@ def scountsFromOnePage():
     time.sleep(1)
     pyg.screenshot(path+'/Page'+str(page)+'.png')
 
-def analyzeScouts(totalNumber):
+def analyzeScouts(numberOfScoutsLeft):
     time1= time.time()
-    global number
+    global totalNumber
     global scoutsCountedTwice
     global scouts
     global page
     page=0
-    number = totalNumber
+    totalNumber = numberOfScoutsLeft
     scouts = []
     scoutsCountedTwice = 0
     isFinalPage = False
 
-    while(totalNumber>0):
-        if totalNumber<=3:
-            scoutsCountedTwice = 3 - totalNumber
+    while(numberOfScoutsLeft>0):
+        if numberOfScoutsLeft<=3:
+            scoutsCountedTwice = 3 - numberOfScoutsLeft
             isFinalPage = True
 
         scountsFromOnePage()
 
         if not isFinalPage:
             scrollDownSlow()
-            time.sleep(2)
+            time.sleep(3)
 
-        totalNumber-=3
+        numberOfScoutsLeft-=3
     lt()
-    print2Both('Time taken to analyze '+str(number)+' scouts : '+str(int((time.time()-time1)/60))+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
+    print2Both('Time taken to analyze '+str(totalNumber)+' scouts : '+str(int((time.time()-time1)/60))+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
     print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
 
     f = open(path +'/scouts.txt', 'a')
-    for i in range(number):
+    for i in range(totalNumber):
         f.write(str(scouts[i][0])+', '+str(scouts[i][1])+"\n")
     f.close()
     
