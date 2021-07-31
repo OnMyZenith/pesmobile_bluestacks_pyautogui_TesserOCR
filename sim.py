@@ -485,7 +485,7 @@ def run():
     # except BaseException as e:
     #     printException(e,True)
 
-def f(a,b,c):
+def avoidErrorRecursive(a,b,c):
     global found
     global gotOSError
     try:
@@ -533,7 +533,7 @@ def addScoutsOfPage():
                 # if pyg.pixelMatchesColor(k, j, (254,203, 0)):
                 #     found = True
                 #     break
-                f(k, j, (254,203, 0))
+                avoidErrorRecursive(k, j, (254,203, 0))
             if not found:
                 break
         threeNegotiationSkills.append(idx+1)
