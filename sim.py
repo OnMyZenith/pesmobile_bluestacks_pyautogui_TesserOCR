@@ -450,6 +450,7 @@ def start():
 def printException(exception,shouldRestart):
     global restarting
     restarting = shouldRestart
+    print2Both("\nException Occurred\n")
     lt()
     print2Both(repr(exception))
     if(shouldRestart):
@@ -511,7 +512,11 @@ def scountsFromOnePage():
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i], page])
         
     print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(number/3+0.7)))
-    print2Both("\n\nScouts identified on Page :\n\n\t"+str(scouts[3*page-3])+"\n\t"+str(scouts[3*page-2])+"\n\t"+str(scouts[3*page-1])+"\n\n")
+
+    print2Both("\n\nScouts identified on Page :\n")
+    for i in range(len(threeScoutNames)-scoutsCountedTwice):
+        print2Both("\n\t"+str(scouts[3*page-3+i]))
+
     lt()
     time.sleep(1)
     pyg.screenshot(path+'/Page'+str(page)+'.png')
