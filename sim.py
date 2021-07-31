@@ -582,14 +582,14 @@ def analyzeScouts(numberOfScoutsLeft):
     
 
 def checkInRow(bt, row):
-    print2Both('Checking for '+bt.name+' in box '+str(row+1)+str(bt.region[row]))
+    print2Both('Checking for '+str(bt.name)+' in box '+str(row+1)+str(bt.region[row]))
     point = pyg.locateCenterOnScreen(bt.img, region=bt.region[row] , confidence=.98)
 
     if(point):
-        print2Both("Found "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
+        print2Both("Found "+str(bt.name)+'in box '+str(row+1)+str(bt.region[row]))
         return bt.name
     else:
-        print2Both("Couldn't find "+bt.name+'in box '+str(row+1)+str(bt.region[row]))
+        print2Both("Couldn't find "+str(bt.name)+'in box '+str(row+1)+str(bt.region[row]))
         return None
 
 restarting = False
