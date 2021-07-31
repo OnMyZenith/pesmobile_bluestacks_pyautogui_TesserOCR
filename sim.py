@@ -30,11 +30,11 @@ imgSquadContRen = Image.open('./assets/SquadContRen.png')
 imgGP = Image.open('./assets/GP.png')
 imgRenew = Image.open('./assets/Renew.png')
 
-imgStar1 = Image.open('./assets/scouts/Star1.png')
-imgStar2 = Image.open('./assets/scouts/Star2.png')
-imgStar3 = Image.open('./assets/scouts/Star3.png')
-imgStar4 = Image.open('./assets/scouts/Star4.png')
-imgStar5 = Image.open('./assets/scouts/Star5.png')
+# imgStar1 = Image.open('./assets/scouts/Star1.png')
+# imgStar2 = Image.open('./assets/scouts/Star2.png')
+# imgStar3 = Image.open('./assets/scouts/Star3.png')
+# imgStar4 = Image.open('./assets/scouts/Star4.png')
+# imgStar5 = Image.open('./assets/scouts/Star5.png')
 
 imgAge_25to29yearold = Image.open('./assets/scouts/Age_25to29yearold.png')
 imgAge_30plus = Image.open('./assets/scouts/Age_30plus.png')
@@ -153,13 +153,15 @@ SquadContRen = button('SquadContRen', imgSquadContRen, regionSquadContRen)
 gp = button('GP', imgGP, regionGP)
 Renew = button('Renew', imgRenew, regionRenew)
 
-Star1 = button('1*', imgStar1, regionNegotiationSkills)
-Star2 = button('2*', imgStar2, regionNegotiationSkills)
-Star3 = button('3*', imgStar3, regionNegotiationSkills)
-Star4 = button('4*', imgStar4, regionNegotiationSkills)
-Star5 = button('5*', imgStar5, regionNegotiationSkills)
+# Star1 = button('1*', imgStar1, regionNegotiationSkills)
+# Star2 = button('2*', imgStar2, regionNegotiationSkills)
+# Star3 = button('3*', imgStar3, regionNegotiationSkills)
+# Star4 = button('4*', imgStar4, regionNegotiationSkills)
+# Star5 = button('5*', imgStar5, regionNegotiationSkills)
 
-allNegotiationSkills = [Star1, Star2, Star3, Star4, Star5]
+# allNegotiationSkills = [Star1, Star2, Star3, Star4, Star5]
+
+starsX = [300, 327, 355, 377]
 
 Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
 Age_30plus = button('Age_30plus',imgAge_30plus, regionScoutNames)
@@ -496,52 +498,54 @@ def run():
     except BaseException as e:
         printException(e,True)
 
-def identifyOneHalfOfScoutsOnPage(allSkills_or_Categories, isCategory):
-    oneHalfOfThreeScouts=[]
+
+def addScoutsOfPage():
+    global scouts
+    global page
+    threeScoutNames=[]
+    threeNegotiationSkills = []
+
+############################
+    try:
+        pyg.pixel(10,10)
+    except OSError:
+        pass
+############################
+
     for i in range(3):
         foundOneHalfOfOneScout = None
         foundCategory = None
 
-        if isCategory:
-            for j in allSkills_or_Categories:
-                if(foundCategory:=checkInRow(j, i)):
-                    break
-                
-            if foundCategory:
-                for j in foundCategory:
-                    if(foundOneHalfOfOneScout:=checkInRow[j, i]):
-                        oneHalfOfThreeScouts.append(foundOneHalfOfOneScout)
-                        break
+        for j in allScoutCategories:
+            if(foundCategory:=checkInRow(j, i)):
+                break
 
-        else:
-            for j in allSkills_or_Categories:
+        if foundCategory:
+            for j in foundCategory:
                 if(foundOneHalfOfOneScout:=checkInRow[j, i]):
-                    oneHalfOfThreeScouts.append(foundOneHalfOfOneScout)
+                    threeScoutNames.append(foundOneHalfOfOneScout)
                     break
 
         if not foundOneHalfOfOneScout:
-            oneHalfOfThreeScouts.append('new')
+            threeScoutNames.append('new')
         
+        for idx, k in  enumerate(starsX):
+            found = False
+            for j in range(regionNegotiationSkills[i][1], regionNegotiationSkills[i][3]):
+                if pyg.pixelMatchesColor(k, j, (254,203, 0)):
+                    found = True
+                    break
+
+            if not found:
+                break
+        threeNegotiationSkills.append(idx+1)
+
         print2Both("\nFinished with box "+str(i+1)+"\n")
         if i <2:
             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
-    return oneHalfOfThreeScouts
 
-def addScoutsOnPage():
-    global scouts
-    global page
-    threeNegotiationSkills = identifyOneHalfOfScoutsOnPage(allNegotiationSkills, False)
-    threeScoutNames = identifyOneHalfOfScoutsOnPage(allScoutCategories, True)
 
-    # while True:
-    #     try:
-    #         pos = threeScoutNames.index('FavouriteTactics')
-    #         threeScoutNames.pop(pos)
-    #         threeNegotiationSkills.pop(pos)
-    #         clickOnPoint(scoutPositions[pos])
-    #     except ValueError:
-    #         break
-    
+
     page+=1
 
     for i in range(scoutsCountedTwice, len(threeScoutNames)):
@@ -574,7 +578,7 @@ def analyzeScouts(numberOfScoutsLeft):
             scoutsCountedTwice = 3 - numberOfScoutsLeft
             isFinalPage = True
 
-        addScoutsOnPage()
+        addScoutsOfPage()
 
         if not isFinalPage:
             scrollDownSlow()
