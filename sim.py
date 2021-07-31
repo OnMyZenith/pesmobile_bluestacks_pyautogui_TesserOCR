@@ -479,8 +479,9 @@ def identifyOneHalfOfScoutsOnPage(allSkills_or_Categories, isCategory):
     oneHalfOfThreeScouts=[]
     for i in range(3):
         foundOneHalfOfOneScout = None
+        foundCategory = None
+
         if isCategory:
-            foundCategory = None
             for j in allSkills_or_Categories:
                 if(foundCategory:=checkInRow(j, i)):
                     break
