@@ -209,23 +209,23 @@ Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionSc
 StrongerFoot_Left = button('StrongerFoot_Left',imgStrongerFoot_Left, regionScoutNames)
 StrongerFoot_Right = button('StrongerFoot_Right',imgStrongerFoot_Right, regionScoutNames)
 
-FavouriteTactics = button('FavouriteTactics',imgFavouriteTactics, regionScoutNames)
-League = button('League',imgLeague, regionScoutNames)
-Area = button('Area',imgArea, regionScoutNames)
-Pos = button('Pos',imgPos, regionScoutNames)
-KeyAttributes = button('KeyAttributes',imgKeyAttributes, regionScoutNames)
-Age = button('Age',imgAge, regionScoutNames)
-Height = button('Height',imgHeight, regionScoutNames)
-StrongerFoot = button('StrongerFoot',imgStrongerFoot, regionScoutNames)
+FavouriteTactics = button('FavouriteTacticsList',imgFavouriteTactics, regionScoutNames)
+League = button('LeagueList',imgLeague, regionScoutNames)
+Area = button('AreaList',imgArea, regionScoutNames)
+Pos = button('PosList',imgPos, regionScoutNames)
+KeyAttributes = button('KeyAttributesList',imgKeyAttributes, regionScoutNames)
+Age = button('AgeList',imgAge, regionScoutNames)
+Height = button('HeightList',imgHeight, regionScoutNames)
+StrongerFoot = button('StrongerFootList',imgStrongerFoot, regionScoutNames)
 
-FavouriteTactics = [FavouriteTactics_]
-Area = [Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe]
-League = [League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish]
-Age = [Age_U24, Age_25to29yearold, Age_30plus]
-Height = [Height_185cmormore]
-Pos = [Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
-StrongerFoot = [StrongerFoot_Left, StrongerFoot_Right]
-KeyAttributes = [KeyAttributes_Acceleration, KeyAttributes_BallControl, KeyAttributes_BallWinning, KeyAttributes_Curl, KeyAttributes_DefensiveAwareness, KeyAttributes_Dribbling, KeyAttributes_Finishing, KeyAttributes_GKAwareness, KeyAttributes_GKCatching, KeyAttributes_GKClearing, KeyAttributes_GKReach, KeyAttributes_GKReflexes, KeyAttributes_Heading, KeyAttributes_Jump, KeyAttributes_KickingPower, KeyAttributes_LoftedPass, KeyAttributes_LowPass, KeyAttributes_OffensiveAwareness, KeyAttributes_PhysicalContact, KeyAttributes_PlaceKicking, KeyAttributes_Speed, KeyAttributes_Stamina]
+FavouriteTacticsList = [FavouriteTactics_]
+AreaList = [Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe]
+LeagueList = [League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish]
+AgeList = [Age_U24, Age_25to29yearold, Age_30plus]
+HeightList = [Height_185cmormore]
+PosList = [Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
+StrongerFootList = [StrongerFoot_Left, StrongerFoot_Right]
+KeyAttributesList = [KeyAttributes_Acceleration, KeyAttributes_BallControl, KeyAttributes_BallWinning, KeyAttributes_Curl, KeyAttributes_DefensiveAwareness, KeyAttributes_Dribbling, KeyAttributes_Finishing, KeyAttributes_GKAwareness, KeyAttributes_GKCatching, KeyAttributes_GKClearing, KeyAttributes_GKReach, KeyAttributes_GKReflexes, KeyAttributes_Heading, KeyAttributes_Jump, KeyAttributes_KickingPower, KeyAttributes_LoftedPass, KeyAttributes_LowPass, KeyAttributes_OffensiveAwareness, KeyAttributes_PhysicalContact, KeyAttributes_PlaceKicking, KeyAttributes_Speed, KeyAttributes_Stamina]
 
 allScoutCategories = [FavouriteTactics, League, Area, Pos, KeyAttributes, Age, Height, StrongerFoot]
 
@@ -463,7 +463,7 @@ def start():
 def printException(exception,shouldRestart):
     global restarting
     restarting = shouldRestart
-    print2Both("\nException Occurred\n")
+    print2Both("\n\nException Occurred\n")
     lt()
     print2Both(repr(exception))
     if(shouldRestart):
@@ -482,8 +482,8 @@ def run():
         printException(e,False)
     except OSError as e:
         printException(e,True)
-    except BaseException as e:
-        printException(e,True)
+    # except BaseException as e:
+    #     printException(e,True)
 
 
 def addScoutsOfPage():
