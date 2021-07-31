@@ -209,15 +209,6 @@ Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionSc
 StrongerFoot_Left = button('StrongerFoot_Left',imgStrongerFoot_Left, regionScoutNames)
 StrongerFoot_Right = button('StrongerFoot_Right',imgStrongerFoot_Right, regionScoutNames)
 
-FavouriteTactics = button('FavouriteTacticsList',imgFavouriteTactics, regionScoutNames)
-League = button('LeagueList',imgLeague, regionScoutNames)
-Area = button('AreaList',imgArea, regionScoutNames)
-Pos = button('PosList',imgPos, regionScoutNames)
-KeyAttributes = button('KeyAttributesList',imgKeyAttributes, regionScoutNames)
-Age = button('AgeList',imgAge, regionScoutNames)
-Height = button('HeightList',imgHeight, regionScoutNames)
-StrongerFoot = button('StrongerFootList',imgStrongerFoot, regionScoutNames)
-
 FavouriteTacticsList = [FavouriteTactics_]
 AreaList = [Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe]
 LeagueList = [League_Argentinian, League_Brazilian, League_Chiliean, League_Dutch, League_English, League_FreeAgent, League_French, League_Italian, League_OtherAsia, League_OtherEurope, League_OtherLatinAmerica, League_Portuguese, League_Spanish]
@@ -226,6 +217,15 @@ HeightList = [Height_185cmormore]
 PosList = [Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, Pos_RB, Pos_RMF, Pos_RWF, Pos_SS, Pos_UtilityPlayers]
 StrongerFootList = [StrongerFoot_Left, StrongerFoot_Right]
 KeyAttributesList = [KeyAttributes_Acceleration, KeyAttributes_BallControl, KeyAttributes_BallWinning, KeyAttributes_Curl, KeyAttributes_DefensiveAwareness, KeyAttributes_Dribbling, KeyAttributes_Finishing, KeyAttributes_GKAwareness, KeyAttributes_GKCatching, KeyAttributes_GKClearing, KeyAttributes_GKReach, KeyAttributes_GKReflexes, KeyAttributes_Heading, KeyAttributes_Jump, KeyAttributes_KickingPower, KeyAttributes_LoftedPass, KeyAttributes_LowPass, KeyAttributes_OffensiveAwareness, KeyAttributes_PhysicalContact, KeyAttributes_PlaceKicking, KeyAttributes_Speed, KeyAttributes_Stamina]
+
+FavouriteTactics = button(FavouriteTacticsList,imgFavouriteTactics, regionScoutNames)
+League = button(LeagueList,imgLeague, regionScoutNames)
+Area = button(AreaList,imgArea, regionScoutNames)
+Pos = button(PosList,imgPos, regionScoutNames)
+KeyAttributes = button(KeyAttributesList,imgKeyAttributes, regionScoutNames)
+Age = button(AgeList,imgAge, regionScoutNames)
+Height = button(HeightList,imgHeight, regionScoutNames)
+StrongerFoot = button(StrongerFootList,imgStrongerFoot, regionScoutNames)
 
 allScoutCategories = [FavouriteTactics, League, Area, Pos, KeyAttributes, Age, Height, StrongerFoot]
 
@@ -509,7 +509,8 @@ def addScoutsOfPage():
 
         if foundCategory:
             for j in foundCategory:
-                if(foundOneHalfOfOneScout:=checkInRow[j, i]):
+                print(j)
+                if(foundOneHalfOfOneScout:=checkInRow(j, i)):
                     threeScoutNames.append(foundOneHalfOfOneScout)
                     break
 
@@ -581,7 +582,7 @@ def analyzeScouts(numberOfScoutsLeft):
     
 
 def checkInRow(bt, row):
-    print2Both('Checking for '+bt.name+'in box '+str(row+1)+str(bt.region[row]))
+    print2Both('Checking for '+bt.name+' in box '+str(row+1)+str(bt.region[row]))
     point = pyg.locateCenterOnScreen(bt.img, region=bt.region[row] , confidence=.98)
 
     if(point):
