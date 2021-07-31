@@ -502,11 +502,11 @@ def findScountNames(allScoutCategories):
                 break
 
         for j in category:
-            if(foundNameOfScout:=checkInRow[j, i]):
-                threeScoutNames.append(foundNameOfScout)
+            if(foundOneHalfOfThreeScouts:=checkInRow[j, i]):
+                threeScoutNames.append(foundOneHalfOfThreeScouts)
                 break
 
-        if not foundNameOfScout:
+        if not foundOneHalfOfThreeScouts:
             threeScoutNames.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
@@ -514,39 +514,39 @@ def findScountNames(allScoutCategories):
             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
     return threeScoutNames
 
-def identifyScoutsOnPage(allSkills_or_Categories, isCategories):
-    OneHalfOfThreeScouts=[]
+def identifyOneHalfOfScoutsOnPage(allSkills_or_Categories, isCategory):
+    oneHalfOfThreeScouts=[]
     for i in range(3):
 
-        if isCategories:
+        if isCategory:
             for j in allSkills_or_Categories:
                 if(category:=checkInRow(j, i)):
                     break
 
             for j in category:
-                if(foundNameOfScout:=checkInRow[j, i]):
-                    OneHalfOfThreeScouts.append(foundNameOfScout)
+                if(foundOneHalfOfThreeScouts:=checkInRow[j, i]):
+                    oneHalfOfThreeScouts.append(foundOneHalfOfThreeScouts)
                     break
 
         else:
             for j in allSkills_or_Categories:
-                if(foundNameOfScout:=checkInRow[j, i]):
-                    OneHalfOfThreeScouts.append(foundNameOfScout)
+                if(foundOneHalfOfThreeScouts:=checkInRow[j, i]):
+                    oneHalfOfThreeScouts.append(foundOneHalfOfThreeScouts)
                     break
 
-        if not foundNameOfScout:
-            OneHalfOfThreeScouts.append('new')
+        if not foundOneHalfOfThreeScouts:
+            oneHalfOfThreeScouts.append('new')
         
         print2Both("\nFinished with box "+str(i+1)+"\n")
         if i <2:
             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
-    return OneHalfOfThreeScouts
+    return oneHalfOfThreeScouts
 
 def addScoutsOnPage():
     global scouts
     global page
-    threeNegotiationSkills = findScounts(allNegotiationSkills)
-    threeScoutNames = findScountNames(allScoutCategories)
+    threeNegotiationSkills = identifyOneHalfOfScoutsOnPage(allNegotiationSkills, False)
+    threeScoutNames = identifyOneHalfOfScoutsOnPage(allScoutCategories, True)
 
     # while True:
     #     try:
