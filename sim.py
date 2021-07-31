@@ -485,19 +485,29 @@ def run():
     # except BaseException as e:
     #     printException(e,True)
 
+def f(a,b,c):
+    global found
+    global gotOSError
+    try:
+        if pyg.pixelMatchesColor(a, b, c):
+            found = True
+    except OSError:
+        gotOSError+=1
+        f(a,b,c)
 
 def addScoutsOfPage():
     global scouts
     global page
+    global found
     threeScoutNames=[]
     threeNegotiationSkills = []
 
-############################
-    try:
-        pyg.pixel(10,10)
-    except OSError:
-        pass
-############################
+# ############################
+#     try:
+#         pyg.pixel(10,10)
+#     except OSError:
+#         pass
+# ############################
 
     for i in range(3):
         foundOneHalfOfOneScout = None
@@ -520,10 +530,10 @@ def addScoutsOfPage():
         for idx, k in  enumerate(starsX):
             found = False
             for j in range(regionNegotiationSkills[i][1], regionNegotiationSkills[i][3], 3):
-                if pyg.pixelMatchesColor(k, j, (254,203, 0)):
-                    found = True
-                    break
-
+                # if pyg.pixelMatchesColor(k, j, (254,203, 0)):
+                #     found = True
+                #     break
+                f(k, j, (254,203, 0))
             if not found:
                 break
         threeNegotiationSkills.append(idx+1)
@@ -552,6 +562,8 @@ def analyzeScouts(numberOfScoutsLeft):
     global totalNumber
     global scoutsCountedTwice
     global scouts
+    global gotOSError
+    gotOSError = 0
     global page
     page=0
     totalNumber = numberOfScoutsLeft
@@ -574,6 +586,8 @@ def analyzeScouts(numberOfScoutsLeft):
     lt()
     print2Both('Time taken to analyze '+str(totalNumber)+' scouts : '+str(int((time.time()-time1)/60))+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
     print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
+    print2Both("\n\nTotal times got OSError :"+str(gotOSError)+"\n\n")
+
 
     f = open(path +'/scouts.txt', 'a')
     for i in range(totalNumber):
@@ -586,10 +600,10 @@ def checkInRow(bt, row):
     point = pyg.locateCenterOnScreen(bt.img, region=bt.region[row] , confidence=.98)
 
     if(point):
-        print2Both("Found "+str(bt.name)+'in box '+str(row+1)+str(bt.region[row]))
+        print2Both("Found "+str(bt.name)+' in box '+str(row+1)+str(bt.region[row]))
         return bt.name
     else:
-        print2Both("Couldn't find "+str(bt.name)+'in box '+str(row+1)+str(bt.region[row]))
+        print2Both("Couldn't find "+str(bt.name)+' in box '+str(row+1)+str(bt.region[row]))
         return None
 
 restarting = False
