@@ -161,7 +161,7 @@ Renew = button('Renew', imgRenew, regionRenew)
 
 # allNegotiationSkills = [Star1, Star2, Star3, Star4, Star5]
 
-starsX = [300, 327, 355, 377]
+starsX = [301, 327, 355, 377]
 
 Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
 Age_30plus = button('Age_30plus',imgAge_30plus, regionScoutNames)
@@ -531,7 +531,7 @@ def addScoutsOfPage():
         
         for idx, k in  enumerate(starsX):
             found = False
-            for j in range(regionNegotiationSkills[i][1], regionNegotiationSkills[i][3]):
+            for j in range(regionNegotiationSkills[i][1], regionNegotiationSkills[i][3], 3):
                 if pyg.pixelMatchesColor(k, j, (254,203, 0)):
                     found = True
                     break
