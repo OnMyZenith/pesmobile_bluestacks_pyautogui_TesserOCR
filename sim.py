@@ -493,7 +493,7 @@ def avoidErrorRecursive(a,b,c):
             found = True
     except OSError:
         gotOSError+=1
-        f(a,b,c)
+        avoidErrorRecursive(a,b,c)
 
 def addScoutsOfPage():
     global scouts
