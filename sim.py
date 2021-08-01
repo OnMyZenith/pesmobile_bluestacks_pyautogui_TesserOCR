@@ -170,7 +170,7 @@ Ex = button('Ex', imgEx, regionEx)
 LoginBonus_Confirm = button('LoginBonus_Confirm', imgLoginBonus_Confirm, regionLoginBonus_Confirm)
 LoginBonus = button('LoginBonus', imgLoginBonus, regionLoginBonus)
 Frontpage_Match = button('Frontpage_Match', imgFrontpage_Match, regionFrontpage_Match)
-Frontpage_Campaign = button('Renew', imgFrontpage_Campaign, regionFrontpage_Campaign)
+Frontpage_Campaign = button('Frontpage_Campaign', imgFrontpage_Campaign, regionFrontpage_Campaign)
 Frontpage_Campaign_SimMatch = button('Frontpage_Campaign_SimMatch', imgFrontpage_Campaign_SimMatch, regionFrontpage_Campaign_SimMatch)
 
 Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
@@ -432,7 +432,7 @@ def autosim():
         click(Retry, False, waitShort)
 
         changedMatchNumber = False
-        
+
         if check(ToMatch):
             matchNumber += 1
             changedMatchNumber = True
