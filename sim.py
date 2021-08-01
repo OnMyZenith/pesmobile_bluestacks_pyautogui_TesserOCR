@@ -442,11 +442,11 @@ def autosim():
         if check(ToMatch):
             matchNumber += 1
             changedMatchNumber = True
-            pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_1.png')
+            pyg.screenshot('./logs/MatchScreenshots/'+folderName+'MatchNumber_'+str(matchNumber)+'_1.png')
             print2Both("Took a Screenshot of Campaign Summary")
             click(ToMatch, False, waitLong)     #Wait 10 secs for SNF and OK to show up if thery're going to
-            time.sleep(10)                      #Wait 10 secs for Matchmaking to Finish
-            pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_2.png')
+            time.sleep(15)                      #Wait 10 secs for Matchmaking to Finish
+            pyg.screenshot('./logs/MatchScreenshots/'+folderName+'MatchNumber_'+str(matchNumber)+'_2.png')
             print2Both("Took a Screenshot of Matchmaking")
 
         if check(SquadNotFine):
