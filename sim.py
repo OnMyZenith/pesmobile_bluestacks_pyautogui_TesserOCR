@@ -99,6 +99,14 @@ imgAge = Image.open('./assets/scouts/Age.png')
 imgHeight = Image.open('./assets/scouts/Height.png')
 imgStrongerFoot = Image.open('./assets/scouts/StrongerFoot.png')
 
+
+imgEx = Image.open('./assets/scouts/Ex.png')
+imgLoginBonus_Confirm = Image.open('./assets/scouts/LoginBonus_Confirm.png')
+imgLoginBonus = Image.open('./assets/scouts/LoginBonus.png')
+imgFrontpage_Match = Image.open('./assets/scouts/Frontpage_Match.png')
+imgFrontpage_Campaign = Image.open('./assets/scouts/Frontpage_Campaign.png')
+imgFrontpage_Campaign_SimMatch = Image.open('./assets/scouts/Frontpage_Campaign_SimMatch.png')
+
 region2ndHalf = (1560, 970, 1715, 1060)
 regionBack = (0, 980, 109, 1050)
 regionConfirm = (1630, 975, 1715, 1045)
@@ -118,6 +126,14 @@ regionCF_Jarvis = (380, 275, 1800, 800)
 regionSquadContRen = (770, 409, 856, 453)
 regionGP = (675, 558, 775, 663)
 regionRenew = (1105, 590, 1290, 660)
+
+
+regionEx = (1806, 43, 1873, 112)
+regionLoginBonus_Confirm = (1066, 655, 1314, 729)
+regionLoginBonus = (1170, 215, 1575, 490)
+regionFrontpage_Match = (167, 138, 350, 200)
+regionFrontpage_Campaign = (1368, 849, 1483, 959)
+regionFrontpage_Campaign_SimMatch = (1016, 156, 1150, 306)
 
 regionNegotiationSkills = [(275, 225, 400, 370), (275, 455, 400, 600), (275, 685, 400, 830)]
 regionScoutNames = [(425, 240, 750, 450), (425, 470, 750, 680), (425, 700, 750, 910)]
@@ -148,6 +164,14 @@ CF_Jarvis = button('CF_Jarvis', imgCF_Jarvis, regionCF_Jarvis)
 SquadContRen = button('SquadContRen', imgSquadContRen, regionSquadContRen)
 gp = button('GP', imgGP, regionGP)
 Renew = button('Renew', imgRenew, regionRenew)
+
+
+Ex = button('Ex', imgEx, regionEx)
+LoginBonus_Confirm = button('LoginBonus_Confirm', imgLoginBonus_Confirm, regionLoginBonus_Confirm)
+LoginBonus = button('LoginBonus', imgLoginBonus, regionLoginBonus)
+Frontpage_Match = button('Frontpage_Match', imgFrontpage_Match, regionFrontpage_Match)
+Frontpage_Campaign = button('Renew', imgFrontpage_Campaign, regionFrontpage_Campaign)
+Frontpage_Campaign_SimMatch = button('Frontpage_Campaign_SimMatch', imgFrontpage_Campaign_SimMatch, regionFrontpage_Campaign_SimMatch)
 
 Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
 Age_30plus = button('Age_30plus',imgAge_30plus, regionScoutNames)
@@ -393,17 +417,24 @@ def autosim():
         click(ok, False, wait)
         click(secondHalf, False, waitForOneHalf)
         click(Next, False, wait)
-        click(Confirm, False, waitForOneHalf)
+        click(Confirm, False, 100 + waitForOneHalf)
         click(Proceed, False, wait)
         click(Retry, False, wait)
-        click(Sign, False, wait)
+
+        wait = 10
+        click(Ex, False, wait)
+        click(LoginBonus_Confirm, False, wait)
+        click(LoginBonus, False, wait)
+        click(Frontpage_Match, False, wait)
+        click(Frontpage_Campaign, False, wait)
+        click(Frontpage_Campaign_SimMatch, False, wait)
 
         if(check(SquadNotFine)):
             if(check(ok)):
                 click(ok, True, wait)
             snfSwitch()
 
-        click(ToMatch, False, 10)
+        click(ToMatch, False, wait)
 
         if(check(SquadNotFine)):
             if(check(ok)):
