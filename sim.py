@@ -99,13 +99,14 @@ imgAge = Image.open('./assets/scouts/Age.png')
 imgHeight = Image.open('./assets/scouts/Height.png')
 imgStrongerFoot = Image.open('./assets/scouts/StrongerFoot.png')
 
-
 imgEx = Image.open('./assets/Ex.png')
 imgLoginBonus_Confirm = Image.open('./assets/LoginBonus_Confirm.png')
 imgLoginBonus = Image.open('./assets/LoginBonus.png')
 imgFrontpage_Match = Image.open('./assets/Frontpage_Match.png')
 imgFrontpage_Campaign = Image.open('./assets/Frontpage_Campaign.png')
 imgFrontpage_Campaign_SimMatch = Image.open('./assets/Frontpage_Campaign_SimMatch.png')
+imgTitlePage = Image.open('./assets/TitlePage.png')
+imgAbandon = Image.open('./assets/Abandon.png')
 
 region2ndHalf = (1560, 970, 1715, 1060)
 regionBack = (0, 980, 109, 1050)
@@ -127,13 +128,14 @@ regionSquadContRen = (770, 409, 856, 453)
 regionGP = (675, 558, 775, 663)
 regionRenew = (1105, 590, 1290, 660)
 
-
 regionEx = (1806, 43, 1873, 112)
 regionLoginBonus_Confirm = (1066, 655, 1314, 729)
 regionLoginBonus = (1170, 215, 1575, 490)
 regionFrontpage_Match = (167, 138, 350, 200)
 regionFrontpage_Campaign = (1368, 849, 1483, 959)
 regionFrontpage_Campaign_SimMatch = (1016, 156, 1150, 306)
+regionTitlePage = (456, 683, 608, 818)
+regionAbandon = (587, 649, 858, 736)
 
 regionNegotiationSkills = [(275, 225, 400, 370), (275, 455, 400, 600), (275, 685, 400, 830)]
 regionScoutNames = [(425, 240, 750, 450), (425, 470, 750, 680), (425, 700, 750, 910)]
@@ -165,13 +167,14 @@ SquadContRen = button('SquadContRen', imgSquadContRen, regionSquadContRen)
 gp = button('GP', imgGP, regionGP)
 Renew = button('Renew', imgRenew, regionRenew)
 
-
 Ex = button('Ex', imgEx, regionEx)
 LoginBonus_Confirm = button('LoginBonus_Confirm', imgLoginBonus_Confirm, regionLoginBonus_Confirm)
 LoginBonus = button('LoginBonus', imgLoginBonus, regionLoginBonus)
 Frontpage_Match = button('Frontpage_Match', imgFrontpage_Match, regionFrontpage_Match)
 Frontpage_Campaign = button('Frontpage_Campaign', imgFrontpage_Campaign, regionFrontpage_Campaign)
 Frontpage_Campaign_SimMatch = button('Frontpage_Campaign_SimMatch', imgFrontpage_Campaign_SimMatch, regionFrontpage_Campaign_SimMatch)
+TitlePage = button('TitlePage', imgTitlePage, regionTitlePage)
+Abandon = button('Abandon', imgAbandon, regionAbandon)
 
 Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
 Age_30plus = button('Age_30plus',imgAge_30plus, regionScoutNames)
