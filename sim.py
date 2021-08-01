@@ -431,16 +431,21 @@ def autosim():
         click(Proceed, False, waitShort)
         click(Retry, False, waitShort)
 
+        changedMatchNumber = False
+        
         if check(ToMatch):
-            time.sleep(1)
             matchNumber += 1
+            changedMatchNumber = True
             pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_1.png')
-            
             click(ToMatch, False, waitLong)     #Wait 10 secs for SNF and OK to show up if thery're going to
-            
+            time.sleep(waitLong)
             pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_2.png')
 
         if check(SquadNotFine):
+            if changedMatchNumber:
+                os.remove('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_1.png')
+                os.remove('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_2.png')
+                matchNumber -= 1
             if(check(ok)):
                 click(ok, True, waitLong)
             snfSwitch()
