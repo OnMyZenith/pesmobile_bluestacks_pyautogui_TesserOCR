@@ -307,15 +307,15 @@ def click(bt, haveToClick, waitAfterClick):
             time.sleep(2)
             pyg.mouseUp()
             print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds before rechecking and retrying if needed")
-            time.sleep(waitAfterClick)
+            time.sleep(waitAfterClick)  #Sometimes the button has same look for some time after its clicked so wait before checking if its clicked
             point = pyg.locateCenterOnScreen(bt.img, region=bt.region, confidence=.98)
     elif(point):
         print2Both("ClickLoop: Found "+bt.name)
         pyg.mouseDown(point)
         time.sleep(2)
         pyg.mouseUp()
-        print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds and before moving on")
-        time.sleep(waitAfterClick)
+        print2Both("ClickLoop: Clicked "+bt.name + " and now waiting " + str(waitAfterClick)+" seconds to save resource before moving on")
+        time.sleep(waitAfterClick)  
 
 
 def clickOnPoint(coordinate):
@@ -406,8 +406,8 @@ def snfSwitch():
 def autosim():
     global waitLong
     global waitShort
-    waitLong = 10
-    waitShort= 5
+    waitLong = 15       #Wait for button to go away in "true" "have to click" loops, Sometimes the button has same look for some time after its clicked so wait before checking if its clicked
+    waitShort= 10       #Wait to save resource
     waitForOneHalf = 150
     matchNumber  = 0
     lt()
@@ -438,13 +438,13 @@ def autosim():
             changedMatchNumber = True
             pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_1.png')
             click(ToMatch, False, waitLong)     #Wait 10 secs for SNF and OK to show up if thery're going to
-            time.sleep(waitLong)
+            time.sleep(5)
             pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_2.png')
 
         if check(SquadNotFine):
             if changedMatchNumber:
-                os.remove('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_1.png')
-                os.remove('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_2.png')
+                os.remove('./logs/MatchScreenshots/'+folderName+'MatchNumber_'+str(matchNumber)+'_1.png')
+                os.remove('./logs/MatchScreenshots/'+folderName+'MatchNumber_'+str(matchNumber)+'_2.png')
                 matchNumber -= 1
             if(check(ok)):
                 click(ok, True, waitLong)
