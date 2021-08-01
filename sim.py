@@ -100,12 +100,12 @@ imgHeight = Image.open('./assets/scouts/Height.png')
 imgStrongerFoot = Image.open('./assets/scouts/StrongerFoot.png')
 
 
-imgEx = Image.open('./assets/scouts/Ex.png')
-imgLoginBonus_Confirm = Image.open('./assets/scouts/LoginBonus_Confirm.png')
-imgLoginBonus = Image.open('./assets/scouts/LoginBonus.png')
-imgFrontpage_Match = Image.open('./assets/scouts/Frontpage_Match.png')
-imgFrontpage_Campaign = Image.open('./assets/scouts/Frontpage_Campaign.png')
-imgFrontpage_Campaign_SimMatch = Image.open('./assets/scouts/Frontpage_Campaign_SimMatch.png')
+imgEx = Image.open('./assets/Ex.png')
+imgLoginBonus_Confirm = Image.open('./assets/LoginBonus_Confirm.png')
+imgLoginBonus = Image.open('./assets/LoginBonus.png')
+imgFrontpage_Match = Image.open('./assets/Frontpage_Match.png')
+imgFrontpage_Campaign = Image.open('./assets/Frontpage_Campaign.png')
+imgFrontpage_Campaign_SimMatch = Image.open('./assets/Frontpage_Campaign_SimMatch.png')
 
 region2ndHalf = (1560, 970, 1715, 1060)
 regionBack = (0, 980, 109, 1050)
