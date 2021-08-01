@@ -427,6 +427,8 @@ def autosim():
         click(Frontpage_Match, False, waitLong)
         click(Frontpage_Campaign, False, waitLong)
         click(Frontpage_Campaign_SimMatch, False, waitLong)
+        click(TitlePage, False, waitLong)
+        click(Abandon, False, waitLong)
 
         click(ok, False, waitShort)
         click(secondHalf, False, waitForOneHalf)
@@ -528,8 +530,8 @@ def run():
         printException(e,False)
     except OSError as e:
         printException(e,True)
-    # except BaseException as e:
-    #     printException(e,True)
+    except BaseException as e:
+        printException(e,True)
 
 def avoidErrorRecursive(a,b,c):
     global found
