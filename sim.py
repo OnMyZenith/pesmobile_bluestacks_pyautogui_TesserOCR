@@ -417,6 +417,7 @@ def autosim():
     while(1):
         lt()
 
+        # WaitLong on these buttons because scrolling on frontpage takes longer
         click(Ex, False, waitLong)
         click(LoginBonus_Confirm, False, waitLong)
         click(LoginBonus, False, waitLong)
@@ -437,9 +438,11 @@ def autosim():
             matchNumber += 1
             changedMatchNumber = True
             pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_1.png')
+            print2Both("Took a Screenshot of Campaign Summary")
             click(ToMatch, False, waitLong)     #Wait 10 secs for SNF and OK to show up if thery're going to
-            time.sleep(5)
+            time.sleep(10)                      #Wait 10 secs for Matchmaking to Finish
             pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_2.png')
+            print2Both("Took a Screenshot of Matchmaking")
 
         if check(SquadNotFine):
             if changedMatchNumber:
