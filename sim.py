@@ -386,59 +386,63 @@ def renew(squad):
 
 
 def snfSwitch():
-    global wait
-    wait = 10
-    click(SquadNotFine, True, wait)
-    click(Juve, True, wait)
-    click(SwitchSquad, True, wait)
+    click(SquadNotFine, True, waitLong)
+    click(Juve, True, waitLong)
+    click(SwitchSquad, True, waitLong)
 
     while(True):
         if(check(SwitchTo1)):
-            click(SwitchTo1, True, wait)
+            click(SwitchTo1, True, waitLong)
             break
         elif(check(SwitchTo2)):
-            click(SwitchTo2, True, wait)
+            click(SwitchTo2, True, waitLong)
             break
 
-    click(Confirm, True, wait)
-    click(ok, True, wait)
-    click(Back, True, wait)
+    click(Confirm, True, waitLong)
+    click(ok, True, waitLong)
+    click(Back, True, waitLong)
 
 
 def autosim():
+    global waitLong
+    global waitShort
+    waitLong = 10
+    waitShort= 5
+    waitForOneHalf = 150
+    matchNumber  = 0
     lt()
     print2Both("Starting AutoSim in 5 seconds\n\n")
     time.sleep(5)
 
     while(1):
         lt()
-        waitForOneHalf = 150
-        wait = 4
-        click(ok, False, wait)
+
+        click(Ex, False, waitLong)
+        click(LoginBonus_Confirm, False, waitLong)
+        click(LoginBonus, False, waitLong)
+        click(Frontpage_Match, False, waitLong)
+        click(Frontpage_Campaign, False, waitLong)
+        click(Frontpage_Campaign_SimMatch, False, waitLong)
+
+        click(ok, False, waitShort)
         click(secondHalf, False, waitForOneHalf)
-        click(Next, False, wait)
+        click(Next, False, waitShort)
         click(Confirm, False, 100 + waitForOneHalf)
-        click(Proceed, False, wait)
-        click(Retry, False, wait)
+        click(Proceed, False, waitShort)
+        click(Retry, False, waitShort)
 
-        wait = 10
-        click(Ex, False, wait)
-        click(LoginBonus_Confirm, False, wait)
-        click(LoginBonus, False, wait)
-        click(Frontpage_Match, False, wait)
-        click(Frontpage_Campaign, False, wait)
-        click(Frontpage_Campaign_SimMatch, False, wait)
+        if check(ToMatch):
+            time.sleep(1)
+            matchNumber += 1
+            pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_1.png')
+            
+            click(ToMatch, False, waitLong)     #Wait 10 secs for SNF and OK to show up if thery're going to
+            
+            pyg.screenshot('./logs/MatchScreenshots/MatchNumber_'+str(matchNumber)+'_2.png')
 
-        if(check(SquadNotFine)):
+        if check(SquadNotFine):
             if(check(ok)):
-                click(ok, True, wait)
-            snfSwitch()
-
-        click(ToMatch, False, wait)
-
-        if(check(SquadNotFine)):
-            if(check(ok)):
-                click(ok, True, wait)
+                click(ok, True, waitLong)
             snfSwitch()
 
 
