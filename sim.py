@@ -6,8 +6,8 @@ import os
 pyg.PAUSE = 0
 pyg.FAILSAFE = True
 
-folder = time.strftime("%Y-%m-%d %H'%M''%S",time.localtime())
-path = './logs/'+folder
+folderName = time.strftime("%Y-%m-%d %H'%M''%S",time.localtime())
+path = './logs/'+folderName
 os.mkdir(path)
 
 img2ndHalf = Image.open('./assets/2ndHalf.png')
