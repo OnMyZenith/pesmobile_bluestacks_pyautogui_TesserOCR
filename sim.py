@@ -411,7 +411,7 @@ def autosim():
     global waitShort
     waitLong = 15       #Wait for button to go away in "true" "have to click" loops, Sometimes the button has same look for some time after its clicked so wait before checking if its clicked
     waitShort= 10       #Wait to save resource
-    waitForOneHalf = 150
+    waitForOneHalf = 210
     matchNumber  = 0
     lt()
     print2Both("Starting AutoSim in 5 seconds\n\n")
@@ -419,7 +419,6 @@ def autosim():
 
     while(1):
         lt()
-
         # WaitLong on these buttons because scrolling on frontpage takes longer
         click(Ex, False, waitLong)
         click(LoginBonus_Confirm, False, waitLong)
@@ -444,8 +443,7 @@ def autosim():
             changedMatchNumber = True
             pyg.screenshot('./logs/MatchScreenshots/'+folderName+'MatchNumber_'+str(matchNumber)+'_1.png')
             print2Both("Took a Screenshot of Campaign Summary")
-            click(ToMatch, False, waitLong)     #Wait 10 secs for SNF and OK to show up if thery're going to
-            time.sleep(15)                      #Wait 10 secs for Matchmaking to Finish
+            click(ToMatch, False, 15 + waitLong)     #Wait 30 secs for SNF and OK to show up if thery're going to for Matchmaking to Finish
             pyg.screenshot('./logs/MatchScreenshots/'+folderName+'MatchNumber_'+str(matchNumber)+'_2.png')
             print2Both("Took a Screenshot of Matchmaking")
 
