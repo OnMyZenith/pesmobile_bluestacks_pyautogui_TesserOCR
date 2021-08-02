@@ -565,7 +565,6 @@ def addScoutsOfPage():
 
         if foundCategory:
             for j in foundCategory:
-                print(j)
                 if(foundOneHalfOfOneScout:=checkScoutInRow(j, i, 0)):
                     threeScoutNames.append(foundOneHalfOfOneScout)
                     break
