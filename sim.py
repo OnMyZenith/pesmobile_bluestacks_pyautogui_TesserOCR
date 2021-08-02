@@ -641,14 +641,14 @@ def analyzeScouts(numberOfScoutsLeft):
     
 
 def checkScoutInRow(bt, row, isCatList):
-    print2Both('Checking for '+str(bt.name[0])+' in box '+str(row+1)+str(bt.region[row]))
+    print2Both('Checking for '+str(bt.name[0])+' in box '+str(row+1))
     point = pyg.locateCenterOnScreen(bt.img, region=bt.region[row] , confidence=.98)
 
     if(point):
-        print2Both("Found "+str(bt.name[0])+' in box '+str(row+1)+str(bt.region[row]))
+        print2Both("Found "+str(bt.name[0])+' in box '+str(row+1))
         return bt.name[isCatList]
     else:
-        print2Both("Couldn't find "+str(bt.name[0])+' in box '+str(row+1)+str(bt.region[row]))
+        print2Both("Couldn't find "+str(bt.name[0])+' in box '+str(row+1))
         return None
 
 restarting = False
