@@ -176,65 +176,65 @@ Frontpage_Campaign_SimMatch = button('Frontpage_Campaign_SimMatch', imgFrontpage
 TitlePage = button('TitlePage', imgTitlePage, regionTitlePage)
 Abandon = button('Abandon', imgAbandon, regionAbandon)
 
-Age_25to29yearold = button('Age_25to29yearold',imgAge_25to29yearold, regionScoutNames)
-Age_30plus = button('Age_30plus',imgAge_30plus, regionScoutNames)
-Age_U24 = button('Age_U24',imgAge_U24, regionScoutNames)
-Area_Africa = button('Area_Africa',imgArea_Africa, regionScoutNames)
-Area_Americas = button('Area_Americas',imgArea_Americas, regionScoutNames)
-Area_AsiaOceania = button('Area_AsiaOceania',imgArea_AsiaOceania, regionScoutNames)
-Area_Europe = button('Area_Europe',imgArea_Europe, regionScoutNames)
-FavouriteTactics_ = button('FavouriteTactics_',imgFavouriteTactics_, regionScoutNames)
-Height_185cmormore = button('Height_185cmormore',imgHeight_185cmormore, regionScoutNames)
-KeyAttributes_Acceleration = button('KeyAttributes_Acceleration',imgKeyAttributes_Acceleration, regionScoutNames)
-KeyAttributes_BallControl = button('KeyAttributes_BallControl',imgKeyAttributes_BallControl, regionScoutNames)
-KeyAttributes_BallWinning = button('KeyAttributes_BallWinning',imgKeyAttributes_BallWinning, regionScoutNames)
-KeyAttributes_Curl = button('KeyAttributes_Curl',imgKeyAttributes_Curl, regionScoutNames)
-KeyAttributes_DefensiveAwareness = button('KeyAttributes_DefensiveAwareness',imgKeyAttributes_DefensiveAwareness, regionScoutNames)
-KeyAttributes_Dribbling = button('KeyAttributes_Dribbling',imgKeyAttributes_Dribbling, regionScoutNames)
-KeyAttributes_Finishing = button('KeyAttributes_Finishing',imgKeyAttributes_Finishing, regionScoutNames)
-KeyAttributes_GKAwareness = button('KeyAttributes_GKAwareness',imgKeyAttributes_GKAwareness, regionScoutNames)
-KeyAttributes_GKCatching = button('KeyAttributes_GKCatching',imgKeyAttributes_GKCatching, regionScoutNames)
-KeyAttributes_GKClearing = button('KeyAttributes_GKClearing',imgKeyAttributes_GKClearing, regionScoutNames)
-KeyAttributes_GKReach = button('KeyAttributes_GKReach',imgKeyAttributes_GKReach, regionScoutNames)
-KeyAttributes_GKReflexes = button('KeyAttributes_GKReflexes',imgKeyAttributes_GKReflexes, regionScoutNames)
-KeyAttributes_Heading = button('KeyAttributes_Heading',imgKeyAttributes_Heading, regionScoutNames)
-KeyAttributes_Jump = button('KeyAttributes_Jump',imgKeyAttributes_Jump, regionScoutNames)
-KeyAttributes_KickingPower = button('KeyAttributes_KickingPower',imgKeyAttributes_KickingPower, regionScoutNames)
-KeyAttributes_LoftedPass = button('KeyAttributes_LoftedPass',imgKeyAttributes_LoftedPass, regionScoutNames)
-KeyAttributes_LowPass = button('KeyAttributes_LowPass',imgKeyAttributes_LowPass, regionScoutNames)
-KeyAttributes_OffensiveAwareness = button('KeyAttributes_OffensiveAwareness',imgKeyAttributes_OffensiveAwareness, regionScoutNames)
-KeyAttributes_PhysicalContact = button('KeyAttributes_PhysicalContact',imgKeyAttributes_PhysicalContact, regionScoutNames)
-KeyAttributes_PlaceKicking = button('KeyAttributes_PlaceKicking',imgKeyAttributes_PlaceKicking, regionScoutNames)
-KeyAttributes_Speed = button('KeyAttributes_Speed',imgKeyAttributes_Speed, regionScoutNames)
-KeyAttributes_Stamina = button('KeyAttributes_Stamina',imgKeyAttributes_Stamina, regionScoutNames)
-League_Argentinian = button('League_Argentinian',imgLeague_Argentinian, regionScoutNames)
-League_Brazilian = button('League_Brazilian',imgLeague_Brazilian, regionScoutNames)
-League_Chiliean = button('League_Chiliean',imgLeague_Chiliean, regionScoutNames)
-League_Dutch = button('League_Dutch',imgLeague_Dutch, regionScoutNames)
-League_English = button('League_English',imgLeague_English, regionScoutNames)
-League_FreeAgent = button('League_FreeAgent',imgLeague_FreeAgent, regionScoutNames)
-League_French = button('League_French',imgLeague_French, regionScoutNames)
-League_Italian = button('League_Italian',imgLeague_Italian, regionScoutNames)
-League_OtherAsia = button('League_OtherAsia',imgLeague_OtherAsia, regionScoutNames)
-League_OtherEurope = button('League_OtherEurope',imgLeague_OtherEurope, regionScoutNames)
-League_OtherLatinAmerica = button('League_OtherLatinAmerica',imgLeague_OtherLatinAmerica, regionScoutNames)
-League_Portuguese = button('League_Portuguese',imgLeague_Portuguese, regionScoutNames)
-League_Spanish = button('League_Spanish',imgLeague_Spanish, regionScoutNames)
-Pos_AMF = button('Pos_AMF',imgPos_AMF, regionScoutNames)
-Pos_CB = button('Pos_CB',imgPos_CB, regionScoutNames)
-Pos_CF = button('Pos_CF',imgPos_CF, regionScoutNames)
-Pos_CMF = button('Pos_CMF',imgPos_CMF, regionScoutNames)
-Pos_DMF = button('Pos_DMF',imgPos_DMF, regionScoutNames)
-Pos_LB = button('Pos_LB',imgPos_LB, regionScoutNames)
-Pos_LMF = button('Pos_LMF',imgPos_LMF, regionScoutNames)
-Pos_LWF = button('Pos_LWF',imgPos_LWF, regionScoutNames)
-Pos_RB = button('Pos_RB',imgPos_RB, regionScoutNames)
-Pos_RMF = button('Pos_RMF',imgPos_RMF, regionScoutNames)
-Pos_RWF = button('Pos_RWF',imgPos_RWF, regionScoutNames)
-Pos_SS = button('Pos_SS',imgPos_SS, regionScoutNames)
-Pos_UtilityPlayers = button('Pos_UtilityPlayers',imgPos_UtilityPlayers, regionScoutNames)
-StrongerFoot_Left = button('StrongerFoot_Left',imgStrongerFoot_Left, regionScoutNames)
-StrongerFoot_Right = button('StrongerFoot_Right',imgStrongerFoot_Right, regionScoutNames)
+Age_25to29yearold = button(['Age_25to29yearold'],imgAge_25to29yearold, regionScoutNames)
+Age_30plus = button(['Age_30plus'],imgAge_30plus, regionScoutNames)
+Age_U24 = button(['Age_U24'],imgAge_U24, regionScoutNames)
+Area_Africa = button(['Area_Africa'],imgArea_Africa, regionScoutNames)
+Area_Americas = button(['Area_Americas'],imgArea_Americas, regionScoutNames)
+Area_AsiaOceania = button(['Area_AsiaOceania'],imgArea_AsiaOceania, regionScoutNames)
+Area_Europe = button(['Area_Europe'],imgArea_Europe, regionScoutNames)
+FavouriteTactics_ = button(['FavouriteTactics_'],imgFavouriteTactics_, regionScoutNames)
+Height_185cmormore = button(['Height_185cmormore'],imgHeight_185cmormore, regionScoutNames)
+KeyAttributes_Acceleration = button(['KeyAttributes_Acceleration'],imgKeyAttributes_Acceleration, regionScoutNames)
+KeyAttributes_BallControl = button(['KeyAttributes_BallControl'],imgKeyAttributes_BallControl, regionScoutNames)
+KeyAttributes_BallWinning = button(['KeyAttributes_BallWinning'],imgKeyAttributes_BallWinning, regionScoutNames)
+KeyAttributes_Curl = button(['KeyAttributes_Curl'],imgKeyAttributes_Curl, regionScoutNames)
+KeyAttributes_DefensiveAwareness = button(['KeyAttributes_DefensiveAwareness'],imgKeyAttributes_DefensiveAwareness, regionScoutNames)
+KeyAttributes_Dribbling = button(['KeyAttributes_Dribbling'],imgKeyAttributes_Dribbling, regionScoutNames)
+KeyAttributes_Finishing = button(['KeyAttributes_Finishing'],imgKeyAttributes_Finishing, regionScoutNames)
+KeyAttributes_GKAwareness = button(['KeyAttributes_GKAwareness'],imgKeyAttributes_GKAwareness, regionScoutNames)
+KeyAttributes_GKCatching = button(['KeyAttributes_GKCatching'],imgKeyAttributes_GKCatching, regionScoutNames)
+KeyAttributes_GKClearing = button(['KeyAttributes_GKClearing'],imgKeyAttributes_GKClearing, regionScoutNames)
+KeyAttributes_GKReach = button(['KeyAttributes_GKReach'],imgKeyAttributes_GKReach, regionScoutNames)
+KeyAttributes_GKReflexes = button(['KeyAttributes_GKReflexes'],imgKeyAttributes_GKReflexes, regionScoutNames)
+KeyAttributes_Heading = button(['KeyAttributes_Heading'],imgKeyAttributes_Heading, regionScoutNames)
+KeyAttributes_Jump = button(['KeyAttributes_Jump'],imgKeyAttributes_Jump, regionScoutNames)
+KeyAttributes_KickingPower = button(['KeyAttributes_KickingPower'],imgKeyAttributes_KickingPower, regionScoutNames)
+KeyAttributes_LoftedPass = button(['KeyAttributes_LoftedPass'],imgKeyAttributes_LoftedPass, regionScoutNames)
+KeyAttributes_LowPass = button(['KeyAttributes_LowPass'],imgKeyAttributes_LowPass, regionScoutNames)
+KeyAttributes_OffensiveAwareness = button(['KeyAttributes_OffensiveAwareness'],imgKeyAttributes_OffensiveAwareness, regionScoutNames)
+KeyAttributes_PhysicalContact = button(['KeyAttributes_PhysicalContact'],imgKeyAttributes_PhysicalContact, regionScoutNames)
+KeyAttributes_PlaceKicking = button(['KeyAttributes_PlaceKicking'],imgKeyAttributes_PlaceKicking, regionScoutNames)
+KeyAttributes_Speed = button(['KeyAttributes_Speed'],imgKeyAttributes_Speed, regionScoutNames)
+KeyAttributes_Stamina = button(['KeyAttributes_Stamina'],imgKeyAttributes_Stamina, regionScoutNames)
+League_Argentinian = button(['League_Argentinian'],imgLeague_Argentinian, regionScoutNames)
+League_Brazilian = button(['League_Brazilian'],imgLeague_Brazilian, regionScoutNames)
+League_Chiliean = button(['League_Chiliean'],imgLeague_Chiliean, regionScoutNames)
+League_Dutch = button(['League_Dutch'],imgLeague_Dutch, regionScoutNames)
+League_English = button(['League_English'],imgLeague_English, regionScoutNames)
+League_FreeAgent = button(['League_FreeAgent'],imgLeague_FreeAgent, regionScoutNames)
+League_French = button(['League_French'],imgLeague_French, regionScoutNames)
+League_Italian = button(['League_Italian'],imgLeague_Italian, regionScoutNames)
+League_OtherAsia = button(['League_OtherAsia'],imgLeague_OtherAsia, regionScoutNames)
+League_OtherEurope = button(['League_OtherEurope'],imgLeague_OtherEurope, regionScoutNames)
+League_OtherLatinAmerica = button(['League_OtherLatinAmerica'],imgLeague_OtherLatinAmerica, regionScoutNames)
+League_Portuguese = button(['League_Portuguese'],imgLeague_Portuguese, regionScoutNames)
+League_Spanish = button(['League_Spanish'],imgLeague_Spanish, regionScoutNames)
+Pos_AMF = button(['Pos_AMF'],imgPos_AMF, regionScoutNames)
+Pos_CB = button(['Pos_CB'],imgPos_CB, regionScoutNames)
+Pos_CF = button(['Pos_CF'],imgPos_CF, regionScoutNames)
+Pos_CMF = button(['Pos_CMF'],imgPos_CMF, regionScoutNames)
+Pos_DMF = button(['Pos_DMF'],imgPos_DMF, regionScoutNames)
+Pos_LB = button(['Pos_LB'],imgPos_LB, regionScoutNames)
+Pos_LMF = button(['Pos_LMF'],imgPos_LMF, regionScoutNames)
+Pos_LWF = button(['Pos_LWF'],imgPos_LWF, regionScoutNames)
+Pos_RB = button(['Pos_RB'],imgPos_RB, regionScoutNames)
+Pos_RMF = button(['Pos_RMF'],imgPos_RMF, regionScoutNames)
+Pos_RWF = button(['Pos_RWF'],imgPos_RWF, regionScoutNames)
+Pos_SS = button(['Pos_SS'],imgPos_SS, regionScoutNames)
+Pos_UtilityPlayers = button(['Pos_UtilityPlayers'],imgPos_UtilityPlayers, regionScoutNames)
+StrongerFoot_Left = button(['StrongerFoot_Left'],imgStrongerFoot_Left, regionScoutNames)
+StrongerFoot_Right = button(['StrongerFoot_Right'],imgStrongerFoot_Right, regionScoutNames)
 
 FavouriteTacticsList = [FavouriteTactics_]
 AreaList = [Area_Africa, Area_Americas, Area_AsiaOceania, Area_Europe]
@@ -245,16 +245,16 @@ PosList = [Pos_AMF, Pos_CB, Pos_CF, Pos_CMF, Pos_DMF, Pos_LB, Pos_LMF, Pos_LWF, 
 StrongerFootList = [StrongerFoot_Left, StrongerFoot_Right]
 KeyAttributesList = [KeyAttributes_Acceleration, KeyAttributes_BallControl, KeyAttributes_BallWinning, KeyAttributes_Curl, KeyAttributes_DefensiveAwareness, KeyAttributes_Dribbling, KeyAttributes_Finishing, KeyAttributes_GKAwareness, KeyAttributes_GKCatching, KeyAttributes_GKClearing, KeyAttributes_GKReach, KeyAttributes_GKReflexes, KeyAttributes_Heading, KeyAttributes_Jump, KeyAttributes_KickingPower, KeyAttributes_LoftedPass, KeyAttributes_LowPass, KeyAttributes_OffensiveAwareness, KeyAttributes_PhysicalContact, KeyAttributes_PlaceKicking, KeyAttributes_Speed, KeyAttributes_Stamina]
 
-FavouriteTactics = button(FavouriteTacticsList,imgFavouriteTactics, regionScoutNames)
-League = button(LeagueList,imgLeague, regionScoutNames)
-Area = button(AreaList,imgArea, regionScoutNames)
-Pos = button(PosList,imgPos, regionScoutNames)
-KeyAttributes = button(KeyAttributesList,imgKeyAttributes, regionScoutNames)
-Age = button(AgeList,imgAge, regionScoutNames)
-Height = button(HeightList,imgHeight, regionScoutNames)
-StrongerFoot = button(StrongerFootList,imgStrongerFoot, regionScoutNames)
+FavouriteTactics = button(['FavouriteTacticsList', FavouriteTacticsList],imgFavouriteTactics, regionScoutNames)
+League = button(['LeagueList', LeagueList],imgLeague, regionScoutNames)
+Area = button(['AreaList', AreaList],imgArea, regionScoutNames)
+Pos = button(['PosList', PosList],imgPos, regionScoutNames)
+KeyAttributes = button(['KeyAttributesList', KeyAttributesList],imgKeyAttributes, regionScoutNames)
+Age = button(['AgeList', AgeList],imgAge, regionScoutNames)
+Height = button(['HeightList', HeightList],imgHeight, regionScoutNames)
+StrongerFoot = button(['StrongerFootList', StrongerFootList],imgStrongerFoot, regionScoutNames)
 
-allScoutCategories = [FavouriteTactics, League, Area, Pos, KeyAttributes, Age, Height, StrongerFoot]
+allScoutCategoryList = [FavouriteTactics, League, Area, Pos, KeyAttributes, Age, Height, StrongerFoot]
 
 a = (600, 350)              #       a       #              b
 b = (1200, 350)             #               #
@@ -559,14 +559,14 @@ def addScoutsOfPage():
         foundOneHalfOfOneScout = None
         foundCategory = None
 
-        for j in allScoutCategories:
-            if(foundCategory:=checkInRow(j, i)):
+        for j in allScoutCategoryList:
+            if(foundCategory:=checkScoutInRow(j, i, 1)):
                 break
 
         if foundCategory:
             for j in foundCategory:
                 print(j)
-                if(foundOneHalfOfOneScout:=checkInRow(j, i)):
+                if(foundOneHalfOfOneScout:=checkScoutInRow(j, i, 0)):
                     threeScoutNames.append(foundOneHalfOfOneScout)
                     break
 
@@ -641,15 +641,15 @@ def analyzeScouts(numberOfScoutsLeft):
     f.close()
     
 
-def checkInRow(bt, row):
-    print2Both('Checking for '+str(bt.name)+' in box '+str(row+1)+str(bt.region[row]))
+def checkScoutInRow(bt, row, isCatList):
+    print2Both('Checking for '+str(bt.name[0])+' in box '+str(row+1)+str(bt.region[row]))
     point = pyg.locateCenterOnScreen(bt.img, region=bt.region[row] , confidence=.98)
 
     if(point):
-        print2Both("Found "+str(bt.name)+' in box '+str(row+1)+str(bt.region[row]))
-        return bt.name
+        print2Both("Found "+str(bt.name[0])+' in box '+str(row+1)+str(bt.region[row]))
+        return bt.name[isCatList]
     else:
-        print2Both("Couldn't find "+str(bt.name)+' in box '+str(row+1)+str(bt.region[row]))
+        print2Both("Couldn't find "+str(bt.name[0])+' in box '+str(row+1)+str(bt.region[row]))
         return None
 
 restarting = False
