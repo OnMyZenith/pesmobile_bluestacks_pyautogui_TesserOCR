@@ -447,14 +447,16 @@ def autosim():
             pyg.screenshot('./logs/MatchScreenshots/'+folderName+' Match Number_'+str(matchNumber)+'_2.png')
             print2Both("Took a Screenshot of Matchmaking")
 
-        if check(SquadNotFine):
-            if changedMatchNumber:
-                os.remove('./logs/MatchScreenshots/'+folderName+' Match Number_'+str(matchNumber)+'_1.png')
-                os.remove('./logs/MatchScreenshots/'+folderName+' Match Number_'+str(matchNumber)+'_2.png')
-                matchNumber -= 1
-            if(check(ok)):
-                click(ok, True, waitLong)
-            snfSwitch()
+            if check(SquadNotFine):
+                if changedMatchNumber:
+                    os.remove('./logs/MatchScreenshots/'+folderName+' Match Number_'+str(matchNumber)+'_1.png')
+                    os.remove('./logs/MatchScreenshots/'+folderName+' Match Number_'+str(matchNumber)+'_2.png')
+                    matchNumber -= 1
+
+                time.sleep(waitShort)
+                if(check(ok)):
+                    click(ok, True, waitLong)
+                snfSwitch()
 
 
 def ContRen():
