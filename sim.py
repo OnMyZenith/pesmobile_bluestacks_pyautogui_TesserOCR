@@ -638,6 +638,7 @@ def analyzeScouts(numberOfScoutsLeft):
     for i in range(totalNumber):
         f.write(str(scouts[i][0])+', '+str(scouts[i][1])+"\n")
     f.close()
+    pyg.screenshot(path+'/Page_fin.png')
     
 
 def checkScoutInRow(bt, row, isCatList):
