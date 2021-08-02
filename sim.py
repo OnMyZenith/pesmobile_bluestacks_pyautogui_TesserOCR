@@ -575,7 +575,7 @@ def addScoutsOfPage():
         
         for idx, k in  enumerate(starsX):
             found = False
-            for j in range(regionNegotiationSkills[i][1], regionNegotiationSkills[i][3], 3):
+            for j in range(regionNegotiationSkills[i][1], regionNegotiationSkills[i][3], 2):
                 # if pyg.pixelMatchesColor(k, j, (254,203, 0)):
                 #     found = True
                 #     break
