@@ -415,18 +415,6 @@ def addScoutsOfPage():
         if scoutsCountedTwice:
             scoutsCountedTwice -= 1
 
-        # foundCategory = None
-
-        # for j in allScoutCategoryList:
-        #     if(foundCategory:=checkScoutInRow(j, i, 1)):
-        #         break
-
-        # if foundCategory:
-        #     for j in foundCategory:
-        #         if(foundOneHalfOfOneScout:=checkScoutInRow(j, i, 0)):
-        #             threeScoutNames.append(foundOneHalfOfOneScout)
-        #             break
-
         with PyTessBaseAPI() as api:
             api.SetImage(ImageGrab.grab(bbox=regionScoutNames[i]))
             foundOneHalfOfOneScout = api.GetUTF8Text()
