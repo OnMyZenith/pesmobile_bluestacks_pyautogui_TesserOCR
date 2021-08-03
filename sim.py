@@ -68,7 +68,7 @@ regionTitlePage = (456, 683, 608, 818)
 regionAbandon = (587, 649, 858, 736)
 
 regionNegotiationSkills = [(275, 225, 400, 370), (275, 455, 400, 600), (275, 685, 400, 830)]
-regionScoutNames = [(425, 240, 939, 450), (425, 470, 939, 680), (425, 700, 939, 910)]
+regionScoutNames = [(425, 240, 1000, 450), (425, 470, 1000, 680), (425, 700, 1000, 910)]
 
 starsX = [301, 327, 355, 377]
 
@@ -115,7 +115,7 @@ selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 scoutPositions = (a, c, e)
 
-textToReplace = ['@', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'Favourite Tactics\n', 'Age\n', 'Height\n', 'Stronger Foot\n', '\n']
+textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n' '\n']
 
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
