@@ -384,8 +384,8 @@ def run():
         printException(e,False)
     except OSError as e:
         printException(e,True)
-    # except BaseException as e:
-    #     printException(e,True)
+    except BaseException as e:
+        printException(e,True)
 
 def avoidErrorUsingRecursion(a,b,c):
     global found
