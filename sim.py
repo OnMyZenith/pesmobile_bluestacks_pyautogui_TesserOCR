@@ -114,7 +114,7 @@ selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 scoutPositions = (a, c, e)
 
-textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n' '\n']
+textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
 
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
