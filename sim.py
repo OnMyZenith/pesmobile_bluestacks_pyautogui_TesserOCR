@@ -432,7 +432,7 @@ def addScoutsOfPage():
             foundOneHalfOfOneScout = removeFromScoutName(foundOneHalfOfOneScout,item)
 
         print2Both(foundOneHalfOfOneScout)
-        print2Both(api.AllWordConfidences())
+        # print2Both(api.AllWordConfidences())
         threeScoutNames.append(foundOneHalfOfOneScout)
 
         if not foundOneHalfOfOneScout:
