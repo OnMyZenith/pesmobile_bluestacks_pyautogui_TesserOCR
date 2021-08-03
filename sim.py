@@ -3,7 +3,6 @@ import time
 from PIL import Image, ImageGrab
 from tesserocr import PyTessBaseAPI
 import os
-import loadAssets
 
 pyg.PAUSE = 0
 pyg.FAILSAFE = True
@@ -195,15 +194,15 @@ def scrollUp():
     time.sleep(4)
 
 
-def scrollDownSlow(pages=1):
-    while(pages):
+def scrollDownSlow(page=1):
+    while(page):
         pyg.mouseDown(50, 917)
         time.sleep(1)
         pyg.moveTo(50, 228, duration=3)
         time.sleep(2)
         pyg.mouseUp()
         time.sleep(1)
-        pages = pages-1
+        page -= 1
 
 
 def select(squad):
@@ -399,8 +398,9 @@ def avoidErrorUsingRecursion(a,b,c):
         avoidErrorUsingRecursion(a,b,c)
 
 def removeFromScoutName(oldString, item):
-    newString = oldString.replace(item, '')
-    return newString
+    while oldString.find(item) != -1:
+        oldString = oldString.replace(item, '')
+    return oldString
 
 def addScoutsOfPage():
     global scoutsCountedTwice
