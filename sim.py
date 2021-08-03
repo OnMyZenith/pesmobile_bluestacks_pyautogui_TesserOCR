@@ -1,7 +1,7 @@
 import pyautogui as pyg
 import time
 from PIL import Image, ImageGrab
-from tesserocr import PyTessBaseAPI as api
+from tesserocr import PyTessBaseAPI
 import os
 import loadAssets
 
@@ -113,7 +113,9 @@ e = (600, 800)              #       e       #              f
 f = (1200, 800)
 selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
-scoutPositions = (a, c, e)              #Gonna remove this
+scoutPositions = (a, c, e)
+
+textToReplace = ['@', ' ', '\n', 'League', 'Area', 'Position', 'Key Attributes', 'Favourite Tactics', 'Age', 'Height', 'Stronger Foot']
 
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
@@ -383,8 +385,8 @@ def run():
         printException(e,False)
     except OSError as e:
         printException(e,True)
-    except BaseException as e:
-        printException(e,True)
+    # except BaseException as e:
+    #     printException(e,True)
 
 def avoidErrorUsingRecursion(a,b,c):
     global found
@@ -395,6 +397,10 @@ def avoidErrorUsingRecursion(a,b,c):
     except OSError:
         gotOSError+=1
         avoidErrorUsingRecursion(a,b,c)
+
+def removeFromScoutName(oldString, item):
+    newString = oldString.replace(item, '')
+    return newString
 
 def addScoutsOfPage():
     global scouts
@@ -417,16 +423,17 @@ def addScoutsOfPage():
         #             threeScoutNames.append(foundOneHalfOfOneScout)
         #             break
 
-        img = ImageGrab.grab(bbox=regionScoutNames[i])
-        api.SetImage(img)
-        foundOneHalfOfOneScout = api.GetUTF8Text()
+        with PyTessBaseAPI() as api:
+            api.SetImage(ImageGrab.grab(bbox=regionScoutNames[i]))
+            foundOneHalfOfOneScout = api.GetUTF8Text()
+
         print2Both(foundOneHalfOfOneScout)
-        for a in foundOneHalfOfOneScout:
-            if a == '@' or a == ' ' or a == '\n':
-                foundOneHalfOfOneScout = foundOneHalfOfOneScout.replace(a,'')
-                continue
+        for item in textToReplace:
+            foundOneHalfOfOneScout = removeFromScoutName(foundOneHalfOfOneScout,item)
+
         print2Both(foundOneHalfOfOneScout)
         print2Both(api.AllWordConfidences())
+        threeScoutNames.append(foundOneHalfOfOneScout)
 
         if not foundOneHalfOfOneScout:
             threeScoutNames.append('new')
