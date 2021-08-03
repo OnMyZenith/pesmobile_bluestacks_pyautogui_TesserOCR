@@ -412,8 +412,10 @@ def addScoutsOfPage():
 
     for i in range(3):
         foundOneHalfOfOneScout = None
+
         if scoutsCountedTwice:
             scoutsCountedTwice -= 1
+            continue
 
         with PyTessBaseAPI() as api:
             api.SetImage(ImageGrab.grab(bbox=regionScoutNames[i]))
@@ -443,7 +445,7 @@ def addScoutsOfPage():
 
     page+=1
 
-    for i in range(scoutsCountedTwice, len(threeScoutNames)):
+    for i in range(len(threeScoutNames)):
         scouts.append([threeNegotiationSkills[i], threeScoutNames[i], page])
         
     print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(totalNumber/3+0.7)))
