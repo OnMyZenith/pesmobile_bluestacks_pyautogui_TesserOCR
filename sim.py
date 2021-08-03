@@ -1,6 +1,7 @@
 import pyautogui as pyg
 import time
-from PIL import Image
+from PIL import Image, ImageGrab
+from tesserocr import PyTessBaseAPI as api
 import os
 import loadAssets
 
@@ -416,6 +417,17 @@ def addScoutsOfPage():
         #             threeScoutNames.append(foundOneHalfOfOneScout)
         #             break
 
+        img = ImageGrab.grab(bbox=regionScoutNames[i])
+        api.SetImage(img)
+        foundOneHalfOfOneScout = api.GetUTF8Text()
+        print2Both(foundOneHalfOfOneScout)
+        for a in foundOneHalfOfOneScout:
+            if a == '@' or a == ' ' or a == '\n':
+                foundOneHalfOfOneScout = foundOneHalfOfOneScout.replace(a,'')
+                continue
+        print2Both(foundOneHalfOfOneScout)
+        print2Both(api.AllWordConfidences())
+
         if not foundOneHalfOfOneScout:
             threeScoutNames.append('new')
         
@@ -425,6 +437,8 @@ def addScoutsOfPage():
                 avoidErrorUsingRecursion(k, j, (254,203, 0))
             if not found:
                 break
+            if idx==3 & found is True:      ###Basically for 5* scout
+                idx = 4                     ###idx only goes from 0 to 3
         threeNegotiationSkills.append(idx+1)
 
         print2Both("\nFinished with box "+str(i+1)+"\n")
