@@ -403,6 +403,7 @@ def removeFromScoutName(oldString, item):
     return newString
 
 def addScoutsOfPage():
+    global scoutsCountedTwice
     global scouts
     global page
     global found
@@ -411,6 +412,9 @@ def addScoutsOfPage():
 
     for i in range(3):
         foundOneHalfOfOneScout = None
+        if scoutsCountedTwice:
+            scoutsCountedTwice -= 1
+
         # foundCategory = None
 
         # for j in allScoutCategoryList:
@@ -432,11 +436,8 @@ def addScoutsOfPage():
             foundOneHalfOfOneScout = removeFromScoutName(foundOneHalfOfOneScout,item)
 
         print2Both(foundOneHalfOfOneScout)
-        # print2Both(api.AllWordConfidences())
+        # print2Both(api.AllWordConfidences())            #Crashes for some reason :(
         threeScoutNames.append(foundOneHalfOfOneScout)
-
-        if not foundOneHalfOfOneScout:
-            threeScoutNames.append('new')
         
         for idx, k in  enumerate(starsX):
             found = False
