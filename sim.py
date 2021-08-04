@@ -114,7 +114,8 @@ selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 scoutPositions = (a, c, e)
 
-textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
+textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Ace\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
+allScouts = ['Acceleration', 'Control', 'Winning', 'Curl', 'Defensive', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas', 'Tactics']
 
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
@@ -411,23 +412,32 @@ def addScoutsOfPage():
     threeNegotiationSkills = []
 
     for i in range(3):
-        foundOneHalfOfOneScout = None
+        grabbedText = None
+        oneScoutName = None
 
         if scoutsCountedTwice:
             scoutsCountedTwice -= 1
             continue
-
+        
         with PyTessBaseAPI() as api:
             api.SetImage(ImageGrab.grab(bbox=regionScoutNames[i]))
-            foundOneHalfOfOneScout = api.GetUTF8Text()
+            grabbedText = api.GetUTF8Text()
 
-        print2Both(foundOneHalfOfOneScout)
-        for item in textToReplace:
-            foundOneHalfOfOneScout = removeFromScoutName(foundOneHalfOfOneScout,item)
+        print2Both(grabbedText)
 
-        print2Both(foundOneHalfOfOneScout)
+        for one in allScouts:
+            if grabbedText.find(one) != -1:
+                oneScoutName = one
+                break
+        
+        if oneScoutName is None:
+            for item in textToReplace:
+                grabbedText = removeFromScoutName(grabbedText,item)
+            oneScoutName = grabbedText
+
+        print2Both(oneScoutName)
         # print2Both(api.AllWordConfidences())            #Crashes for some reason :(
-        threeScoutNames.append(foundOneHalfOfOneScout)
+        threeScoutNames.append(oneScoutName)
         
         for idx, k in  enumerate(starsX):
             found = False
@@ -455,7 +465,6 @@ def addScoutsOfPage():
         print2Both("\n\t"+str(scouts[3*page-3+i]))
 
     lt()
-    time.sleep(1)
     pyg.screenshot(path+'/Page'+str(page)+'.png')
 
 def analyzeScouts(numberOfScoutsLeft):
@@ -481,7 +490,7 @@ def analyzeScouts(numberOfScoutsLeft):
 
         if not isFinalPage:
             scrollDownSlow()
-            time.sleep(3)
+            time.sleep(2)
 
         numberOfScoutsLeft-=3
     lt()
@@ -494,7 +503,6 @@ def analyzeScouts(numberOfScoutsLeft):
     for i in range(totalNumber):
         f.write(str(scouts[i][0])+', '+str(scouts[i][1])+"\n")
     f.close()
-    pyg.screenshot(path+'/Page_fin.png')
     
 restarting = False
 run()
