@@ -503,7 +503,7 @@ def analyzeScouts(numberOfScoutsLeft):
     print2Both("\n\nTotal times got OSError :"+str(gotOSError)+"\n\n")
 
     for i in range(len(allScoutsAlias)):
-        for j in scouts:
+        for j in range(len(scouts)):
             while scouts[j][1].find(allScoutsAlias[i]) != -1:
                 scouts[j][1].replace(allScoutsAlias[i],allScoutsReal[i])
 
