@@ -497,20 +497,21 @@ def analyzeScouts(numberOfScoutsLeft):
             time.sleep(2)
 
         numberOfScoutsLeft-=3
+
+    for i in range(len(allScoutsAlias)):
+        for j in range(len(scouts)):
+            while scouts[j][1] == allScoutsAlias[i]:
+                scouts[j][1] = allScoutsReal[i]
+
     lt()
     print2Both('Time taken to analyze '+str(totalNumber)+' scouts : '+str(int((time.time()-time1)/60))+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
     print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
     print2Both("\n\nTotal times got OSError :"+str(gotOSError)+"\n\n")
 
-    for i in range(len(allScoutsAlias)):
-        for j in range(len(scouts)):
-            while scouts[j][1].find(allScoutsAlias[i]) != -1:
-                scouts[j][1].replace(allScoutsAlias[i],allScoutsReal[i])
-
-    f = open(path +'/scouts_Alias.txt', 'a')
+    f1 = open(path +'/scouts_Alias.txt', 'a')
     for i in range(totalNumber):
         f.write(str(scouts[i][0])+', '+str(scouts[i][1])+"\n")
-    f.close()
+    f1.close()
     
 restarting = False
 run()
