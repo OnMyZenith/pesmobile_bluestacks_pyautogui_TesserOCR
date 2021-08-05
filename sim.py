@@ -500,7 +500,7 @@ def analyzeScouts(numberOfScoutsLeft):
     print2Both("\n\nTotal times got OSError :"+str(gotOSError)+"\n\n")
 
 
-    f = open(path +'/scouts.txt', 'a')
+    f = open(path +'/scouts_Alias.txt', 'a')
     for i in range(totalNumber):
         f.write(str(scouts[i][0])+', '+str(scouts[i][1])+"\n")
     f.close()
