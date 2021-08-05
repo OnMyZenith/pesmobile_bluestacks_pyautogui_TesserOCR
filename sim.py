@@ -436,6 +436,7 @@ def addScoutsOfPage():
         
         if oneScoutName == 'Tactics':
             clickOnPoint(scoutPositions[i])
+            print2Both("\nSelecting and skipping index of Tactics in box "+str(i+1)+"\n")
             continue
 
         if oneScoutName is None:
