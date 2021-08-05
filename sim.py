@@ -434,6 +434,10 @@ def addScoutsOfPage():
                 oneScoutName = one
                 break
         
+        if oneScoutName == 'Tactics':
+            clickOnPoint(scoutPositions[i])
+            continue
+
         if oneScoutName is None:
             for item in textToReplace:
                 grabbedText = removeFromScoutName(grabbedText,item)
@@ -500,7 +504,7 @@ def analyzeScouts(numberOfScoutsLeft):
 
     lt()
     print2Both('Time taken to analyze '+str(len(scouts))+' scouts : '+str(int((time.time()-time1)/60))+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
-    print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
+    print2Both("\n\nTotal Scouts (Alias used for some):"+str(scouts)+"\n\n")
     print2Both("\n\nTotal times got OSError :"+str(gotOSError)+"\n\n")
 
     f1 = open(path +'/scouts_Alias.txt', 'a')
@@ -512,14 +516,6 @@ def analyzeScouts(numberOfScoutsLeft):
         for j in range(len(scouts)):
             if scouts[j][1] == allScoutsAlias[i]:
                 scouts[j][1] = allScoutsReal[i]
-
-    indexOfTactics = []
-    for i in range(len(scouts)):
-        if scouts[i][1] == 'Tactics':
-            indexOfTactics.append(i)
-        
-    for i in indexOfTactics:
-        scouts.pop(i)
 
     lt()
     print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
