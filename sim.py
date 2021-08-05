@@ -115,7 +115,7 @@ actionButtonPosition = (1200, 1010)
 scoutPositions = (a, c, e)
 
 textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Ace\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
-allScouts = ['Acceleration', 'Control', 'Winning', 'Curl', 'Defensive', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas', 'Tactics']
+allScouts = ['Tactics', 'Acceleration', 'Control', 'Winning', 'Curl', 'Defensive', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas']
 
 allScoutsAlias = ['Control', 'Winning', 'Defensive', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', '24', '185', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '(Europe', '(Latin', '[Asia', '[Europe', '[Latin', 'year', 'Oceania', 'Americas']
 allScoutsReal = ['Ball Control', 'Ball Winning', 'Defensive Awareness', 'Kicking Power', 'Left foot', 'Lofted Pass', 'Low Pass', 'Offensive Awareness', 'Physical Contact', 'Place Kicking', 'Right foot', 'U-24', '185cm or Taller', 'Utility Players', '30+', 'Argentinian League', 'Brazilian League', 'Chiliean League', 'Dutch League', 'English League', 'FREE AGENT', 'French League', 'Italian League', 'Portuguese League', 'Spanish League', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', '25-29 year old', 'Asia-Oceania', 'N/S American']
@@ -470,8 +470,8 @@ def addScoutsOfPage():
     print2Both("Finished with Page no. :"+str(page)+" out of "+str(int(totalNumber/3+0.7)))
 
     print2Both("\n\nScouts identified on Page :\n")
-    for i in range(len(threeScoutNames)-scoutsCountedTwice):
-        print2Both("\n\t"+str(scouts[3*page-3+i]))
+    for i in range(len(threeScoutNames)-1, -1, -1):
+        print2Both("\n\t"+str(scouts[len(scouts)-1-i]))
 
     lt()
     pyg.screenshot(path+'/Page'+str(page)+'.png')
