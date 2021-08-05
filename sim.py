@@ -117,6 +117,9 @@ scoutPositions = (a, c, e)
 textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Ace\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
 allScouts = ['Acceleration', 'Control', 'Winning', 'Curl', 'Defensive', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas', 'Tactics']
 
+allScoutsAlias = ['Control', 'Winning', 'Defensive', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', '24', '185', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '(Europe', '(Latin', '[Asia', '[Europe', '[Latin', 'year', 'Oceania', 'Americas', 'Tactics']
+allScoutsReal = ['Ball Control', 'Ball Winning', 'Defensive Awareness', 'Kicking Power', 'Left foot', 'Lofted Pass', 'Low Pass', 'Offensive Awareness', 'Physical Contact', 'Place Kicking', 'Right foot', 'U-24', '185cm or Taller', 'Utility Players', '30+', 'Argentinian League', 'Brazilian League', 'Chiliean League', 'Dutch League', 'English League', 'FREE AGENT', 'French League', 'Italian League', 'Portuguese League', 'Spanish League', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', '25-29 year old', 'Asia-Oceania', 'N/S American', '----']
+
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
 CF_SS_Hervey = button('CF_SS_Hervey', imgCF_SS_Hervey, regionIdentifyPlayer)
@@ -499,6 +502,10 @@ def analyzeScouts(numberOfScoutsLeft):
     print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
     print2Both("\n\nTotal times got OSError :"+str(gotOSError)+"\n\n")
 
+    for i in range(len(allScoutsAlias)):
+        for j in scouts:
+            while scouts[j][1].find(allScoutsAlias[i]) != -1:
+                scouts[j][1].replace(allScoutsAlias[i],allScoutsReal[i])
 
     f = open(path +'/scouts_Alias.txt', 'a')
     for i in range(totalNumber):
