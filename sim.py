@@ -290,6 +290,7 @@ def autosim():
         click(Confirm, False, 100 + waitForOneHalf)
         click(Proceed, False, waitShort)
         click(Retry, False, waitShort)
+        click(Sign, False, waitShort)
 
         changedMatchNumber = False
 
