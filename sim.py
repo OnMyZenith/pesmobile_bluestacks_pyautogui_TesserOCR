@@ -114,8 +114,8 @@ selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 scoutPositions = (a, c, e)
 
-# textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Ace\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
-allScouts = ['Tactics', 'Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', 'Defensive Styles', 'Containment Area', 'Pressuring', 'Acceleration', 'Control', 'Winning', 'Curl', 'Defensive Awareness', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas']
+allTactics = ['Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', 'Defensive Styles', 'Containment Area', 'Pressuring']
+allScouts = ['Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', 'Defensive Styles', 'Containment Area', 'Pressuring', 'Acceleration', 'Control', 'Winning', 'Curl', 'Defensive Awareness', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas']
 
 allScoutsAlias = ['Control', 'Winning', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', '24', '185', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '(Europe', '(Latin', '[Asia', '[Europe', '[Latin', 'year', 'Oceania', 'Americas']
 allScoutsReal = ['Ball Control', 'Ball Winning', 'Kicking Power', 'Left foot', 'Lofted Pass', 'Low Pass', 'Offensive Awareness', 'Physical Contact', 'Place Kicking', 'Right foot', 'U-24', '185cm or Taller', 'Utility Players', '30+', 'Argentinian League', 'Brazilian League', 'Chiliean League', 'Dutch League', 'English League', 'FREE AGENT', 'French League', 'Italian League', 'Portuguese League', 'Spanish League', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', '25-29 year old', 'Asia-Oceania', 'N/S American']
@@ -404,12 +404,6 @@ def avoidErrorUsingRecursion(a,b,c):
     except OSError:
         gotOSError+=1
         avoidErrorUsingRecursion(a,b,c)
-
-def removeFromScoutName(oldString, item):
-    while oldString.find(item) != -1:
-        oldString = oldString.replace(item, '')
-    return oldString
-
 def addScoutsOfPage():
     global scoutsCountedTwice
     global scouts
@@ -421,6 +415,7 @@ def addScoutsOfPage():
     for i in range(3):
         grabbedText = None
         oneScoutName = None
+        isTactic = False
 
         line()
 
@@ -440,20 +435,20 @@ def addScoutsOfPage():
                 oneScoutName = one
                 break
         
-        if oneScoutName == 'Tactics' or oneScoutName == 'Attacking Styles'or oneScoutName == 'Build Up'or oneScoutName == 'Attacking Areas'or oneScoutName == 'Pressuring'or oneScoutName == 'Positioning'or oneScoutName == 'Defensive Styles'or oneScoutName == 'Containment Area':
+        for i in allTactics:
+            if oneScoutName == i:
+                isTactic = True
+
+        if isTactic:
             clickOnPoint(scoutPositions[i])
             print2Both("\nSelecting and skipping index of Tactics in box : "+str(i+1)+"\n")
             continue
 
         if oneScoutName is None:
-            # for item in textToReplace:                                ##Don't need text to replace anymore, it recognizes everything :)
-            #     grabbedText = removeFromScoutName(grabbedText,item)
             oneScoutName = grabbedText
 
-            if oneScoutName == '':
-                oneScoutName = "Couldn't recognize" ##And ended up removing everything iterating over textTOReplace
 
-        print2Both("Recognized scout : "+oneScoutName)
+        print2Both("Recognized scout : --->"+oneScoutName+"<---")
         # print2Both(api.AllWordConfidences())            #Crashes for some reason :(
         threeScoutNames.append(oneScoutName)
         
