@@ -114,11 +114,11 @@ selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 scoutPositions = (a, c, e)
 
-textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Ace\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
-allScouts = ['Tactics', 'Acceleration', 'Control', 'Winning', 'Curl', 'Defensive', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas']
+# textToReplace = ['@', '©', ' ', 'League\n', 'Area\n', 'Position\n', 'Key Attributes\n', 'KeyAttributes\n', 'Favourite Tactics\n', 'FavouriteTactics\n', 'Ace\n', 'Age\n', 'Height\n', 'Stronger Foot\n','StrongerFoot\n', '\n']
+allScouts = ['Tactics', 'Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', 'Defensive Styles', 'Containment Area', 'Pressuring', 'Acceleration', 'Control', 'Winning', 'Curl', 'Defensive Awareness', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas']
 
-allScoutsAlias = ['Control', 'Winning', 'Defensive', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', '24', '185', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '(Europe', '(Latin', '[Asia', '[Europe', '[Latin', 'year', 'Oceania', 'Americas']
-allScoutsReal = ['Ball Control', 'Ball Winning', 'Defensive Awareness', 'Kicking Power', 'Left foot', 'Lofted Pass', 'Low Pass', 'Offensive Awareness', 'Physical Contact', 'Place Kicking', 'Right foot', 'U-24', '185cm or Taller', 'Utility Players', '30+', 'Argentinian League', 'Brazilian League', 'Chiliean League', 'Dutch League', 'English League', 'FREE AGENT', 'French League', 'Italian League', 'Portuguese League', 'Spanish League', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', '25-29 year old', 'Asia-Oceania', 'N/S American']
+allScoutsAlias = ['Control', 'Winning', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', '24', '185', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '(Europe', '(Latin', '[Asia', '[Europe', '[Latin', 'year', 'Oceania', 'Americas']
+allScoutsReal = ['Ball Control', 'Ball Winning', 'Kicking Power', 'Left foot', 'Lofted Pass', 'Low Pass', 'Offensive Awareness', 'Physical Contact', 'Place Kicking', 'Right foot', 'U-24', '185cm or Taller', 'Utility Players', '30+', 'Argentinian League', 'Brazilian League', 'Chiliean League', 'Dutch League', 'English League', 'FREE AGENT', 'French League', 'Italian League', 'Portuguese League', 'Spanish League', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', '25-29 year old', 'Asia-Oceania', 'N/S American']
 
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
@@ -135,9 +135,12 @@ def print2Both(text):
 
 f = open(path +'/log.txt', 'a')
 
-def lt():
+def lineTime():
     print2Both('\n\n------------------------------------------------------------\n\n')
     print2Both(time.ctime()+'\n\n\n')
+
+def line():
+    print2Both('\n\n------------------------------------------------------------\n\n')
 
 def check(bt):
     print2Both('CheckLoop: Checking for '+bt.name)
@@ -219,7 +222,7 @@ def select(squad):
 
 def renew(squad):
     while(True):
-        lt()
+        lineTime()
         global contDone
         contDone = False
         select(squad)
@@ -271,12 +274,12 @@ def autosim():
     waitShort= 10       #Wait to save resource
     waitForOneHalf = 210
     matchNumber  = 0
-    lt()
+    lineTime()
     print2Both("Starting AutoSim in 5 seconds\n\n")
     time.sleep(5)
 
     while(1):
-        lt()
+        lineTime()
         # WaitLong on these buttons because scrolling on frontpage takes longer
         click(Ex, False, waitLong)
         click(LoginBonus_Confirm, False, waitLong)
@@ -319,7 +322,7 @@ def autosim():
 
 
 def ContRen():
-    lt()
+    lineTime()
     print2Both("Starting Contract Renewal in 5 seconds\n\n")
     time.sleep(5)
 
@@ -337,7 +340,7 @@ def ContRen():
 
         else:
             scrollUp()
-    lt()
+    lineTime()
     print2Both("\n\nContracts Maxxed out.....Aborting\n\n")
 
 
@@ -351,7 +354,7 @@ def selectScouts(pages):
 def start():
     global task
     if(not restarting):
-        lt()
+        lineTime()
         print2Both("\n\nAutoSim : 1\nRenew Contracts : 2\nSelect Scouts : 3\nAnalyze Scouts : 4")
         task = int(input('>> '))
 
@@ -371,7 +374,7 @@ def printException(exception,shouldRestart):
     global restarting
     restarting = shouldRestart
     print2Both("\n\nException Occurred\n")
-    lt()
+    lineTime()
     print2Both(repr(exception))
     if(shouldRestart):
         print2Both("\nRestarting in 5 seconds\n")
@@ -419,8 +422,11 @@ def addScoutsOfPage():
         grabbedText = None
         oneScoutName = None
 
+        line()
+
         if scoutsCountedTwice:
             scoutsCountedTwice -= 1
+            print2Both("\nSkipping scout that's aready counted on last page\n")
             continue
         
         with PyTessBaseAPI() as api:
@@ -434,17 +440,20 @@ def addScoutsOfPage():
                 oneScoutName = one
                 break
         
-        if oneScoutName == 'Tactics':
+        if oneScoutName == 'Tactics' or oneScoutName == 'Attacking Styles'or oneScoutName == 'Build Up'or oneScoutName == 'Attacking Areas'or oneScoutName == 'Pressuring'or oneScoutName == 'Positioning'or oneScoutName == 'Defensive Styles'or oneScoutName == 'Containment Area':
             clickOnPoint(scoutPositions[i])
-            print2Both("\nSelecting and skipping index of Tactics in box "+str(i+1)+"\n")
+            print2Both("\nSelecting and skipping index of Tactics in box : "+str(i+1)+"\n")
             continue
 
         if oneScoutName is None:
-            for item in textToReplace:
-                grabbedText = removeFromScoutName(grabbedText,item)
+            # for item in textToReplace:                                ##Don't need text to replace anymore, it recognizes everything :)
+            #     grabbedText = removeFromScoutName(grabbedText,item)
             oneScoutName = grabbedText
 
-        print2Both(oneScoutName)
+            if oneScoutName == '':
+                oneScoutName = "Couldn't recognize" ##And ended up removing everything iterating over textTOReplace
+
+        print2Both("Recognized scout : "+oneScoutName)
         # print2Both(api.AllWordConfidences())            #Crashes for some reason :(
         threeScoutNames.append(oneScoutName)
         
@@ -473,7 +482,7 @@ def addScoutsOfPage():
     for i in range(len(threeScoutNames)-1, -1, -1):
         print2Both("\n\t"+str(scouts[len(scouts)-1-i]))
 
-    lt()
+    lineTime()
     pyg.screenshot(path+'/Page'+str(page)+'.png')
 
 def analyzeScouts(numberOfScoutsLeft):
@@ -503,7 +512,7 @@ def analyzeScouts(numberOfScoutsLeft):
 
         numberOfScoutsLeft-=3
 
-    lt()
+    lineTime()
     print2Both('Time taken to analyze '+str(len(scouts))+' scouts : '+str(int((time.time()-time1)/60))+' minutes and '+str(int((time.time()-time1)%60))+' seconds.')
     print2Both("\n\nTotal Scouts (Alias used for some):"+str(scouts)+"\n\n")
     print2Both("\n\nTotal times got OSError :"+str(gotOSError)+"\n\n")
@@ -518,7 +527,7 @@ def analyzeScouts(numberOfScoutsLeft):
             if scouts[j][1] == allScoutsAlias[i]:
                 scouts[j][1] = allScoutsReal[i]
 
-    lt()
+    lineTime()
     print2Both("\n\nTotal Scouts :"+str(scouts)+"\n\n")
 
     f1 = open(path +'/scouts.txt', 'a')
