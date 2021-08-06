@@ -447,7 +447,6 @@ def addScoutsOfPage():
         if oneScoutName is None:
             oneScoutName = grabbedText
 
-
         print2Both("Recognized scout : --->"+oneScoutName+"<---")
         # print2Both(api.AllWordConfidences())            #Crashes for some reason :(
         threeScoutNames.append(oneScoutName)
