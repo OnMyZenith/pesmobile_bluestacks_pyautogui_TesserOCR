@@ -417,11 +417,10 @@ def addScoutsOfPage():
         oneScoutName = None
         isTactic = False
 
-        line()
-
         if scoutsCountedTwice:
             scoutsCountedTwice -= 1
             print2Both("\nSkipping scout that's aready counted on last page\n")
+            line()
             continue
         
         with PyTessBaseAPI() as api:
@@ -464,6 +463,8 @@ def addScoutsOfPage():
         print2Both("\nFinished with box "+str(i+1)+"\n")
         if i <2:
             print2Both("Currently on Page no. :"+str(page+1)+" out of "+str(int(totalNumber/3+0.7))+'\n')
+    
+        line()
 
     page+=1
 
