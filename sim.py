@@ -114,11 +114,13 @@ selectButtonPosition = (1200, 1010)
 actionButtonPosition = (1200, 1010)
 scoutPositions = (a, c, e)
 
-allTactics = ['Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', 'Defensive Styles', 'Containment Area', 'Pressuring']
+# allTactics = ['Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', 'Defensive Styles', 'Containment Area', 'Pressuring']
 allScouts = ['Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', 'Defensive Styles', 'Containment Area', 'Pressuring', 'Acceleration', 'Control', 'Winning', 'Curl', 'Defensive Awareness', 'Dribbling', 'Finishing', 'GK Awareness', 'GK Catching', 'GK Clearing', 'GK Reach', 'GK Reflexes', 'Heading', 'Jump', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', 'Speed', 'Stamina', '24', '185', 'AMF', 'CB', 'CF', 'CMF', 'DMF', 'LB', 'LMF', 'LWF', 'RB', 'RMF', 'RWF', 'SS', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '[Asia', '(Europe', '[Europe', '(Latin', '[Latin', 'year', 'Africa', 'Oceania', 'Europe', 'Americas']
 
 allScoutsAlias = ['Control', 'Winning', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', '24', '185', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '(Europe', '(Latin', '[Asia', '[Europe', '[Latin', 'year', 'Oceania', 'Americas']
 allScoutsReal = ['Ball Control', 'Ball Winning', 'Kicking Power', 'Left foot', 'Lofted Pass', 'Low Pass', 'Offensive Awareness', 'Physical Contact', 'Place Kicking', 'Right foot', 'U-24', '185cm or Taller', 'Utility Players', '30+', 'Argentinian League', 'Brazilian League', 'Chiliean League', 'Dutch League', 'English League', 'FREE AGENT', 'French League', 'Italian League', 'Portuguese League', 'Spanish League', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', '25-29 year old', 'Asia-Oceania', 'N/S American']
+
+scoutsToKeep = ['CF', 'DMF', 'LMF', 'RB ', 'CMF', 'SS ', 'France', 'Argentina', 'GK Clearing', 'Low', 'Offensive', '(Latin', '[Latin', 'Africa', 'Americas', 'Europe ', '24', 'Left', 'year', 'Utility',]
 
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
@@ -415,7 +417,8 @@ def addScoutsOfPage():
     for i in range(3):
         grabbedText = None
         oneScoutName = None
-        isTactic = False
+        # isTactic = False
+        toKeep = False
 
         if scoutsCountedTwice:
             scoutsCountedTwice -= 1
@@ -434,14 +437,22 @@ def addScoutsOfPage():
                 oneScoutName = one
                 break
         
-        for a in allTactics:
-            if oneScoutName == a:
-                isTactic = True
+        for b in scoutsToKeep:
+            if oneScoutName == b:
+                toKeep = True
 
-        if isTactic:
+        if not toKeep:
             clickOnPoint(scoutPositions[i])
-            print2Both("\nSelecting and skipping index of Tactics in box : "+str(i+1)+"\n")
-            continue
+            print2Both("\nSelecting this scout as it's not marked for trade/signing\n")
+
+        # for a in allTactics:
+        #     if oneScoutName == a:
+        #         isTactic = True
+
+        # if isTactic:
+        #     clickOnPoint(scoutPositions[i])
+        #     print2Both("\nSelecting and skipping this scout as it's Tactics\n")
+        #     continue
 
         if oneScoutName is None:
             oneScoutName = grabbedText
