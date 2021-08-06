@@ -435,8 +435,8 @@ def addScoutsOfPage():
                 oneScoutName = one
                 break
         
-        for i in allTactics:
-            if oneScoutName == i:
+        for a in allTactics:
+            if oneScoutName == a:
                 isTactic = True
 
         if isTactic:
@@ -447,7 +447,7 @@ def addScoutsOfPage():
         if oneScoutName is None:
             oneScoutName = grabbedText
 
-        print2Both("Recognized scout : --->"+oneScoutName+"<---")
+        print2Both("Recognized scout : ---"+oneScoutName+"---")
         # print2Both(api.AllWordConfidences())            #Crashes for some reason :(
         threeScoutNames.append(oneScoutName)
         
