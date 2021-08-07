@@ -120,7 +120,7 @@ allScouts = ['Attacking Styles', 'Build Up', 'Attacking Areas', 'Positioning', '
 allScoutsAlias = ['Control', 'Winning', 'Kicking', 'Left', 'Lofted', 'Low', 'Offensive', 'Physical', 'Place', 'Right', '24', '185', 'Utility', '30', 'Argentina', 'Brazil', 'Chile', 'Netherlands', 'England', 'Free Agent', 'France', 'Italy', 'Portugal', 'Spain', '(Asia', '(Europe', '(Latin', '[Asia', '[Europe', '[Latin', 'year', 'Oceania', 'Americas']
 allScoutsReal = ['Ball Control', 'Ball Winning', 'Kicking Power', 'Left foot', 'Lofted Pass', 'Low Pass', 'Offensive Awareness', 'Physical Contact', 'Place Kicking', 'Right foot', 'U-24', '185cm or Taller', 'Utility Players', '30+', 'Argentinian League', 'Brazilian League', 'Chiliean League', 'Dutch League', 'English League', 'FREE AGENT', 'French League', 'Italian League', 'Portuguese League', 'Spanish League', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', 'Other (Asia)', 'Other (Europe)', 'Other (Latin America)', '25-29 year old', 'Asia-Oceania', 'N/S American']
 
-scoutsToKeep = ['CF', 'DMF', 'LMF', 'RB ', 'CMF', 'SS ', 'France', 'Argentina', 'GK Clearing', 'Low', 'Offensive', '(Latin', '[Latin', 'Africa', 'Americas', 'Europe ', '24', 'Left', 'year', 'Utility',]
+scoutsToKeep = ['CF', 'DMF', 'LMF', 'RB', 'CMF', 'SS', 'France', 'Argentina', 'GK Clearing', 'Low', 'Offensive', '(Latin', '[Latin', 'Africa', 'Americas', 'Europe', '24', 'Left', 'year', 'Utility',]
 
 imgCF_SS_Hervey = Image.open('./assets/CF_SS_Hervey.png')
 imgCF_Jarvis = Image.open('./assets/CF_Jarvis.png')
